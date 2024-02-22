@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 import '../../index.dart';
 
+// TODO: Change My Packaged to my errors
+
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
 
@@ -47,17 +49,3 @@ class _SplashChild extends StatelessWidget {
     );
   }
 }
-    // return Center(
-    //   child: ColumnWithSpacing(
-    //     children: [
-    //       Icon(
-    //         Icons.home,
-    //         size: ViewEnum.teta.size,
-    //       ),
-    //       BoldText(
-    //         AppString.appTitle.text,
-    //         styles: TextStyles.displayMedium,
-    //       ),
-    //     ],
-    //   ),
-    // );
