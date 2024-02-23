@@ -15,38 +15,43 @@ final class LoginForm extends StatefulWidget {
 class _LoginFormState extends State<LoginForm> with LoginViewMixin {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      // ------------------------
-      child: ColumnWithSpacing(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          CustomTextFormField(
-            controller: userNameController,
-            labelText: AppForm.usernameLabel.text,
-          ),
-          // -----------------------------
-          CustomTextFormField(
-            controller: passwordController,
-            labelText: AppForm.passwordLabel.text,
-            obscureText: true,
-          ),
-          // -----------------------------
-          RowWithSpacing(
-            children: [
-              ElevatedButton(
-                onPressed: userValidation,
-                child: Text(AppForm.signInButton.text),
-              ),
-              ElevatedButton(
-                onPressed: gotoRegisterView,
-                child: Text(AppForm.signUpButton.text),
-              ),
-            ],
-          )
-        ],
-      ).padding(
-        pad: ViewEnum.hexa.size.withPaddingAll,
-      ),
-    );
+    return ColumnWithSpacing(
+      mainAxisAlignment: MainAxisAlignment.center,
+      spacing: ViewEnum.tetra.size,
+      children: [
+        // -----------------------------
+        CustomTextFormField(
+          context,
+          controller: userNameController,
+          labelText: AppForm.usernameLabel.text,
+        ),
+        // -----------------------------
+        CustomTextFormField(
+          context,
+          controller: passwordController,
+          labelText: AppForm.passwordLabel.text,
+          obscureText: true,
+        ),
+        // -----------------------------
+        RowWithSpacing(
+          spacing: ViewEnum.ennea.size,
+          children: [
+            ElevatedButton(
+              onPressed: userValidation,
+              child: Text(AppForm.signInButton.text),
+            ),
+            // -----------------------------
+            ElevatedButton(
+              onPressed: gotoRegisterView,
+              child: Text(AppForm.signUpButton.text),
+            ),
+          ],
+        ).horizontalScrollView
+      ],
+    )
+        .padding(
+          pad: ViewEnum.hexa.size.withPaddingAll,
+        )
+        .verticalScrollView;
   }
 }

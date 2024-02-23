@@ -1,13 +1,30 @@
+import 'package:codeofland/codeofland.dart';
+import 'package:codeofwidget/codeofwidget.dart';
 import 'package:flutter/material.dart';
-import 'package:siteyonetim/index.dart';
+
+import '../../../index.dart';
 
 class RegisterView extends StatelessWidget {
   const RegisterView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: RegisterForm(),
+    return Scaffold(
+      body: Center(
+        child: FractionallySizedBox(
+          heightFactor: 0.8,
+          alignment: Alignment.center,
+          child: ColumnWithSpacing(
+            children: [
+              const AuhtImage().expanded(),
+              const RegisterForm().expanded(),
+            ],
+          ).withSizedBox(
+            height: double.infinity,
+            width: ViewEnum.zeta.size,
+          ),
+        ),
+      ),
     );
   }
 }

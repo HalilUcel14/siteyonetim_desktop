@@ -1,3 +1,4 @@
+import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
@@ -14,45 +15,44 @@ class RegisterForm extends StatefulWidget {
 class _RegisterFormState extends State<RegisterForm> with RegisterViewMixin {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      // ----------------------
-      child: ColumnWithSpacing(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          CustomTextFormField(
-            controller: userNameController,
-            labelText: AppForm.usernameLabel.text,
-          ),
-          // --------------------------------
-          CustomTextFormField(
-            controller: passwordController,
-            labelText: AppForm.passwordLabel.text,
-          ),
-          // --------------------------------
-          CustomTextFormField(
-            controller: confirmPasswordController,
-            labelText: AppForm.passwordLabel.text,
-          ),
-          // --------------------------------
-          RowWithSpacing(
-            children: [
-              ElevatedButton(
-                onPressed: userValidation,
-                child: Text(
-                  AppForm.signUpButton.text,
-                ),
-              ),
-              // --------------------------------------
-              ElevatedButton(
-                onPressed: gotoLoginView,
-                child: Text(
-                  AppForm.signInButton.text,
-                ),
-              ),
-            ],
-          )
-        ],
-      ),
-    );
+    return ColumnWithSpacing(
+      spacing: ViewEnum.tetra.size,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        // ---------------------------------
+        CustomTextFormField(
+          context,
+          controller: userNameController,
+          labelText: AppForm.usernameLabel.text,
+        ),
+        // --------------------------------
+        CustomTextFormField(
+          context,
+          controller: passwordController,
+          labelText: AppForm.passwordLabel.text,
+        ),
+        // --------------------------------
+        CustomTextFormField(
+          context,
+          controller: confirmPasswordController,
+          labelText: AppForm.passwordLabel.text,
+        ),
+        // --------------------------------
+        RowWithSpacing(
+          spacing: ViewEnum.ennea.size,
+          children: [
+            ElevatedButton(
+              onPressed: userValidation,
+              child: Text(AppForm.signUpButton.text),
+            ),
+            // --------------------------------------
+            ElevatedButton(
+              onPressed: gotoLoginView,
+              child: Text(AppForm.signInButton.text),
+            ),
+          ],
+        ).horizontalScrollView
+      ],
+    ).padding(pad: ViewEnum.hexa.size.withPaddingAll).verticalScrollView;
   }
 }

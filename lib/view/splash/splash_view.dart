@@ -1,10 +1,7 @@
-import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
 import 'package:flutter/material.dart';
 
 import '../../index.dart';
-
-// TODO: Change My Packaged to my errors
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -31,21 +28,30 @@ class _SplashChild extends StatelessWidget {
       child: FractionallySizedBox(
         widthFactor: 1,
         heightFactor: 1,
+        //--------------------------------
         child: DecoratedBox(
           decoration: SplashBoxDecoration(context),
+          //--------------------------------
           child: FractionallySizedBox(
             widthFactor: 0.4,
             heightFactor: 0.4,
+            //--------------------------------
             child: DecoratedBox(
               decoration: CircleIconDecoration(context),
-              child: WIconAsset(
-                path: MyAsset.apartment.iconPng,
-                size: ViewEnum.teta.size,
-              ),
+              child: child,
             ),
           ),
         ),
       ),
     );
   }
+
+  LayoutBuilder get child => LayoutBuilder(
+        builder: (context, constraints) {
+          return WIconAsset(
+            path: MyAsset.apartment.iconPng,
+            size: constraints.maxWidth * PercentEnum.pNinety.size,
+          );
+        },
+      );
 }

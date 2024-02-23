@@ -26,10 +26,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: AppString.materialTitle.text,
       //
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: LightTheme().theme,
       //
       routes: AppRoute.of.route,
       initialRoute: MyRoute.splash.name,
