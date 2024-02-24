@@ -7,9 +7,32 @@ import 'package:flutter/material.dart';
 import '../../../index.dart';
 
 mixin RegisterViewMixin on State<RegisterForm> {
-  TextEditingController userNameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController confirmPasswordController = TextEditingController();
+  late TextEditingController userNameController;
+  late TextEditingController passwordController;
+  late TextEditingController emailController;
+  late TextEditingController confirmPasswordController;
+  late HiveUserRepository hiveUser;
+
+  @override
+  void initState() {
+    super.initState();
+    hiveUser = HiveUserRepository(boxName: MyHive.hiveUser.name);
+    hiveUser.openBox();
+    userNameController = TextEditingController();
+    passwordController = TextEditingController();
+    emailController = TextEditingController();
+    confirmPasswordController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    hiveUser.closeBox();
+    userNameController.dispose();
+    passwordController.dispose();
+    emailController.dispose();
+    confirmPasswordController.dispose();
+  }
 
   HiveUserRepository userRepository = HiveUserRepository(
     boxName: MyHive.hiveUser.name,
@@ -19,6 +42,9 @@ mixin RegisterViewMixin on State<RegisterForm> {
     if (userNameController.text.trim().isNullOrEmpty) return false;
     if (passwordController.text.trim().isNullOrEmpty) return false;
     if (confirmPasswordController.text.trim().isNullOrEmpty) return false;
+    if (emailController.text.trim().isNullOrEmpty) return false;
+    if (!emailController.text.trim().isValidEmailRegex) return false;
+    if (passwordController.text.trim().isValidMediumPassword) return false;
     if (confirmPasswordController.text.trim() !=
         passwordController.text.trim()) {
       return false;
@@ -40,36 +66,47 @@ mixin RegisterViewMixin on State<RegisterForm> {
         passwordController.text.trim()) {
       return AppError.notConfirmPassword.text;
     }
+
+    if (emailController.text.trim().isNullOrEmpty) {
+      return AppError.emptyEmailAddress.text;
+    }
+
+    if (!emailController.text.trim().isValidEmailRegex) {
+      return AppError.notValidEmailAddress.text;
+    }
+
+    if (!passwordController.text.trim().isValidMediumPassword) {
+      return AppError.notValidMediumPassword.text;
+    }
     return "";
   }
 
   void userValidation() async {
+    final BuildContext? mContext = ScaffoldKeys.of.registerKey.currentContext;
+    if (mContext == null) return;
+    if (!mContext.mounted) return;
+
+    ///
+    if (!mContext.mounted) return;
     if (!isValidForm()) {
-      if (context.mounted) {
-        context.showSnackBar(
-          SnackBar(
-            content: Text(
-              formErrorMessage(),
-            ),
-          ),
-        );
-      }
-    } else {
-      //
-      HiveUser user = HiveUser(
-        id: RandomKey.generate(),
-        username: userNameController.text.trim(),
-        password: passwordController.text.trim(),
-        createdAt: DateTime.now(),
-        role: UserRole.manager.name,
-      );
-      //
-      if (user.id.isNullOrEmpty) return;
-      //
-      userRepository.addItem(user.id!, user);
-      //
-      gotoLoginView();
+      mContext.showSnackBar(SnackBar(content: Text(formErrorMessage())));
+      return;
     }
+    //
+    HiveUser user = HiveUser(
+      uid: RandomKey.generate(),
+      username: userNameController.text.trim(),
+      emailAddress: emailController.text.trim(),
+      password: passwordController.text.trim(),
+      createdAt: DateTime.now(),
+      role: UserRole.manager.name,
+    );
+    //
+    if (user.uid.isNullOrEmpty) return;
+    //
+    userRepository.addItem(user.uid!, user);
+    //
+    gotoLoginView();
   }
 
   void gotoLoginView() {

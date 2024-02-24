@@ -10,6 +10,7 @@ class RegisterView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: ScaffoldKeys.of.registerKey,
       body: Center(
         child: FractionallySizedBox(
           heightFactor: 0.8,
