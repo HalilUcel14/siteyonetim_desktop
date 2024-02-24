@@ -9,28 +9,32 @@ part 'user_model.g.dart';
 final class HiveUser extends BaseModel<HiveUser> {
   @override
   @HiveField(0)
-  final String? id;
+  final String? uid;
   @HiveField(1)
   final String? username;
   @HiveField(2)
-  final String? password;
+  final String? emailAddress;
   @HiveField(3)
-  final DateTime? createdAt;
+  final String? password;
   @HiveField(4)
+  final DateTime? createdAt;
+  @HiveField(5)
   final String? role;
 
-  const HiveUser({
-    required this.id,
+  HiveUser({
+    required this.uid,
     required this.username,
+    required this.emailAddress,
     required this.password,
     required this.createdAt,
     required this.role,
   });
 
-  const HiveUser.empty({
-    this.id,
+  HiveUser.empty({
+    this.uid,
     this.username,
     this.password,
+    this.emailAddress,
     this.createdAt,
     this.role,
   });
@@ -38,8 +42,9 @@ final class HiveUser extends BaseModel<HiveUser> {
   @override
   HiveUser fromJson(Map<String, dynamic> json) {
     return HiveUser(
-      id: json['id'] as String,
+      uid: json['uid'] as String,
       username: json['username'] as String,
+      emailAddress: json['emailAddress'] as String,
       password: json['password'] as String,
       createdAt: json['createdAt'] as DateTime,
       role: json['role'] as String,
@@ -48,8 +53,9 @@ final class HiveUser extends BaseModel<HiveUser> {
 
   factory HiveUser.fromJson(Map<String, dynamic> json) {
     return HiveUser(
-      id: json['id'] as String,
+      uid: json['uid'] as String,
       username: json['username'] as String,
+      emailAddress: json['emailAddress'] as String,
       password: json['password'] as String,
       createdAt: json['createdAt'] as DateTime,
       role: json['role'] as String,
@@ -57,13 +63,15 @@ final class HiveUser extends BaseModel<HiveUser> {
   }
 
   @override
-  List<Object?> get props => [id, username, password, createdAt, role];
+  List<Object?> get props =>
+      [uid, username, emailAddress, password, createdAt, role];
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      "id": id,
+      "uid": uid,
       "username": username,
+      "emailAddress": emailAddress,
       "password": password,
       "createdAt": createdAt,
       "role": role,

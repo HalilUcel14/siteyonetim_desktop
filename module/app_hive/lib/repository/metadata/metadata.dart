@@ -33,7 +33,7 @@ final class HiveMetaData extends HiveRepository<AppMetaData> {
     final response = hiveBox.get(id);
     await closeBox();
     if (response == null) {
-      return const AppMetaData.empty();
+      return AppMetaData.empty();
     }
     return response;
   }

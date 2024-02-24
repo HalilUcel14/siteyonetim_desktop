@@ -17,7 +17,7 @@ class AppMetaDataAdapter extends TypeAdapter<AppMetaData> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return AppMetaData(
-      id: fields[0] as String?,
+      uid: fields[0] as String?,
       user: fields[1] as HiveUser?,
       lastSign: fields[2] as DateTime?,
     );
@@ -28,7 +28,7 @@ class AppMetaDataAdapter extends TypeAdapter<AppMetaData> {
     writer
       ..writeByte(3)
       ..writeByte(0)
-      ..write(obj.id)
+      ..write(obj.uid)
       ..writeByte(1)
       ..write(obj.user)
       ..writeByte(2)
