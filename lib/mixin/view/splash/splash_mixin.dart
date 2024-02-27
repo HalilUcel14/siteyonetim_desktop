@@ -6,31 +6,50 @@ import 'package:flutter/material.dart';
 import '../../../index.dart';
 
 mixin SplashMixin on State<SplashView> {
-  //
-  Future<AppMetaData> _getMetaDataFromHive() async {
-    HiveMetaData metaData = HiveMetaData(boxName: MyHive.metadata.name);
-    final val = await metaData.getItemById(AppString.metaDataId.text);
-    return val;
+  late HiveDatabaseManager metaData;
+
+  @override
+  void initState() {
+    super.initState();
+    //
+    // metaData = HiveMetaData(boxName: MyHive.metadata.name);
+    // metaData.openBox();
+    metaData = HiveDatabaseManager<AppMetaData>();
+    metaData.openBox();
+    //
+    controlMetaToPush();
   }
 
-  Future<void> checkMetaData() async {
-    final data = await _getMetaDataFromHive();
+  @override
+  void dispose() {
+    metaData.closeBox();
+    super.dispose();
+  }
+
+  Future<void> controlMetaToPush() async {
+    BuildContext? mContext = ScaffoldKeys.of.splashKey.currentContext;
+    mContext ??= context;
+    bool check = await checkMetaData();
+    //
+    if (!mContext.mounted) return;
+    if (check) {
+      mContext.pushNamedAndRemoveUntil(MyRoute.home.name);
+    } else {
+      mContext.pushNamedAndRemoveUntil(MyRoute.authLogin.name);
+    }
+  }
+
+  Future<bool> checkMetaData() async {
+    //
     await Future.delayed(DurationConst.second(2).duration);
     //
-
-    if (data.id.isNullOrEmpty ||
-        data.lastSign == null ||
-        !isCheckBeforeThreeDays(data.lastSign) ||
-        data.user == null) {
-      //
-      if (context.mounted) {
-        context.pushNamedAndRemoveUntil(MyRoute.authLogin.name);
-      }
-    } else {
-      if (context.mounted) {
-        context.pushNamedAndRemoveUntil(MyRoute.home.name);
-      }
-    }
+    final meta = await metaData.readBox(AppString.metaDataId.text);
+    //
+    if (meta!.uid.isNullOrEmpty) return false;
+    //
+    //
+    return isCheckBeforeThreeDays(meta.lastSign);
+    //
   }
 
   bool isCheckBeforeThreeDays(DateTime? lastSign) {
@@ -40,16 +59,5 @@ mixin SplashMixin on State<SplashView> {
     final Duration different = current.difference(lastSign);
     //
     return different < DurationEnum.lastSign.duration ? true : false;
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    checkMetaData();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
   }
 }

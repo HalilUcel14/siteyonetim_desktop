@@ -17,7 +17,7 @@ class _LoginFormState extends State<LoginForm> with LoginViewMixin {
   Widget build(BuildContext context) {
     return ColumnWithSpacing(
       mainAxisAlignment: MainAxisAlignment.center,
-      spacing: ViewEnum.tetra.size,
+      spacing: SizeEnum.tetra.size,
       children: [
         // -----------------------------
         CustomTextFormField(
@@ -34,7 +34,7 @@ class _LoginFormState extends State<LoginForm> with LoginViewMixin {
         ),
         // -----------------------------
         RowWithSpacing(
-          spacing: ViewEnum.ennea.size,
+          spacing: SizeEnum.ennea.size,
           children: [
             ElevatedButton(
               onPressed: userValidation,
@@ -48,10 +48,6 @@ class _LoginFormState extends State<LoginForm> with LoginViewMixin {
           ],
         ).horizontalScrollView
       ],
-    )
-        .padding(
-          pad: ViewEnum.hexa.size.withPaddingAll,
-        )
-        .verticalScrollView;
+    ).padding(pad: SizeEnum.hexa.size.withPaddingAll).verticalScrollView;
   }
 }

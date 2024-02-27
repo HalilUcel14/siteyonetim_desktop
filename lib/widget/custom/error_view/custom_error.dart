@@ -14,13 +14,13 @@ class CustomErrorWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: ColumnWithSpacing(
-        spacing: ViewEnum.hexa.size,
+        spacing: SizeEnum.hexa.size,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
             Icons.error_outline,
             color: Colors.red,
-            size: ViewEnum.mega.size,
+            size: SizeEnum.mega.size,
           ),
           const BoldText(
             'Error Occurred!',

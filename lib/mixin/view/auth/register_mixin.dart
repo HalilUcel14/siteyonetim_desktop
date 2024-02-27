@@ -100,6 +100,7 @@ mixin RegisterViewMixin on State<RegisterForm> {
       password: passwordController.text.trim(),
       createdAt: DateTime.now(),
       role: UserRole.manager.name,
+      userType: UserType.free.name,
     );
     //
     if (user.uid.isNullOrEmpty) return;

@@ -12,4 +12,8 @@ final class ScaffoldKeys {
   GlobalKey<ScaffoldState> registerKey = GlobalKey<ScaffoldState>(
     debugLabel: 'Register Scaffolds',
   );
+
+  GlobalKey<ScaffoldState> splashKey = GlobalKey<ScaffoldState>(
+    debugLabel: 'Splash Scaffolds',
+  );
 }

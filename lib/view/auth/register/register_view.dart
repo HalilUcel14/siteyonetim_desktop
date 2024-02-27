@@ -22,7 +22,7 @@ class RegisterView extends StatelessWidget {
             ],
           ).withSizedBox(
             height: double.infinity,
-            width: ViewEnum.zeta.size,
+            width: SizeEnum.zeta.size,
           ),
         ),
       ),

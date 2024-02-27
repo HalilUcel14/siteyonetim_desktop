@@ -16,7 +16,7 @@ class _RegisterFormState extends State<RegisterForm> with RegisterViewMixin {
   @override
   Widget build(BuildContext context) {
     return ColumnWithSpacing(
-      spacing: ViewEnum.tetra.size,
+      spacing: SizeEnum.tetra.size,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         // ---------------------------------
@@ -39,7 +39,7 @@ class _RegisterFormState extends State<RegisterForm> with RegisterViewMixin {
         ),
         // --------------------------------
         RowWithSpacing(
-          spacing: ViewEnum.ennea.size,
+          spacing: SizeEnum.ennea.size,
           children: [
             ElevatedButton(
               onPressed: userValidation,
@@ -53,6 +53,6 @@ class _RegisterFormState extends State<RegisterForm> with RegisterViewMixin {
           ],
         ).horizontalScrollView
       ],
-    ).padding(pad: ViewEnum.hexa.size.withPaddingAll).verticalScrollView;
+    ).padding(pad: SizeEnum.hexa.size.withPaddingAll).verticalScrollView;
   }
 }

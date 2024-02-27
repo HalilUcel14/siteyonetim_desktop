@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 final class FormOutlineBorder extends OutlineInputBorder {
   FormOutlineBorder(Color color)
       : super(
-          borderRadius: ViewEnum.tetra.size.radiusCircle,
-          gapPadding: ViewEnum.hexa.size,
+          borderRadius: SizeEnum.tetra.size.radiusCircle,
+          gapPadding: SizeEnum.hexa.size,
           borderSide: BorderSide(
             color: color,
             strokeAlign: BorderSide.strokeAlignCenter,

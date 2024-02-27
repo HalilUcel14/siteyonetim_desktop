@@ -8,7 +8,7 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
-  codeofland: ^1.2.1
+  codeofland: ^1.3.1
   flutter:
     sdk: flutter
   hive: ^2.2.3

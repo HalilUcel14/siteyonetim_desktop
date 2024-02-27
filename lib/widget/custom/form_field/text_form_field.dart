@@ -23,7 +23,7 @@ final class CustomTextFormField extends TextFormField {
                 FormOutlineBorder(context.colorScheme.errorContainer),
             disabledBorder: FormOutlineBorder(context.colorScheme.surface),
             border: FormOutlineBorder(Colors.black),
-            contentPadding: ViewEnum.ennea.size.withPaddingAll,
+            contentPadding: SizeEnum.ennea.size.withPaddingAll,
           ),
         );
 }

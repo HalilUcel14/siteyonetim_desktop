@@ -20,6 +20,8 @@ final class HiveUser extends BaseModel<HiveUser> {
   final DateTime? createdAt;
   @HiveField(5)
   final String? role;
+  @HiveField(6)
+  final String? userType;
 
   HiveUser({
     required this.uid,
@@ -28,6 +30,7 @@ final class HiveUser extends BaseModel<HiveUser> {
     required this.password,
     required this.createdAt,
     required this.role,
+    required this.userType,
   });
 
   HiveUser.empty({
@@ -37,6 +40,7 @@ final class HiveUser extends BaseModel<HiveUser> {
     this.emailAddress,
     this.createdAt,
     this.role,
+    this.userType,
   });
 
   @override
@@ -48,6 +52,7 @@ final class HiveUser extends BaseModel<HiveUser> {
       password: json['password'] as String,
       createdAt: json['createdAt'] as DateTime,
       role: json['role'] as String,
+      userType: json['userType'] as String,
     );
   }
 
@@ -59,12 +64,13 @@ final class HiveUser extends BaseModel<HiveUser> {
       password: json['password'] as String,
       createdAt: json['createdAt'] as DateTime,
       role: json['role'] as String,
+      userType: json['userType'] as String,
     );
   }
 
   @override
   List<Object?> get props =>
-      [uid, username, emailAddress, password, createdAt, role];
+      [uid, username, emailAddress, password, createdAt, role, userType];
 
   @override
   Map<String, dynamic> toJson() {
@@ -75,6 +81,7 @@ final class HiveUser extends BaseModel<HiveUser> {
       "password": password,
       "createdAt": createdAt,
       "role": role,
+      "userType": userType,
     };
   }
 }

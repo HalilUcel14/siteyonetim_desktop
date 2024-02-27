@@ -13,8 +13,9 @@ class SplashView extends StatefulWidget {
 class _SplashViewState extends State<SplashView> with SplashMixin {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: _SplashChild(),
+    return Scaffold(
+      key: ScaffoldKeys.of.splashKey,
+      body: const _SplashChild(),
     );
   }
 }

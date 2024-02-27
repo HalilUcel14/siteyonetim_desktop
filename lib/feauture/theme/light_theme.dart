@@ -1,8 +1,6 @@
 import 'package:codeofland/codeofland.dart';
 import 'package:flutter/material.dart';
 
-import '../../index.dart';
-
 final class LightTheme extends ITheme {
   @override
   ThemeData get theme => ThemeData(

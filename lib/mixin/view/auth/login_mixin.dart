@@ -36,19 +36,20 @@ mixin LoginViewMixin on State<LoginForm> {
       return;
     }
     //
-    final bool response = await hiveUser.getItemByUserName(
-      userNameController.text.trim(),
-      passwordController.text.trim(),
-    );
+
+    // final bool response = await hiveUser.getItemByUserName(
+    //   userNameController.text.trim(),
+    //   passwordController.text.trim(),
+    // );
     //
     if (!mContext.mounted) return;
     //
-    if (!response) {
-      mContext.showSnackBar(
-        SnackBar(content: Text(AppError.notValidUserLogin.text)),
-      );
-      return;
-    }
+    // if (!response) {
+    //   mContext.showSnackBar(
+    //     SnackBar(content: Text(AppError.notValidUserLogin.text)),
+    //   );
+    //   return;
+    // }
 
     mContext.pushNamedAndRemoveUntil(MyRoute.home.name);
     //
