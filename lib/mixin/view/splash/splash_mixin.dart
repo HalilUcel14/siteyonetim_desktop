@@ -11,6 +11,7 @@ mixin SplashMixin on State<SplashView> {
   @override
   void initState() {
     super.initState();
+    // TODO: Change Method HiveDataBaseManager read <T> and other
     //
     // metaData = HiveMetaData(boxName: MyHive.metadata.name);
     // metaData.openBox();
