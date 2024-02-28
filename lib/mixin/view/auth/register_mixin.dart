@@ -11,32 +11,28 @@ mixin RegisterViewMixin on State<RegisterForm> {
   late TextEditingController passwordController;
   late TextEditingController emailController;
   late TextEditingController confirmPasswordController;
-  late HiveUserRepository hiveUser;
+  late HiveDatabaseManager<HiveUser> userBox;
 
   @override
   void initState() {
     super.initState();
-    hiveUser = HiveUserRepository(boxName: MyHive.hiveUser.name);
-    hiveUser.openBox();
     userNameController = TextEditingController();
     passwordController = TextEditingController();
     emailController = TextEditingController();
     confirmPasswordController = TextEditingController();
+    userBox = HiveDatabaseManager<HiveUser>();
+    userBox.openBox();
   }
 
   @override
   void dispose() {
     super.dispose();
-    hiveUser.closeBox();
+    userBox.closeBox();
     userNameController.dispose();
     passwordController.dispose();
     emailController.dispose();
     confirmPasswordController.dispose();
   }
-
-  HiveUserRepository userRepository = HiveUserRepository(
-    boxName: MyHive.hiveUser.name,
-  );
 
   bool isValidForm() {
     if (userNameController.text.trim().isNullOrEmpty) return false;
@@ -44,7 +40,7 @@ mixin RegisterViewMixin on State<RegisterForm> {
     if (confirmPasswordController.text.trim().isNullOrEmpty) return false;
     if (emailController.text.trim().isNullOrEmpty) return false;
     if (!emailController.text.trim().isValidEmailRegex) return false;
-    if (passwordController.text.trim().isValidMediumPassword) return false;
+    if (!passwordController.text.trim().isValidMediumPassword) return false;
     if (confirmPasswordController.text.trim() !=
         passwordController.text.trim()) {
       return false;
@@ -82,11 +78,8 @@ mixin RegisterViewMixin on State<RegisterForm> {
   }
 
   void userValidation() async {
-    final BuildContext? mContext = ScaffoldKeys.of.registerKey.currentContext;
-    if (mContext == null) return;
-    if (!mContext.mounted) return;
-
-    ///
+    BuildContext? mContext = ScaffoldKeys.of.registerKey.currentContext;
+    mContext ??= context;
     if (!mContext.mounted) return;
     if (!isValidForm()) {
       mContext.showSnackBar(SnackBar(content: Text(formErrorMessage())));
@@ -104,8 +97,9 @@ mixin RegisterViewMixin on State<RegisterForm> {
     );
     //
     if (user.uid.isNullOrEmpty) return;
-    //
-    userRepository.addItem(user.uid!, user);
+    await userBox.openBox();
+    print(userBox.box.isOpen);
+    await userBox.addBox(user.uid!, user);
     //
     gotoLoginView();
   }

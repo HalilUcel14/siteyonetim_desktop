@@ -1,6 +1,8 @@
 enum AppForm {
   signInButton("Sign In"),
   signUpButton('Sign Up'),
+  emailLabel('Email'),
+  emailHint('Please Enter your email'),
   usernameLabel('Username'),
   usernameHint('Please Enter UserName'),
   passwordLabel('Password'),

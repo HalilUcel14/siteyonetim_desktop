@@ -25,6 +25,12 @@ class _RegisterFormState extends State<RegisterForm> with RegisterViewMixin {
           controller: userNameController,
           labelText: AppForm.usernameLabel.text,
         ),
+        // ---------------------------------
+        CustomTextFormField(
+          context,
+          controller: emailController,
+          labelText: AppForm.emailLabel.text,
+        ),
         // --------------------------------
         CustomTextFormField(
           context,

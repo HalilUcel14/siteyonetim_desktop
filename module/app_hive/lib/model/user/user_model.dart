@@ -50,7 +50,8 @@ final class HiveUser extends BaseModel<HiveUser> {
       username: json['username'] as String,
       emailAddress: json['emailAddress'] as String,
       password: json['password'] as String,
-      createdAt: json['createdAt'] as DateTime,
+      createdAt:
+          json['createdAt'] != null ? DateTime.parse(json['createdAt']) : null,
       role: json['role'] as String,
       userType: json['userType'] as String,
     );
@@ -62,7 +63,8 @@ final class HiveUser extends BaseModel<HiveUser> {
       username: json['username'] as String,
       emailAddress: json['emailAddress'] as String,
       password: json['password'] as String,
-      createdAt: json['createdAt'] as DateTime,
+      createdAt:
+          json['createdAt'] != null ? DateTime.parse(json['createdAt']) : null,
       role: json['role'] as String,
       userType: json['userType'] as String,
     );
@@ -79,7 +81,7 @@ final class HiveUser extends BaseModel<HiveUser> {
       "username": username,
       "emailAddress": emailAddress,
       "password": password,
-      "createdAt": createdAt,
+      "createdAt": createdAt?.toIso8601String(),
       "role": role,
       "userType": userType,
     };

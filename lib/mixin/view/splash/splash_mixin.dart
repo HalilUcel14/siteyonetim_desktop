@@ -6,15 +6,11 @@ import 'package:flutter/material.dart';
 import '../../../index.dart';
 
 mixin SplashMixin on State<SplashView> {
-  late HiveDatabaseManager metaData;
+  late HiveDatabaseManager<AppMetaData> metaData;
 
   @override
   void initState() {
     super.initState();
-    // TODO: Change Method HiveDataBaseManager read <T> and other
-    //
-    // metaData = HiveMetaData(boxName: MyHive.metadata.name);
-    // metaData.openBox();
     metaData = HiveDatabaseManager<AppMetaData>();
     metaData.openBox();
     //
@@ -44,12 +40,11 @@ mixin SplashMixin on State<SplashView> {
     //
     await Future.delayed(DurationConst.second(2).duration);
     //
-    final meta = await metaData.readBox(AppString.metaDataId.text);
+    final data = await metaData.readBox(AppString.metaDataId.text);
     //
-    if (meta!.uid.isNullOrEmpty) return false;
+    if (data == null || data.uid.isNullOrEmpty) return false;
     //
-    //
-    return isCheckBeforeThreeDays(meta.lastSign);
+    return isCheckBeforeThreeDays(data.lastSign);
     //
   }
 

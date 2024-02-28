@@ -1,5 +1,6 @@
-import 'package:app_hive/app_hive.dart';
+import 'package:app_hive/index.dart';
 import 'package:codeofland/codeofland.dart';
+import 'package:codeofland/other/random_key/random_key.dart';
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 
@@ -8,22 +9,26 @@ import '../../../index.dart';
 mixin LoginViewMixin on State<LoginForm> {
   late TextEditingController userNameController;
   late TextEditingController passwordController;
-  late HiveUserRepository hiveUser;
+  late HiveDatabaseManager<HiveUser> userBox;
+  late HiveDatabaseManager<AppMetaData> metaBox;
 
   @override
   void initState() {
     super.initState();
-    hiveUser = HiveUserRepository(boxName: MyHive.hiveUser.name);
-    hiveUser.openBox();
     userNameController = TextEditingController();
     passwordController = TextEditingController();
+    userBox = HiveDatabaseManager<HiveUser>();
+    metaBox = HiveDatabaseManager<AppMetaData>();
+    userBox.openBox();
+    metaBox.openBox();
   }
 
   @override
   void dispose() {
     userNameController.dispose();
     passwordController.dispose();
-    hiveUser.closeBox();
+    userBox.closeBox();
+    metaBox.closeBox();
     super.dispose();
   }
 
@@ -36,21 +41,30 @@ mixin LoginViewMixin on State<LoginForm> {
       return;
     }
     //
-
-    // final bool response = await hiveUser.getItemByUserName(
-    //   userNameController.text.trim(),
-    //   passwordController.text.trim(),
-    // );
-    //
+    final HiveUser? response = await userBox.isHasUser(
+      userNameController.text.trim(),
+      passwordController.text.trim(),
+    );
+    // -------------------------------------------
+    if (response == null) {
+      if (!mContext.mounted) return;
+      mContext.showSnackBar(
+        SnackBar(content: Text(AppError.notValidUserLogin.text)),
+      );
+      return;
+    }
+    // -------------------------------------------
+    final data = AppMetaData(
+      uid: RandomKey.generate(),
+      user: response,
+      lastSign: DateTime.now(),
+    );
+    // -------------------------------------------
+    // -------------------------------------------
+    await metaBox.updateBox(AppString.metaDataId.text, data);
     if (!mContext.mounted) return;
-    //
-    // if (!response) {
-    //   mContext.showSnackBar(
-    //     SnackBar(content: Text(AppError.notValidUserLogin.text)),
-    //   );
-    //   return;
-    // }
-
+    // -------------------------------------------
+    // -------------------------------------------
     mContext.pushNamedAndRemoveUntil(MyRoute.home.name);
     //
   }
