@@ -104,6 +104,8 @@ mixin RegisterViewMixin on State<RegisterForm> {
     gotoLoginView();
   }
 
+  // TODO: Hive is box add error
+
   void gotoLoginView() {
     if (context.mounted) {
       context.pushNamed(MyRoute.authLogin.name);
