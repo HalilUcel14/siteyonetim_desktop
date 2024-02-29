@@ -11,7 +11,6 @@ mixin RegisterViewMixin on State<RegisterView> {
 
   @override
   void dispose() {
-    ScaffoldKeys.of.registerKey.currentState?.dispose();
     super.dispose();
   }
 }

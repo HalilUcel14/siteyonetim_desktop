@@ -10,9 +10,15 @@ void main() async {
   await HiveInitializer.of.init();
   HiveRegisterAdapter.of.build();
   //
-  FlutterError.onError = (FlutterErrorDetails details) {
-    FlutterError.dumpErrorToConsole(details);
-    runApp(CustomErrorWidget(errorDetails: details));
+  ErrorWidget.builder = (FlutterErrorDetails details) {
+    return Material(
+      child: Container(
+        color: Colors.green.shade600,
+        child: Center(
+          child: Text(details.exception.toString()),
+        ),
+      ),
+    );
   };
   //
   runApp(const MyApp());

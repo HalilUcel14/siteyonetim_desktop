@@ -27,17 +27,15 @@ mixin LoginViewMixin on State<LoginForm> {
   void dispose() {
     userNameController.dispose();
     passwordController.dispose();
-    key.currentState?.dispose();
     super.dispose();
   }
 
   void userValidation() async {
-    BuildContext? mContext = key.currentContext;
-    mContext ??= context;
     //
     //
     if (!isValidForm()) {
-      mContext.showSnackBar(SnackBar(content: Text(formErrorMessage())));
+      if (!context.mounted) return;
+      context.showSnackBar(SnackBar(content: Text(formErrorMessage())));
       return;
     }
     //
@@ -47,8 +45,8 @@ mixin LoginViewMixin on State<LoginForm> {
     );
     // -------------------------------------------
     if (response.uid == null) {
-      if (!mContext.mounted) return;
-      mContext.showSnackBar(
+      if (!context.mounted) return;
+      context.showSnackBar(
         SnackBar(content: Text(AppError.notValidUserLogin.text)),
       );
       return;
@@ -64,8 +62,11 @@ mixin LoginViewMixin on State<LoginForm> {
     await metaData.updateBox(AppString.metaDataId.text, data);
     // -------------------------------------------
     // -------------------------------------------
-    if (!mContext.mounted) return;
-    mContext.pushNamedAndRemoveUntil(MyRoute.home.name);
+    if (context.mounted) {
+      // ignore: use_build_context_synchronously
+      context.pushNamedAndRemoveUntil(MyRoute.home.name);
+    }
+
     //
   }
 

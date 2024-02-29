@@ -31,7 +31,6 @@ mixin RegisterFormMixin on State<RegisterForm> {
     passwordController.dispose();
     emailController.dispose();
     confirmPasswordController.dispose();
-    FormKeys.of.registerFormKey.currentState?.dispose();
     super.dispose();
   }
 
