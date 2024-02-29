@@ -12,7 +12,7 @@ class RegisterForm extends StatefulWidget {
   State<RegisterForm> createState() => _RegisterFormState();
 }
 
-class _RegisterFormState extends State<RegisterForm> with RegisterViewMixin {
+class _RegisterFormState extends State<RegisterForm> with RegisterFormMixin {
   @override
   Widget build(BuildContext context) {
     return ColumnWithSpacing(
@@ -53,7 +53,7 @@ class _RegisterFormState extends State<RegisterForm> with RegisterViewMixin {
             ),
             // --------------------------------------
             ElevatedButton(
-              onPressed: gotoLoginView,
+              onPressed: goToLoginView,
               child: Text(AppForm.signInButton.text),
             ),
           ],

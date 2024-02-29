@@ -9,44 +9,43 @@ import '../../../index.dart';
 mixin LoginViewMixin on State<LoginForm> {
   late TextEditingController userNameController;
   late TextEditingController passwordController;
-  late HiveDatabaseManager<HiveUser> userBox;
-  late HiveDatabaseManager<AppMetaData> metaBox;
+  late GlobalKey<ScaffoldState> key;
+  late HiveUserDatabase hiveUser;
+  late AppMetaDataBase metaData;
 
   @override
   void initState() {
     super.initState();
     userNameController = TextEditingController();
     passwordController = TextEditingController();
-    userBox = HiveDatabaseManager<HiveUser>();
-    metaBox = HiveDatabaseManager<AppMetaData>();
-    userBox.openBox();
-    metaBox.openBox();
+    key = GlobalKey<ScaffoldState>();
+    hiveUser = HiveUserDatabase();
+    metaData = AppMetaDataBase();
   }
 
   @override
   void dispose() {
     userNameController.dispose();
     passwordController.dispose();
-    userBox.closeBox();
-    metaBox.closeBox();
+    key.currentState?.dispose();
     super.dispose();
   }
 
   void userValidation() async {
-    final BuildContext? mContext = ScaffoldKeys.of.loginKey.currentContext;
-    if (mContext == null) return;
+    BuildContext? mContext = key.currentContext;
+    mContext ??= context;
 
     if (!isValidForm()) {
       mContext.showSnackBar(SnackBar(content: Text(formErrorMessage())));
       return;
     }
     //
-    final HiveUser? response = await userBox.isHasUser(
+    final HiveUser response = hiveUser.checkUser(
       userNameController.text.trim(),
       passwordController.text.trim(),
     );
     // -------------------------------------------
-    if (response == null) {
+    if (response.uid == null) {
       if (!mContext.mounted) return;
       mContext.showSnackBar(
         SnackBar(content: Text(AppError.notValidUserLogin.text)),
@@ -61,10 +60,10 @@ mixin LoginViewMixin on State<LoginForm> {
     );
     // -------------------------------------------
     // -------------------------------------------
-    await metaBox.updateBox(AppString.metaDataId.text, data);
+    await metaData.updateBox(AppString.metaDataId.text, data);
+    // -------------------------------------------
+    // -------------------------------------------
     if (!mContext.mounted) return;
-    // -------------------------------------------
-    // -------------------------------------------
     mContext.pushNamedAndRemoveUntil(MyRoute.home.name);
     //
   }

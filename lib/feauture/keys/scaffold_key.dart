@@ -5,15 +5,11 @@ final class ScaffoldKeys {
   static ScaffoldKeys get of => _of ??= ScaffoldKeys._();
   ScaffoldKeys._();
 
-  GlobalKey<ScaffoldState> loginKey = GlobalKey<ScaffoldState>(
-    debugLabel: 'Login Scaffolds',
-  );
+  late GlobalKey<ScaffoldState> loginKey;
 
-  GlobalKey<ScaffoldState> registerKey = GlobalKey<ScaffoldState>(
-    debugLabel: 'Register Scaffolds',
-  );
+  late GlobalKey<ScaffoldState> registerKey;
 
-  GlobalKey<ScaffoldState> splashKey = GlobalKey<ScaffoldState>(
-    debugLabel: 'Splash Scaffolds',
-  );
+  late GlobalKey<ScaffoldState> splashKey;
+
+  late GlobalKey<ScaffoldState> homeKey;
 }

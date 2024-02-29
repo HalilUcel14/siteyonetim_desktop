@@ -10,7 +10,7 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: ScaffoldKeys.of.loginKey,
+      key: key,
       body: Center(
         child: FractionallySizedBox(
           heightFactor: 0.8,

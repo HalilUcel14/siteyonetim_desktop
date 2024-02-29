@@ -6,13 +6,14 @@ import 'package:flutter/material.dart';
 import '../../../index.dart';
 
 mixin SplashMixin on State<SplashView> {
-  late HiveDatabaseManager<AppMetaData> metaData;
+  late AppMetaDataBase metaData;
 
   @override
   void initState() {
     super.initState();
-    metaData = HiveDatabaseManager<AppMetaData>();
-    metaData.openBox();
+    ScaffoldKeys.of.splashKey = GlobalKey<ScaffoldState>();
+    metaData = AppMetaDataBase();
+
     //
     controlMetaToPush();
   }
@@ -37,10 +38,11 @@ mixin SplashMixin on State<SplashView> {
   }
 
   Future<bool> checkMetaData() async {
+    await metaData.openBox();
     //
     await Future.delayed(DurationConst.second(2).duration);
     //
-    final data = await metaData.readBox(AppString.metaDataId.text);
+    final data = metaData.readBox(AppString.metaDataId.text);
     //
     if (data == null || data.uid.isNullOrEmpty) return false;
     //

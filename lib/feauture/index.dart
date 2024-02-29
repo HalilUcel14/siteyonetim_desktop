@@ -1,4 +1,5 @@
 export './enum/asset_enum.dart';
+export './extension/scaffold.dart';
 export './extension/widget.dart';
 export './keys/scaffold_key.dart';
 export './route/route.dart';

@@ -6,12 +6,13 @@ import 'package:flutter/material.dart';
 
 import '../../../index.dart';
 
-mixin RegisterViewMixin on State<RegisterForm> {
+mixin RegisterFormMixin on State<RegisterForm> {
   late TextEditingController userNameController;
   late TextEditingController passwordController;
   late TextEditingController emailController;
   late TextEditingController confirmPasswordController;
-  late HiveDatabaseManager<HiveUser> userBox;
+  late GlobalKey<ScaffoldState> key;
+  late HiveUserDatabase userBox;
 
   @override
   void initState() {
@@ -20,20 +21,64 @@ mixin RegisterViewMixin on State<RegisterForm> {
     passwordController = TextEditingController();
     emailController = TextEditingController();
     confirmPasswordController = TextEditingController();
-    userBox = HiveDatabaseManager<HiveUser>();
-    userBox.openBox();
+    key = GlobalKey<ScaffoldState>();
+    userBox = HiveUserDatabase();
   }
 
   @override
   void dispose() {
     super.dispose();
-    userBox.closeBox();
     userNameController.dispose();
     passwordController.dispose();
     emailController.dispose();
     confirmPasswordController.dispose();
+    key.currentState?.dispose();
   }
 
+  void userValidation() async {
+    BuildContext? mContext = key.currentContext;
+    mContext ??= context;
+
+    //
+    if (!isValidForm()) {
+      if (!mContext.mounted) return;
+      mContext.showSnackBar(SnackBar(content: Text(formErrorMessage())));
+    }
+    //
+    //
+    HiveUser user = HiveUser(
+      uid: RandomKey.generate(),
+      username: userNameController.text.trim(),
+      emailAddress: emailController.text.trim(),
+      password: passwordController.text.trim(),
+      createdAt: DateTime.now(),
+      role: UserRole.manager.name,
+      userType: UserType.free.name,
+    );
+    //
+
+    await userBox.openBox();
+    final response = await userBox.addBox(user.uid!, user);
+    //
+    if (!mContext.mounted) return;
+    if (response) {
+      goToLoginView();
+    } else {
+      mContext.showSnackBar(
+        const SnackBar(
+          content: Text('Kayıt İşlemi Başarısız'),
+        ),
+      );
+    }
+  }
+
+  /// Kullanıcı Giriş Ekranına Geçiş yapar.
+  void goToLoginView() {
+    if (!context.mounted) return;
+    context.pushNamed(MyRoute.authLogin.name);
+  }
+
+  /// Tüm Controller içerisindeki değerleri kontrol eder.
   bool isValidForm() {
     if (userNameController.text.trim().isNullOrEmpty) return false;
     if (passwordController.text.trim().isNullOrEmpty) return false;
@@ -48,6 +93,7 @@ mixin RegisterViewMixin on State<RegisterForm> {
     return true;
   }
 
+  /// Kontroller içerisinde bir hata var ise mesaj döndürür;
   String formErrorMessage() {
     if (userNameController.text.trim().isNullOrEmpty) {
       return AppError.emptyUserName.text;
@@ -75,40 +121,5 @@ mixin RegisterViewMixin on State<RegisterForm> {
       return AppError.notValidMediumPassword.text;
     }
     return "";
-  }
-
-  void userValidation() async {
-    BuildContext? mContext = ScaffoldKeys.of.registerKey.currentContext;
-    mContext ??= context;
-    if (!mContext.mounted) return;
-    if (!isValidForm()) {
-      mContext.showSnackBar(SnackBar(content: Text(formErrorMessage())));
-      return;
-    }
-    //
-    HiveUser user = HiveUser(
-      uid: RandomKey.generate(),
-      username: userNameController.text.trim(),
-      emailAddress: emailController.text.trim(),
-      password: passwordController.text.trim(),
-      createdAt: DateTime.now(),
-      role: UserRole.manager.name,
-      userType: UserType.free.name,
-    );
-    //
-    if (user.uid.isNullOrEmpty) return;
-    await userBox.openBox();
-    print(userBox.box.isOpen);
-    await userBox.addBox(user.uid!, user);
-    //
-    gotoLoginView();
-  }
-
-  // TODO: Hive is box add error
-
-  void gotoLoginView() {
-    if (context.mounted) {
-      context.pushNamed(MyRoute.authLogin.name);
-    }
   }
 }
