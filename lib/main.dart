@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 
 import 'index.dart';
 
+// TODO: Add Home New Apartment and Stream List and check UserType;
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await HiveInitializer.of.init();
