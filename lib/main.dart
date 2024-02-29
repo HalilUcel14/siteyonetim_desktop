@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:app_hive/app_hive.dart';
+import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:codeofland/codeofland.dart';
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +18,18 @@ void main() async {
     runApp(CustomErrorWidget(errorDetails: details));
   };
   //
+  appWindow.size = const Size(800, 600);
   runApp(const MyApp());
+  appWindow.show();
+  doWhenWindowReady(() {
+    final win = appWindow;
+    const initialSize = Size(800, 600);
+    win.minSize = initialSize;
+    win.size = initialSize;
+    win.alignment = Alignment.center;
+    win.title = 'Site Yönetim';
+    win.show();
+  });
 }
 
 class MyApp extends StatelessWidget {
@@ -24,10 +38,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: AppString.materialTitle.text,
       //
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: AppStyle.lightBlue),
         useMaterial3: true,
       ),
       //

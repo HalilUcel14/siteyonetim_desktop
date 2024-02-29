@@ -13,7 +13,11 @@ final class CustomTextFormField extends TextFormField {
           obscureText: obscureText,
           decoration: InputDecoration(
             labelText: labelText,
-            border: const OutlineInputBorder(),
+            border: const OutlineInputBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(100),
+              ),
+            ),
             contentPadding: ViewEnum.hexa.size.withPaddingAll,
           ),
         );

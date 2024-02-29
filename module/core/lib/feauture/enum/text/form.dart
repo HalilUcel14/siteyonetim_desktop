@@ -7,7 +7,10 @@ enum AppForm {
   passwordHint('Please Enter Password'),
   confirmPasswordLabel('Confirm Password'),
   confirmPasswordHint('Please Enter Confirm Password'),
-  ;
+  yoneticigirisi('Yönetici Girişi'),
+  yoneticikayitalani('Yönetici Kayıt Alanı'),
+  showPassword('Şifre göster'),
+  joinUs('Join Us');
 
   final String text;
   const AppForm(this.text);
