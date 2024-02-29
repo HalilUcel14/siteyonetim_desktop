@@ -26,6 +26,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: AppString.materialTitle.text,
       //
+
+      builder: (context, child) {
+        return Directionality(
+          textDirection: TextDirection.ltr,
+          child: child!,
+        );
+      },
+      //
       theme: LightTheme().theme,
       //
       routes: AppRoute.of.route,

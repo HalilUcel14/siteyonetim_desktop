@@ -34,7 +34,8 @@ mixin LoginViewMixin on State<LoginForm> {
   void userValidation() async {
     BuildContext? mContext = key.currentContext;
     mContext ??= context;
-
+    //
+    //
     if (!isValidForm()) {
       mContext.showSnackBar(SnackBar(content: Text(formErrorMessage())));
       return;

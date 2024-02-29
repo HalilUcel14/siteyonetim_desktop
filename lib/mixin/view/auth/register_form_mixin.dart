@@ -11,7 +11,7 @@ mixin RegisterFormMixin on State<RegisterForm> {
   late TextEditingController passwordController;
   late TextEditingController emailController;
   late TextEditingController confirmPasswordController;
-  late GlobalKey<ScaffoldState> key;
+
   late HiveUserDatabase userBox;
 
   @override
@@ -21,22 +21,22 @@ mixin RegisterFormMixin on State<RegisterForm> {
     passwordController = TextEditingController();
     emailController = TextEditingController();
     confirmPasswordController = TextEditingController();
-    key = GlobalKey<ScaffoldState>();
+    FormKeys.of.registerFormKey = GlobalKey<FormState>();
     userBox = HiveUserDatabase();
   }
 
   @override
   void dispose() {
-    super.dispose();
     userNameController.dispose();
     passwordController.dispose();
     emailController.dispose();
     confirmPasswordController.dispose();
-    key.currentState?.dispose();
+    FormKeys.of.registerFormKey.currentState?.dispose();
+    super.dispose();
   }
 
   void userValidation() async {
-    BuildContext? mContext = key.currentContext;
+    BuildContext? mContext = FormKeys.of.registerFormKey.currentContext;
     mContext ??= context;
 
     //

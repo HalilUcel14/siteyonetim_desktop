@@ -15,50 +15,53 @@ class RegisterForm extends StatefulWidget {
 class _RegisterFormState extends State<RegisterForm> with RegisterFormMixin {
   @override
   Widget build(BuildContext context) {
-    return ColumnWithSpacing(
-      spacing: SizeEnum.tetra.size,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        // ---------------------------------
-        CustomTextFormField(
-          context,
-          controller: userNameController,
-          labelText: AppForm.usernameLabel.text,
-        ),
-        // ---------------------------------
-        CustomTextFormField(
-          context,
-          controller: emailController,
-          labelText: AppForm.emailLabel.text,
-        ),
-        // --------------------------------
-        CustomTextFormField(
-          context,
-          controller: passwordController,
-          labelText: AppForm.passwordLabel.text,
-        ),
-        // --------------------------------
-        CustomTextFormField(
-          context,
-          controller: confirmPasswordController,
-          labelText: AppForm.passwordLabel.text,
-        ),
-        // --------------------------------
-        RowWithSpacing(
-          spacing: SizeEnum.ennea.size,
-          children: [
-            ElevatedButton(
-              onPressed: userValidation,
-              child: Text(AppForm.signUpButton.text),
-            ),
-            // --------------------------------------
-            ElevatedButton(
-              onPressed: goToLoginView,
-              child: Text(AppForm.signInButton.text),
-            ),
-          ],
-        ).horizontalScrollView
-      ],
-    ).padding(pad: SizeEnum.hexa.size.withPaddingAll).verticalScrollView;
+    return Form(
+      key: FormKeys.of.registerFormKey,
+      child: ColumnWithSpacing(
+        spacing: SizeEnum.tetra.size,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          // ---------------------------------
+          CustomTextFormField(
+            context,
+            controller: userNameController,
+            labelText: AppForm.usernameLabel.text,
+          ),
+          // ---------------------------------
+          CustomTextFormField(
+            context,
+            controller: emailController,
+            labelText: AppForm.emailLabel.text,
+          ),
+          // --------------------------------
+          CustomTextFormField(
+            context,
+            controller: passwordController,
+            labelText: AppForm.passwordLabel.text,
+          ),
+          // --------------------------------
+          CustomTextFormField(
+            context,
+            controller: confirmPasswordController,
+            labelText: AppForm.passwordLabel.text,
+          ),
+          // --------------------------------
+          RowWithSpacing(
+            spacing: SizeEnum.ennea.size,
+            children: [
+              ElevatedButton(
+                onPressed: userValidation,
+                child: Text(AppForm.signUpButton.text),
+              ),
+              // --------------------------------------
+              ElevatedButton(
+                onPressed: goToLoginView,
+                child: Text(AppForm.signInButton.text),
+              ),
+            ],
+          ).horizontalScrollView
+        ],
+      ).padding(pad: SizeEnum.hexa.size.withPaddingAll).verticalScrollView,
+    );
   }
 }
