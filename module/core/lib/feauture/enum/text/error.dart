@@ -6,7 +6,9 @@ enum AppError {
   notValidEmailAddress('Girilen Mail Adresi Uygun Değil'),
   notConfirmPassword('Kullanıcı Şifresi Eşleşmiyor'),
   notValidMediumPassword(
-      'Şifre En az 8 Karakter , 1 Harf ve 1 Sayı olmalıdır.');
+    'Şifre En az 8 Karakter , 1 Harf ve 1 Sayı olmalıdır.',
+  ),
+  errorLoginUser('Kullanıcı Giriş Yaparken Sorun Oluştu');
 
   final String text;
   const AppError(this.text);

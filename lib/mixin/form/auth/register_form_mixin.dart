@@ -1,6 +1,5 @@
 import 'package:app_hive/app_hive.dart';
 import 'package:codeofland/codeofland.dart';
-import 'package:codeofland/other/random_key/random_key.dart';
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 
@@ -44,20 +43,12 @@ mixin RegisterFormMixin on State<RegisterForm> {
       mContext.showSnackBar(SnackBar(content: Text(formErrorMessage())));
     }
     //
-    //
-    HiveUser user = HiveUser(
-      uid: RandomKey.generate(),
-      username: userNameController.text.trim(),
-      emailAddress: emailController.text.trim(),
-      password: passwordController.text.trim(),
-      createdAt: DateTime.now(),
-      role: UserRole.manager.name,
-      userType: UserType.free.name,
-    );
-    //
-
     await userBox.openBox();
-    final response = await userBox.addBox(user.uid!, user);
+    final response = await userBox.addNewUser(
+      username: userNameController.text.trim(),
+      password: passwordController.text.trim(),
+      email: emailController.text.trim(),
+    );
     //
     if (!mContext.mounted) return;
     if (response) {

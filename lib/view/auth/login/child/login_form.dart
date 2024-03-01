@@ -2,6 +2,7 @@ import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
+import 'package:siteyonetim/mixin/form/auth/login_form_mixin.dart';
 
 import '../../../../index.dart';
 
@@ -12,7 +13,7 @@ final class LoginForm extends StatefulWidget {
   State<LoginForm> createState() => _LoginFormState();
 }
 
-class _LoginFormState extends State<LoginForm> with LoginViewMixin {
+class _LoginFormState extends State<LoginForm> with LoginFormMixin {
   @override
   Widget build(BuildContext context) {
     return ColumnWithSpacing(
@@ -37,12 +38,12 @@ class _LoginFormState extends State<LoginForm> with LoginViewMixin {
           spacing: SizeEnum.ennea.size,
           children: [
             ElevatedButton(
-              onPressed: userValidation,
+              onPressed: formValidation,
               child: Text(AppForm.signInButton.text),
             ),
             // -----------------------------
             ElevatedButton(
-              onPressed: gotoRegisterView,
+              onPressed: goToRegisterView,
               child: Text(AppForm.signUpButton.text),
             ),
           ],

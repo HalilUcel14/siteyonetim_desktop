@@ -42,7 +42,7 @@ mixin SplashMixin on State<SplashView> {
     //
     await Future.delayed(DurationConst.second(2).duration);
     //
-    final data = metaData.readBox(AppString.metaDataId.text);
+    final data = metaData.readBox(MetaKeys.key.text);
     //
     if (data == null || data.uid.isNullOrEmpty) return false;
     //

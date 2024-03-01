@@ -4,8 +4,8 @@ import 'package:codeofland/codeofland.dart';
 class AppMetaDataBase extends IHiveManager<AppMetaData> {
   AppMetaDataBase() : super();
 
-  Future<void> logOutUser(String id) async {
-    await updateBox(
+  Future<bool> logOutUser(String id) async {
+    return await updateBox(
       id,
       AppMetaData(
         uid: id,
@@ -13,6 +13,17 @@ class AppMetaDataBase extends IHiveManager<AppMetaData> {
         lastSign: DateTime.now().subtract(
           DurationConst.day(7).duration,
         ),
+      ),
+    );
+  }
+
+  Future<bool> logInUser(HiveUser user) async {
+    return await updateBox(
+      MetaKeys.key.text,
+      AppMetaData(
+        uid: MetaKeys.key.text,
+        user: user,
+        lastSign: DateTime.now(),
       ),
     );
   }
