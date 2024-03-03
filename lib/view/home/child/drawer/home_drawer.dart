@@ -1,22 +1,37 @@
+import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../index.dart';
 
-class HomeViewDrawer extends StatelessWidget with HomeDrawerMixin {
+final class HomeViewDrawer extends StatelessWidget with HomeDrawerMixin {
   const HomeViewDrawer({super.key});
 
   @override
-  Drawer build(BuildContext context) {
+  Widget build(BuildContext context) {
     return Drawer(
-      child: Column(
-        children: [
-          ElevatedButton(
-            onPressed: logOutFunction,
-            child: const Text('Logout'),
-          ),
-        ],
-      ).withSizedBox(height: double.infinity, width: 300),
+      width: 300,
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          return ColumnWithSpacing(
+            children: [
+              CircleAvatar(
+                radius: constraints.maxWidth * PercentEnum.pQuarter.size,
+                backgroundColor: context.colorScheme.primary,
+              ),
+              //
+              futureText(),
+              //
+              const Spacer(),
+              //
+              ElevatedButton(
+                onPressed: logOutFunction,
+                child: const Text('Logout'),
+              ),
+            ],
+          ).padding(pad: SizeEnum.ennea.size.withPaddingAll);
+        },
+      ),
     );
   }
 }

@@ -3,7 +3,7 @@ import 'package:codeofwidget/codeofwidget.dart';
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../index.dart';
+import '../../index.dart';
 
 class RegisterForm extends StatefulWidget {
   const RegisterForm({super.key});
@@ -25,25 +25,25 @@ class _RegisterFormState extends State<RegisterForm> with RegisterFormMixin {
           CustomTextFormField(
             context,
             controller: userNameController,
-            labelText: AppForm.usernameLabel.text,
+            labelText: FormText.usernameLabel.text,
           ),
           // ---------------------------------
           CustomTextFormField(
             context,
             controller: emailController,
-            labelText: AppForm.emailLabel.text,
+            labelText: FormText.emailLabel.text,
           ),
           // --------------------------------
           CustomTextFormField(
             context,
             controller: passwordController,
-            labelText: AppForm.passwordLabel.text,
+            labelText: FormText.passwordLabel.text,
           ),
           // --------------------------------
           CustomTextFormField(
             context,
             controller: confirmPasswordController,
-            labelText: AppForm.passwordLabel.text,
+            labelText: FormText.passwordLabel.text,
           ),
           // --------------------------------
           RowWithSpacing(
@@ -51,12 +51,12 @@ class _RegisterFormState extends State<RegisterForm> with RegisterFormMixin {
             children: [
               ElevatedButton(
                 onPressed: userValidation,
-                child: Text(AppForm.signUpButton.text),
+                child: Text(FormText.signUpButton.text),
               ),
               // --------------------------------------
               ElevatedButton(
                 onPressed: goToLoginView,
-                child: Text(AppForm.signInButton.text),
+                child: Text(FormText.signInButton.text),
               ),
             ],
           ).horizontalScrollView

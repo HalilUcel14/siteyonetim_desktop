@@ -1,4 +1,4 @@
-enum AppForm {
+enum FormText {
   signInButton("Sign In"),
   signUpButton('Sign Up'),
   emailLabel('Email'),
@@ -12,5 +12,5 @@ enum AppForm {
   ;
 
   final String text;
-  const AppForm(this.text);
+  const FormText(this.text);
 }

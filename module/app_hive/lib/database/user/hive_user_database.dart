@@ -1,7 +1,6 @@
 import 'package:app_hive/app_hive.dart';
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofland/other/random_key/random_key.dart';
-import 'package:flutter/foundation.dart';
 
 class HiveUserDatabase extends IHiveManager<HiveUser> {
   HiveUserDatabase() : super();
@@ -28,11 +27,6 @@ class HiveUserDatabase extends IHiveManager<HiveUser> {
   HiveUser checkUser(String username, String password) {
     try {
       List<HiveUser> users = listBox();
-      //
-      if (kDebugMode) {
-        debugPrint(users.toString());
-      }
-
       //
       final response = findHiveUser(users, username, password);
       return response ?? HiveUser.empty();

@@ -4,7 +4,7 @@ import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:siteyonetim/mixin/form/auth/login_form_mixin.dart';
 
-import '../../../../index.dart';
+import '../../index.dart';
 
 final class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -24,13 +24,13 @@ class _LoginFormState extends State<LoginForm> with LoginFormMixin {
         CustomTextFormField(
           context,
           controller: userNameController,
-          labelText: AppForm.usernameLabel.text,
+          labelText: FormText.usernameLabel.text,
         ),
         // -----------------------------
         CustomTextFormField(
           context,
           controller: passwordController,
-          labelText: AppForm.passwordLabel.text,
+          labelText: FormText.passwordLabel.text,
           obscureText: true,
         ),
         // -----------------------------
@@ -39,12 +39,12 @@ class _LoginFormState extends State<LoginForm> with LoginFormMixin {
           children: [
             ElevatedButton(
               onPressed: formValidation,
-              child: Text(AppForm.signInButton.text),
+              child: Text(FormText.signInButton.text),
             ),
             // -----------------------------
             ElevatedButton(
               onPressed: goToRegisterView,
-              child: Text(AppForm.signUpButton.text),
+              child: Text(FormText.signUpButton.text),
             ),
           ],
         ).horizontalScrollView

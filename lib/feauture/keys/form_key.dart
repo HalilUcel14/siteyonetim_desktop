@@ -7,4 +7,5 @@ final class FormKeys {
 
   late GlobalKey<FormState> registerFormKey;
   late GlobalKey<FormState> loginFormKey;
+  late GlobalKey<FormState> apartmentFormKey;
 }

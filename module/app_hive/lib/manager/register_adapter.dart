@@ -9,5 +9,6 @@ final class HiveRegisterAdapter {
   void build() {
     Hive.registerAdapter(AppMetaDataAdapter());
     Hive.registerAdapter(HiveUserAdapter());
+    Hive.registerAdapter(TBLApartmentAdapter());
   }
 }

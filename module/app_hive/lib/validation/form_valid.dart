@@ -1,0 +1,44 @@
+import 'package:codeofland/codeofland.dart';
+
+final class FormValidation {
+  static FormValidation? _of;
+  static FormValidation get of => _of ??= FormValidation._();
+  FormValidation._();
+  //
+  //
+  String? text(String? text, String? label) {
+    if (text.isNullOrEmpty) return '$label boş olamaz';
+    return null;
+  }
+
+  String? intText(String? text, String? label) {
+    if (text.isNullOrEmpty) return '$label boş olamaz';
+    if (int.tryParse(text!) == null) return '$label tamsayı olmalıdır.';
+    if (int.parse(text) < 0) return '$label 0 dan büyük olmalıdır.';
+    return null;
+  }
+
+  String? doubleText(String? text, String? label) {
+    if (text.isNullOrEmpty) return '$label boş olamaz';
+    if (double.tryParse(text!) == null) return '$label ondalık olmalıdır.';
+    if (double.parse(text) < 0) return '$label 0 dan büyük olmalıdır.';
+    return null;
+  }
+
+  String? dateText(String? text, String? label) {
+    if (text.isNullOrEmpty) return '$label boş olamaz';
+    //
+    DateTime? time = DateTime.tryParse(text!);
+    //
+    if (time == null) return '$label tarih olmalıdır.';
+    //
+    if (!time.isBefore(DateTime.now())) {
+      return '$label Şuandan önce olmalıdır.';
+    }
+    //
+    if (!time.isAfter(DateTime(1950))) {
+      return '$label 1950 yılından sonra olmalıdır.';
+    }
+    return null;
+  }
+}
