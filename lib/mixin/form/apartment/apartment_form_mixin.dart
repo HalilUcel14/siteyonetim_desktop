@@ -10,7 +10,6 @@ mixin ApartmentFormMixin on State<ApartmentForm> {
   late TextEditingController address;
   late TextEditingController floorCount;
   late TextEditingController flatsCount;
-  //isActive = TextEditingController();
   late TextEditingController buildYear;
   late BoolNotifier isElevator;
   late ApartmentDatabase apartmentData;
