@@ -22,6 +22,8 @@ void main() async {
   };
   //
   runApp(const MyApp());
+  //
+  await HiveInitializer.of.close();
 }
 
 class MyApp extends StatelessWidget {

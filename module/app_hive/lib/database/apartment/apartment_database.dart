@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:app_hive/app_hive.dart';
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofland/other/random_key/random_key.dart';
@@ -6,6 +8,10 @@ import 'package:flutter/foundation.dart';
 class ApartmentDatabase extends IHiveManager<TBLApartment> {
   ApartmentDatabase() : super();
 
+  StreamListObject<TBLApartment> stream = StreamListObject<TBLApartment>();
+
+  /// ---------------------------------
+  /// Create New Apartment If not exist
   Future<bool> createNewApartment(
     String name,
     String address,
