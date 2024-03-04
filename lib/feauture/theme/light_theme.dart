@@ -6,20 +6,50 @@ final class LightTheme extends ITheme {
   ThemeData get theme => ThemeData(
         colorScheme: colorScheme,
         elevatedButtonTheme: elevatedButton,
+        cardTheme: cardTheme,
+        appBarTheme: appBar,
+      );
+
+  AppBarTheme get appBar => AppBarTheme(
+        centerTitle: true,
+        elevation: 0,
+        color: Colors.transparent,
+        titleTextStyle: TextStyle(
+          fontWeight: FontWeight.bold,
+          color: colorScheme.onBackground,
+          fontSize: SizeEnum.ennea.size,
+        ),
+      );
+
+  CardTheme get cardTheme => CardTheme(
+        color: colorScheme.tertiaryContainer,
+        shadowColor: colorScheme.shadow,
+        elevation: SizeEnum.hexa.size,
       );
 
   @override
   ColorScheme get colorScheme => const ColorScheme.light(
-        primary: Color(0xFF4CAF50),
-        primaryContainer: Color.fromARGB(255, 69, 233, 74),
-        secondary: Color(0xFF607D8B),
-        secondaryContainer: Color.fromARGB(255, 70, 135, 168),
-        tertiary: Color(0xFFB0BEC5),
-        tertiaryContainer: Color.fromARGB(255, 143, 177, 194),
+        primary: Color(0xFF81A739),
+        primaryContainer: Color(0xFFB9D585), //Color.fromARGB(255, 69, 233, 74),
         onPrimary: Colors.black,
         onPrimaryContainer: Colors.black87,
+        // --------------------------------
+        secondary: Color(0xFFCF0A0A),
+        secondaryContainer: Color(0xFFDC5F00),
         onSecondary: Colors.white70,
         onSecondaryContainer: Colors.white,
+        // --------------------------------
+        tertiary: Color(0xFFFFF78A),
+        tertiaryContainer: Color(0xFFFFE382),
+        onTertiary: Colors.black87,
+        onTertiaryContainer: Colors.white,
+        // --------------------------------
+        background: Colors.white,
+        onBackground: Colors.black,
+        // --------------------------------
+        surfaceTint: Colors.blueGrey,
+        //
+        shadow: Color(0xFFC5C5C5),
       );
 
   @override
@@ -27,7 +57,7 @@ final class LightTheme extends ITheme {
         style: ElevatedButton.styleFrom(
           animationDuration: DurationConst.millisecond(300).duration,
           backgroundColor: colorScheme.primary,
-          foregroundColor: Colors.black,
+          foregroundColor: colorScheme.onPrimary,
           textStyle: const TextStyle(
             fontWeight: FontWeight.bold,
           ),

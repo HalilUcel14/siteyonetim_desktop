@@ -4,4 +4,5 @@ enum MyRoute {
   authRegister,
   authForgot,
   home,
+  apartment,
 }

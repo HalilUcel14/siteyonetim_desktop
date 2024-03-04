@@ -92,10 +92,10 @@ packages:
     dependency: "direct main"
     description:
       name: codeofwidget
-      sha256: "20556f701a59d7e7a67d1be3542a5462e2bc2012815bae453474629493600a16"
+      sha256: "52f4e303c6d79da1b2de3c2859afdfce8c871f8df2e5395d4063169eb2d895c8"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.0"
+    version: "1.2.0"
   collection:
     dependency: transitive
     description:

@@ -4,11 +4,12 @@ import 'package:app_hive/app_hive.dart';
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofland/other/random_key/random_key.dart';
 import 'package:flutter/foundation.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class ApartmentDatabase extends IHiveManager<TBLApartment> {
   ApartmentDatabase() : super();
 
-  StreamListObject<TBLApartment> stream = StreamListObject<TBLApartment>();
+  ValueListenable<Box<TBLApartment>> get valueList => box.listenable();
 
   /// ---------------------------------
   /// Create New Apartment If not exist

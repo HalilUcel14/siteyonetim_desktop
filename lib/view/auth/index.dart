@@ -1,3 +1,3 @@
-export './auth_image.dart';
-export './login/login_view.dart';
-export './register/register_view.dart';
+export './login/index.dart';
+export './register/index.dart';
+export './widget/auth_image.dart';

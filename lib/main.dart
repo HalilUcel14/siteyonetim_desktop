@@ -9,25 +9,46 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await HiveInitializer.of.init();
   HiveRegisterAdapter.of.build();
+  await HiveBoxesObject.of.initBoxes();
   //
   ErrorWidget.builder = (FlutterErrorDetails details) {
     return Material(
       child: Container(
         color: Colors.green.shade600,
-        child: Center(
-          child: Text(details.exception.toString()),
-        ),
+        child: Builder(builder: (context) {
+          return Column(
+            children: [
+              Center(
+                child: Text(details.exception.toString()),
+              ),
+              ElevatedButton(
+                onPressed: () => context.pop(),
+                child: const Text('Geri Dön'),
+              ),
+            ],
+          );
+        }),
       ),
     );
   };
   //
   runApp(const MyApp());
   //
-  await HiveInitializer.of.close();
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void dispose() {
+    HiveBoxesObject.of.closeBoxes();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +67,7 @@ class MyApp extends StatelessWidget {
       //
       routes: AppRoute.of.route,
       initialRoute: MyRoute.splash.name,
+      //
     );
   }
 }
