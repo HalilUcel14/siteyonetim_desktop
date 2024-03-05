@@ -35,10 +35,6 @@ class ApartmentCard extends StatelessWidget {
               // -------------------------
               BorderButton(
                 onPressed: () async {
-                  // await Navigator.of(context).pushNamed(
-                  //   MyRoute.apartment.name,
-                  //   arguments: apartment,
-                  // );
                   await context.pushNamed(
                     MyRoute.apartment.name,
                     agrument: apartment,
