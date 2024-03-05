@@ -50,6 +50,7 @@ mixin ApartmentFormMixin on State<ApartmentForm> {
     //
     final response = await apartmentData.createNewApartment(
       name.text.trim(),
+      "",
       address.text.trim(),
       int.parse(floorCount.text.trim()),
       int.parse(flatsCount.text.trim()),
