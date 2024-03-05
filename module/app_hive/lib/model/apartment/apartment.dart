@@ -11,22 +11,25 @@ final class TBLApartment extends BaseModel<TBLApartment> {
   @HiveField(0)
   final String? uid;
   @HiveField(1)
-  final String? name;
+  final String? userUid;
   @HiveField(2)
-  final String? address;
+  final String? name;
   @HiveField(3)
-  final int? floorCount;
+  final String? address;
   @HiveField(4)
-  final int? flatsCount;
+  final int? floorCount;
   @HiveField(5)
-  final DateTime? buildYear;
+  final int? flatsCount;
   @HiveField(6)
-  final bool? haveElevator;
+  final DateTime? buildYear;
   @HiveField(7)
+  final bool? haveElevator;
+  @HiveField(8)
   final bool? isActive;
 
   TBLApartment({
     required this.uid,
+    required this.userUid,
     required this.name,
     required this.address,
     required this.floorCount,
@@ -38,6 +41,7 @@ final class TBLApartment extends BaseModel<TBLApartment> {
 
   TBLApartment.empty({
     this.uid,
+    this.userUid,
     this.address,
     this.buildYear,
     this.flatsCount,
@@ -51,6 +55,7 @@ final class TBLApartment extends BaseModel<TBLApartment> {
   TBLApartment fromJson(Map<String, dynamic> json) {
     return TBLApartment(
       uid: json['uid'],
+      userUid: json['userUid'],
       name: json['name'],
       address: json['address'],
       floorCount:
@@ -72,6 +77,7 @@ final class TBLApartment extends BaseModel<TBLApartment> {
   Map<String, dynamic> toJson() {
     return {
       'uid': uid,
+      'userUid': userUid,
       'name': name,
       'address': address,
       'floorCount': floorCount.toString(),
@@ -85,6 +91,7 @@ final class TBLApartment extends BaseModel<TBLApartment> {
   @override
   List<Object?> get props => [
         uid,
+        userUid,
         name,
         address,
         floorCount,

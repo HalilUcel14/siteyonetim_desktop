@@ -1,10 +1,11 @@
 import 'dart:async';
 
-import 'package:app_hive/app_hive.dart';
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofland/other/random_key/random_key.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+
+import '../../app_hive.dart';
 
 class ApartmentDatabase extends IHiveManager<TBLApartment> {
   ApartmentDatabase() : super();
@@ -15,6 +16,7 @@ class ApartmentDatabase extends IHiveManager<TBLApartment> {
   /// Create New Apartment If not exist
   Future<bool> createNewApartment(
     String name,
+    String userUid,
     String address,
     int floorCount,
     int flatsCount,
@@ -22,8 +24,10 @@ class ApartmentDatabase extends IHiveManager<TBLApartment> {
     bool haveElevator,
     bool isActive,
   ) async {
+    //----------------------------------------
     TBLApartment apartment = TBLApartment(
       uid: RandomKey.generate(),
+      userUid: userUid,
       name: name,
       address: address,
       floorCount: floorCount,
@@ -52,7 +56,7 @@ class ApartmentDatabase extends IHiveManager<TBLApartment> {
       //
       for (var element in list) {
         if (element.name == apartment.name &&
-            element.buildYear == apartment.buildYear) {
+            element.userUid == apartment.userUid) {
           return false;
         }
       }

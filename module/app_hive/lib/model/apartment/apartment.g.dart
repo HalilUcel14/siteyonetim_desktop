@@ -18,35 +18,38 @@ class TBLApartmentAdapter extends TypeAdapter<TBLApartment> {
     };
     return TBLApartment(
       uid: fields[0] as String?,
-      name: fields[1] as String?,
-      address: fields[2] as String?,
-      floorCount: fields[3] as int?,
-      flatsCount: fields[4] as int?,
-      buildYear: fields[5] as DateTime?,
-      haveElevator: fields[6] as bool?,
-      isActive: fields[7] as bool?,
+      userUid: fields[1] as String?,
+      name: fields[2] as String?,
+      address: fields[3] as String?,
+      floorCount: fields[4] as int?,
+      flatsCount: fields[5] as int?,
+      buildYear: fields[6] as DateTime?,
+      haveElevator: fields[7] as bool?,
+      isActive: fields[8] as bool?,
     );
   }
 
   @override
   void write(BinaryWriter writer, TBLApartment obj) {
     writer
-      ..writeByte(8)
+      ..writeByte(9)
       ..writeByte(0)
       ..write(obj.uid)
       ..writeByte(1)
-      ..write(obj.name)
+      ..write(obj.userUid)
       ..writeByte(2)
-      ..write(obj.address)
+      ..write(obj.name)
       ..writeByte(3)
-      ..write(obj.floorCount)
+      ..write(obj.address)
       ..writeByte(4)
-      ..write(obj.flatsCount)
+      ..write(obj.floorCount)
       ..writeByte(5)
-      ..write(obj.buildYear)
+      ..write(obj.flatsCount)
       ..writeByte(6)
-      ..write(obj.haveElevator)
+      ..write(obj.buildYear)
       ..writeByte(7)
+      ..write(obj.haveElevator)
+      ..writeByte(8)
       ..write(obj.isActive);
   }
 
