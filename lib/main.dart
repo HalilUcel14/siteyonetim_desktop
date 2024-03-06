@@ -4,6 +4,7 @@ import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 
 import 'index.dart';
+// TODO: Yeni HİVE İÇİN Uİ
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
