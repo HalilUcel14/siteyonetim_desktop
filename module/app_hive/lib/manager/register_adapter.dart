@@ -10,5 +10,10 @@ final class HiveRegisterAdapter {
     Hive.registerAdapter(AppMetaDataAdapter());
     Hive.registerAdapter(HiveUserAdapter());
     Hive.registerAdapter(TBLApartmentAdapter());
+    Hive.registerAdapter(TBLCompanyAdapter());
+    Hive.registerAdapter(TBLIndividualAdapter());
+    Hive.registerAdapter(TBLDaireAdapter());
+    Hive.registerAdapter(TBLEvSahibiAdapter());
+    Hive.registerAdapter(TBLKiraciAdapter());
   }
 }
