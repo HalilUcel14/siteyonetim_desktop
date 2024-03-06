@@ -1,3 +1,9 @@
 export './apartment/apartment.dart';
+export './customer/company/company.dart';
+export './customer/customer.dart';
+export './customer/individual/individual.dart';
+export './daire/daire.dart';
+export './ev_sahibi/ev_sahibi.dart';
+export './kiracı/kiraci.dart';
 export './metadata/metadata.dart';
 export './user/user_model.dart';
