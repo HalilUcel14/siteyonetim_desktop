@@ -44,19 +44,12 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
-  @override
-  void dispose() {
-    HiveBoxesObject.of.closeBoxes();
-    super.dispose();
-  }
-
+class _MyAppState extends State<MyApp> with MainAppMixin {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: AppString.materialTitle.text,
       //
-
       builder: (context, child) {
         return Directionality(
           textDirection: TextDirection.ltr,
@@ -70,5 +63,13 @@ class _MyAppState extends State<MyApp> {
       initialRoute: MyRoute.splash.name,
       //
     );
+  }
+}
+
+mixin MainAppMixin on State<MyApp> {
+  @override
+  void dispose() {
+    HiveBoxesObject.of.closeBoxes();
+    super.dispose();
   }
 }

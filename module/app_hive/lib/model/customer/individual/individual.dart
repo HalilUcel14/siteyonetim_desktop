@@ -27,6 +27,8 @@ final class TBLIndividual extends CustomerModel<TBLIndividual> {
   @override
   @HiveField(6)
   final String? address;
+  @HiveField(7)
+  final bool? isActive;
 
   TBLIndividual({
     required this.uid,
@@ -36,6 +38,7 @@ final class TBLIndividual extends CustomerModel<TBLIndividual> {
     required this.email,
     required this.phone,
     required this.address,
+    this.isActive,
   });
 
   TBLIndividual.empty({
@@ -46,6 +49,7 @@ final class TBLIndividual extends CustomerModel<TBLIndividual> {
     this.email,
     this.phone,
     this.address,
+    this.isActive,
   });
 
   @override
@@ -58,6 +62,7 @@ final class TBLIndividual extends CustomerModel<TBLIndividual> {
       email: json['email'],
       phone: json['phone'],
       address: json['address'],
+      isActive: bool.tryParse(json['isActive']),
     );
   }
 
@@ -70,6 +75,7 @@ final class TBLIndividual extends CustomerModel<TBLIndividual> {
         email,
         phone,
         address,
+        isActive,
       ];
 
   @override
@@ -82,6 +88,7 @@ final class TBLIndividual extends CustomerModel<TBLIndividual> {
       'email': email,
       'phone': phone,
       'address': address,
+      'isActive': isActive.toString(),
     };
   }
 }

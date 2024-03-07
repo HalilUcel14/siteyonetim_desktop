@@ -32,8 +32,7 @@ final class AppMetaData extends BaseModel<AppMetaData> {
     return AppMetaData(
       uid: json['uid'],
       user: HiveUser.fromJson(json['user']),
-      lastSign:
-          json['lastSign'] != null ? DateTime.parse(json['lastSign']) : null,
+      lastSign: DateTime.parse(json['lastSign']),
     );
   }
 
@@ -41,8 +40,7 @@ final class AppMetaData extends BaseModel<AppMetaData> {
     return AppMetaData(
       uid: json['uid'],
       user: HiveUser.fromJson(json['user']),
-      lastSign:
-          json['lastSign'] != null ? DateTime.parse(json['lastSign']) : null,
+      lastSign: DateTime.parse(json['lastSign']),
     );
   }
 

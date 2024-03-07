@@ -24,13 +24,14 @@ class TBLIndividualAdapter extends TypeAdapter<TBLIndividual> {
       email: fields[3] as String?,
       phone: fields[5] as String?,
       address: fields[6] as String?,
+      isActive: fields[7] as bool?,
     );
   }
 
   @override
   void write(BinaryWriter writer, TBLIndividual obj) {
     writer
-      ..writeByte(7)
+      ..writeByte(8)
       ..writeByte(0)
       ..write(obj.uid)
       ..writeByte(1)
@@ -44,7 +45,9 @@ class TBLIndividualAdapter extends TypeAdapter<TBLIndividual> {
       ..writeByte(5)
       ..write(obj.phone)
       ..writeByte(6)
-      ..write(obj.address);
+      ..write(obj.address)
+      ..writeByte(7)
+      ..write(obj.isActive);
   }
 
   @override

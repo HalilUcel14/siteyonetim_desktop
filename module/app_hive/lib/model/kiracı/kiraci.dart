@@ -16,17 +16,21 @@ final class TBLKiraci extends BaseModel<TBLKiraci> {
   final String? userUid;
   @HiveField(2)
   final CustomerModel? customer;
+  @HiveField(3)
+  final bool? isActive;
 
   TBLKiraci({
     required this.uid,
     required this.userUid,
     required this.customer,
+    required this.isActive,
   });
 
   TBLKiraci.empty({
     this.uid,
     this.userUid,
     this.customer,
+    this.isActive,
   });
 
   @override
@@ -35,11 +39,12 @@ final class TBLKiraci extends BaseModel<TBLKiraci> {
       uid: json['uid'],
       userUid: json['userUid'],
       customer: customer?.fromJson(json['customer']),
+      isActive: bool.tryParse(json['isActive']),
     );
   }
 
   @override
-  List<Object?> get props => [uid, userUid, customer];
+  List<Object?> get props => [uid, userUid, customer, isActive];
 
   @override
   Map<String, dynamic> toJson() {
@@ -47,6 +52,7 @@ final class TBLKiraci extends BaseModel<TBLKiraci> {
       'uid': uid,
       'userUid': userUid,
       'customer': customer?.toJson(),
+      'isActive': isActive.toString(),
     };
   }
 }

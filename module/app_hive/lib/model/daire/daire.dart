@@ -26,6 +26,8 @@ final class TBLDaire extends BaseModel<TBLDaire> {
   final TBLEvSahibi? owner;
   @HiveField(8)
   final TBLKiraci? tenant;
+  @HiveField(9)
+  final bool? isActive;
 
   TBLDaire({
     required this.uid,
@@ -37,6 +39,7 @@ final class TBLDaire extends BaseModel<TBLDaire> {
     required this.roomCount,
     required this.owner,
     required this.tenant,
+    required this.isActive,
   });
 
   TBLDaire.empty({
@@ -49,6 +52,7 @@ final class TBLDaire extends BaseModel<TBLDaire> {
     this.roomCount,
     this.owner,
     this.tenant,
+    this.isActive,
   });
 
   @override
@@ -63,6 +67,7 @@ final class TBLDaire extends BaseModel<TBLDaire> {
       roomCount: int.tryParse(json['roomCount']),
       owner: owner?.fromJson(json['owner']),
       tenant: tenant?.fromJson(json['tenant']),
+      isActive: bool.tryParse(json['isActive']),
     );
   }
 
@@ -76,7 +81,8 @@ final class TBLDaire extends BaseModel<TBLDaire> {
         netSquareMeter,
         roomCount,
         owner,
-        tenant
+        tenant,
+        isActive,
       ];
 
   @override
@@ -84,13 +90,14 @@ final class TBLDaire extends BaseModel<TBLDaire> {
     return {
       'uid': uid,
       'apartmentUid': apartmentUid,
-      'floor': floor,
-      'flats': flats,
-      'squareMeter': squareMeter,
-      'netSquareMeter': netSquareMeter,
-      'roomCount': roomCount,
+      'floor': floor.toString(),
+      'flats': flats.toString(),
+      'squareMeter': squareMeter.toString(),
+      'netSquareMeter': netSquareMeter.toString(),
+      'roomCount': roomCount.toString(),
       'owner': owner?.toJson(),
       'tenant': tenant?.toJson(),
+      'isActive': isActive.toString(),
     };
   }
 }

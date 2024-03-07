@@ -1,7 +1,6 @@
 export './database/index.dart';
 export './enum/index.dart';
-export './manager/hive_box.dart';
-export './manager/register_adapter.dart';
+export './manager/index.dart';
 export './model/index.dart';
 export './stream/list_stream.dart';
 export './user/index.dart';

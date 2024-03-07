@@ -58,18 +58,11 @@ final class TBLApartment extends BaseModel<TBLApartment> {
       userUid: json['userUid'],
       name: json['name'],
       address: json['address'],
-      floorCount:
-          json['floorCount'] != null ? int.tryParse(json['floorCount']) : null,
-      flatsCount:
-          json['flatsCount'] != null ? int.tryParse(json['flatsCount']) : null,
-      buildYear: json['buildYear'] != null
-          ? DateTime.tryParse(json['buildYear'])
-          : null,
-      haveElevator: json['haveElevator'] != null
-          ? bool.tryParse(json['haveElevator'])
-          : null,
-      isActive:
-          json['isActive'] != null ? bool.tryParse(json['isActive']) : null,
+      floorCount: int.tryParse(json['floorCount']),
+      flatsCount: int.tryParse(json['flatsCount']),
+      buildYear: DateTime.tryParse(json['buildYear']),
+      haveElevator: bool.tryParse(json['haveElevator']),
+      isActive: bool.tryParse(json['isActive']),
     );
   }
 

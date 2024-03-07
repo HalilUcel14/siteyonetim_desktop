@@ -14,17 +14,21 @@ final class TBLEvSahibi extends BaseModel<TBLEvSahibi> {
   final String? userUid;
   @HiveField(2)
   final CustomerModel? customer;
+  @HiveField(3)
+  final bool? isActive;
 
   TBLEvSahibi({
     required this.uid,
     required this.userUid,
     required this.customer,
+    required this.isActive,
   });
 
   TBLEvSahibi.empty({
     this.uid,
     this.userUid,
     this.customer,
+    this.isActive,
   });
 
   @override
@@ -33,11 +37,12 @@ final class TBLEvSahibi extends BaseModel<TBLEvSahibi> {
       uid: json['uid'],
       userUid: json['userUid'],
       customer: customer?.fromJson(json['customer']),
+      isActive: bool.tryParse(json['isActive']),
     );
   }
 
   @override
-  List<Object?> get props => [uid, userUid, customer];
+  List<Object?> get props => [uid, userUid, customer, isActive];
 
   @override
   Map<String, dynamic> toJson() {
@@ -45,6 +50,7 @@ final class TBLEvSahibi extends BaseModel<TBLEvSahibi> {
       'uid': uid,
       'userUid': userUid,
       'customer': customer?.toJson(),
+      'isActive': isActive.toString(),
     };
   }
 }

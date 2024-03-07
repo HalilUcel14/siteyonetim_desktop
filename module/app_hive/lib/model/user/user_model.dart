@@ -22,6 +22,8 @@ final class HiveUser extends BaseModel<HiveUser> {
   final String? role;
   @HiveField(6)
   final String? userType;
+  @HiveField(7)
+  final bool? isActive;
 
   HiveUser({
     required this.uid,
@@ -31,6 +33,7 @@ final class HiveUser extends BaseModel<HiveUser> {
     required this.createdAt,
     required this.role,
     required this.userType,
+    required this.isActive,
   });
 
   HiveUser.empty({
@@ -41,6 +44,7 @@ final class HiveUser extends BaseModel<HiveUser> {
     this.createdAt,
     this.role,
     this.userType,
+    this.isActive,
   });
 
   @override
@@ -50,10 +54,10 @@ final class HiveUser extends BaseModel<HiveUser> {
       username: json['username'] as String,
       emailAddress: json['emailAddress'] as String,
       password: json['password'] as String,
-      createdAt:
-          json['createdAt'] != null ? DateTime.parse(json['createdAt']) : null,
+      createdAt: DateTime.parse(json['createdAt']),
       role: json['role'] as String,
       userType: json['userType'] as String,
+      isActive: bool.tryParse(json['isActive']),
     );
   }
 
@@ -63,10 +67,10 @@ final class HiveUser extends BaseModel<HiveUser> {
       username: json['username'] as String,
       emailAddress: json['emailAddress'] as String,
       password: json['password'] as String,
-      createdAt:
-          json['createdAt'] != null ? DateTime.parse(json['createdAt']) : null,
+      createdAt: DateTime.parse(json['createdAt']),
       role: json['role'] as String,
       userType: json['userType'] as String,
+      isActive: bool.tryParse(json['isActive']),
     );
   }
 
@@ -84,6 +88,7 @@ final class HiveUser extends BaseModel<HiveUser> {
       "createdAt": createdAt?.toIso8601String(),
       "role": role,
       "userType": userType,
+      "isActive": isActive.toString(),
     };
   }
 }

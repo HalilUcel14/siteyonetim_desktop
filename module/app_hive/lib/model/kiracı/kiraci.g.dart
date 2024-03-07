@@ -20,19 +20,22 @@ class TBLKiraciAdapter extends TypeAdapter<TBLKiraci> {
       uid: fields[0] as String?,
       userUid: fields[1] as String?,
       customer: fields[2] as CustomerModel<dynamic>?,
+      isActive: fields[3] as bool?,
     );
   }
 
   @override
   void write(BinaryWriter writer, TBLKiraci obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.uid)
       ..writeByte(1)
       ..write(obj.userUid)
       ..writeByte(2)
-      ..write(obj.customer);
+      ..write(obj.customer)
+      ..writeByte(3)
+      ..write(obj.isActive);
   }
 
   @override
