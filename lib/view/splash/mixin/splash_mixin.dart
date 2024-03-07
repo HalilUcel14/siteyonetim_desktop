@@ -17,6 +17,7 @@ mixin SplashMixin on State<SplashView> {
   @override
   void dispose() {
     super.dispose();
+    // TODO:
   }
 
   Future<void> controlMetaToPush() async {
