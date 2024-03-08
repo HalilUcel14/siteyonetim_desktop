@@ -39,7 +39,7 @@ mixin LoginFormMixin on State<LoginForm> {
     //-----------------------------------
     if (!FormKeys.of.loginFormKey.currentState!.validate()) return;
     //-----------------------------------
-    final user = HiveBoxesObject.of.userDB.checkUser(
+    final user = HiveBoxesObject.of.userDB.checkLoginUser(
       userNameController.text.trim(),
       passwordController.text.trim(),
     );

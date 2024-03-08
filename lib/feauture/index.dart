@@ -6,3 +6,4 @@ export './keys/scaffold_key.dart';
 export './route/route.dart';
 export './theme/dark_theme.dart';
 export './theme/light_theme.dart';
+export './enum/appbar_size.dart';

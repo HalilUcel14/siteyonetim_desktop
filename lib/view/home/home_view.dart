@@ -32,16 +32,7 @@ class _HoveViewState extends State<HomeView> with HomeViewMixin {
     return FloatingActionButton(
       child: const Icon(Icons.home),
       onPressed: () => context.customShowDialog(
-        AspectRatio(
-          aspectRatio: 9 / 16,
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-              color: context.colorScheme.background,
-              borderRadius: SizeEnum.hexa.size.radiusCircle,
-            ),
-            child: const ApartmentForm(),
-          ),
-        ),
+        const FormViewDialog(child: ApartmentForm()),
       ),
     );
   }

@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:app_hive/app_hive.dart';
 import 'package:codeofland/codeofland.dart';
 import 'package:core/core.dart';
@@ -12,7 +14,6 @@ mixin ApartmentFormMixin on State<ApartmentForm> {
   late TextEditingController flatsCount;
   late TextEditingController buildYear;
   late BoolNotifier isElevator;
-  late ApartmentDatabase apartmentData;
 
   @override
   void initState() {
@@ -24,8 +25,6 @@ mixin ApartmentFormMixin on State<ApartmentForm> {
     buildYear = TextEditingController();
     isElevator = BoolNotifier(false);
     FormKeys.of.apartmentFormKey = GlobalKey<FormState>();
-    //
-    apartmentData = ApartmentDatabase();
   }
 
   @override
@@ -38,19 +37,26 @@ mixin ApartmentFormMixin on State<ApartmentForm> {
     buildYear.dispose();
     isElevator.dispose();
     FormKeys.of.apartmentFormKey.currentState?.dispose();
-    //
-    apartmentData.closeBox();
   }
 
   Future<void> formValidation() async {
-    await apartmentData.openBox();
-    //
     if (FormKeys.of.apartmentFormKey.currentState == null) return;
     if (!FormKeys.of.apartmentFormKey.currentState!.validate()) return;
     //
-    final response = await apartmentData.createNewApartment(
+    final String? userUid = HiveBoxesObject.of.metaDB.meta?.user?.uid;
+    //
+    if (!context.mounted) return;
+    //
+    if (userUid == null) {
+      context.showSnackBar(
+        const SnackBar(content: Text('Kullanıcı Bulunamadı')),
+      );
+      return;
+    }
+    //
+    final response = await HiveBoxesObject.of.apartmentDB.createNewApartment(
       name.text.trim(),
-      "",
+      userUid,
       address.text.trim(),
       int.parse(floorCount.text.trim()),
       int.parse(flatsCount.text.trim()),
@@ -59,24 +65,18 @@ mixin ApartmentFormMixin on State<ApartmentForm> {
       true, // 'İsActive
     );
     //
-    if (response) {
-      goToBack();
+    if (!response) {
+      context.showSnackBar(
+        const SnackBar(content: Text('Apartman Oluşturulamadı')),
+      );
       return;
     }
     //
-    if (!context.mounted) return;
-    // ignore: use_build_context_synchronously
-    context.showSnackBar(
-      const SnackBar(
-        content: Text('Apartman Oluşturulamadı'),
-      ),
-    );
+    goToBack();
   }
 
   void goToBack() {
-    if (context.canPop()) {
-      return context.pop();
-    }
+    if (context.canPop()) return context.pop();
   }
 
   Future<void> pickBuildYear(BuildContext context) async {

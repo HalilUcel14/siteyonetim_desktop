@@ -12,10 +12,11 @@ class HiveUserDatabase extends IHiveManager<HiveUser> {
 
   // ---------------------------------
 
-  Future<bool> addNewUser(
-      {required String username,
-      required String password,
-      required String email}) async {
+  Future<bool> addNewUser({
+    required String username,
+    required String password,
+    required String email,
+  }) async {
     //------------------------------
     HiveUser user = HiveUser(
       uid: RandomKey.generate(),
@@ -28,13 +29,34 @@ class HiveUserDatabase extends IHiveManager<HiveUser> {
       isActive: true,
     );
     //------------------------------
-    return await addBox(user.uid!, user);
+    if (checkRegisterUserNameOrEmail(username, email)) {
+      return await addBox(user.uid!, user);
+    } else {
+      return false;
+    }
   }
 
   ///
   ///
+  bool checkRegisterUserNameOrEmail(String username, String email) {
+    try {
+      List<HiveUser> users = listBox();
+      //
+      for (var user in users) {
+        if (user.username == username || user.emailAddress == email) {
+          return false;
+        }
+      }
+      //
+      return true;
+      //
+    } catch (e) {
+      return false;
+    }
+  }
+
   /// --------------- [ Login Form check] ---------------
-  HiveUser checkUser(String username, String password) {
+  HiveUser checkLoginUser(String username, String password) {
     try {
       HiveUser? response;
       List<HiveUser> users = listBox();

@@ -63,7 +63,9 @@ mixin RegisterFormMixin on State<RegisterForm> {
     if (!response) {
       context.showSnackBar(
         const SnackBar(
-          content: Text('Kayıt İşlemi Başarısız'),
+          content: Text(
+            'Kayıt İşlemi Başarısız Email yada UserName daha önce kullanılmış olabilir.',
+          ),
         ),
       );
       return;

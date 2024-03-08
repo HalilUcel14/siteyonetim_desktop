@@ -1,7 +1,7 @@
 import 'package:codeofland/codeofland.dart';
 import 'package:flutter/material.dart';
 
-import '../../../index.dart';
+import '../../../../index.dart';
 
 mixin HomeBodyLeftChildMixin on State<HomeBodyLeftChild> {
   @override
@@ -18,11 +18,11 @@ mixin HomeBodyLeftChildMixin on State<HomeBodyLeftChild> {
     BoxConstraints constraints,
   ) =>
       SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: constraints.maxWidth > 1200
+        crossAxisCount: constraints.maxWidth > 1500
             ? 4
-            : constraints.maxWidth > 800
+            : constraints.maxWidth > 1000
                 ? 3
-                : constraints.maxWidth > 400
+                : constraints.maxWidth > 500
                     ? 2
                     : 1,
         crossAxisSpacing: SizeEnum.hexa.size,

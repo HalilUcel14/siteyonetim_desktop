@@ -1,6 +1,7 @@
 import 'package:app_hive/app_hive.dart';
-import 'package:codeofland/codeofland.dart';
+
 import 'package:flutter/material.dart';
+import '../../../index.dart';
 
 class ApartmentAppBar extends StatelessWidget implements PreferredSizeWidget {
   const ApartmentAppBar({super.key, required this.apartment});
@@ -15,5 +16,5 @@ class ApartmentAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(SizeEnum.ennea.size * 3);
+  Size get preferredSize => AppBarSize.small.size;
 }

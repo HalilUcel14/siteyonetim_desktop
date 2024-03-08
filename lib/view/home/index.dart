@@ -1,3 +1,6 @@
-export './child/index.dart';
 export './home_view.dart';
-export './mixin/index.dart';
+
+export './home_mixin.dart';
+export './appbar/index.dart';
+export './body/index.dart';
+export './drawer/index.dart';

@@ -12,26 +12,18 @@ class ApartmentCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, size) {
-        double cSpacing = size.maxHeight > 400
-            ? SizeEnum.ennea.size
-            : size.maxHeight > 300
-                ? SizeEnum.hexa.size
-                : size.maxHeight > 200
-                    ? SizeEnum.octa.size
-                    : 0;
-
-        //------------------------
-        return Card(
-          child: ColumnWithSpacing(
-            spacing: cSpacing,
+    return Card(
+      child: LayoutBuilder(
+        builder: (context, sizes) {
+          return ColumnWithSpacing(
+            spacing: SizeEnum.octa.size,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               WIconAsset(
                 path: MyAsset.apartment2.iconPng,
-                size: size.maxHeight * PercentEnum.pHalf.size,
-              ).expanded(flex: 2),
+                size: double.infinity,
+                //size: sizes.maxHeight * PercentEnum.pHalf.size,
+              ).expanded(flex: 5),
               // -------------------------
               BorderButton(
                 onPressed: () async {
@@ -46,18 +38,18 @@ class ApartmentCard extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                 ),
-              ).flexible(),
+              ).expanded(),
               // --------------------------
               BoldText(
                 '(${apartment.buildYear!.year})',
                 styles: TextStyles.bodyLarge,
                 style: const TextStyle(fontWeight: FontWeight.bold),
-              ).flexible(),
+              ).expanded(),
               // --------------------------
             ],
-          ),
-        );
-      },
-    );
+          ).padding(pad: SizeEnum.octa.size.withPaddingAll);
+        },
+      ),
+    ).aspectRatio(2 / 3);
   }
 }

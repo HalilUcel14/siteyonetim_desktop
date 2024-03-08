@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:siteyonetim/view/apartment/body/apartment_body.dart';
 
 import '../../index.dart';
 
@@ -13,10 +14,9 @@ class _ApartmentViewState extends State<ApartmentView> with ApartmentViewMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: ScaffoldKeys.of.apartmentKey,
       appBar: ApartmentAppBar(apartment: apartment),
-      body: const Center(
-        child: Text('Apartment'),
-      ),
+      body: ApartmentViewBody(apartment: apartment),
     );
   }
 }

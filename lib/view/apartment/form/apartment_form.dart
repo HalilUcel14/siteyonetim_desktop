@@ -91,9 +91,7 @@ class _ApartmentFormState extends State<ApartmentForm> with ApartmentFormMixin {
               ),
               suffixIcon: IconButton(
                 onPressed: () async => await pickBuildYear(context),
-                icon: const Icon(
-                  Icons.calendar_month,
-                ),
+                icon: const Icon(Icons.calendar_month),
               ),
             ),
             // --------------------------------

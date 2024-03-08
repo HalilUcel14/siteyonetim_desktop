@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../index.dart';
+import '../../index.dart';
 
 mixin HomeViewMixin on State<HomeView> {
   @override
