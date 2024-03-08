@@ -1,3 +1,4 @@
+import 'package:app_hive/app_hive.dart';
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
 import 'package:core/core.dart';
@@ -15,39 +16,63 @@ final class LoginForm extends StatefulWidget {
 class _LoginFormState extends State<LoginForm> with LoginFormMixin {
   @override
   Widget build(BuildContext context) {
-    return ColumnWithSpacing(
-      mainAxisAlignment: MainAxisAlignment.center,
-      spacing: SizeEnum.tetra.size,
-      children: [
-        // -----------------------------
-        CustomTextFormField(
-          context,
-          controller: userNameController,
-          labelText: FormText.usernameLabel.text,
-        ),
-        // -----------------------------
-        CustomTextFormField(
-          context,
-          controller: passwordController,
-          labelText: FormText.passwordLabel.text,
-          obscureText: true,
-        ),
-        // -----------------------------
-        RowWithSpacing(
-          spacing: SizeEnum.ennea.size,
-          children: [
-            ElevatedButton(
-              onPressed: formValidation,
-              child: Text(FormText.signInButton.text),
+    return Form(
+      key: FormKeys.of.loginFormKey,
+      child: ColumnWithSpacing(
+        mainAxisAlignment: MainAxisAlignment.center,
+        spacing: SizeEnum.tetra.size,
+        children: [
+          // -----------------------------
+          CustomTextFormField(
+            context,
+            controller: userNameController,
+            labelText: FormText.usernameLabel.text,
+            validator: (value) => FormValidation.of.text(
+              value,
+              FormText.usernameLabel.text,
             ),
-            // -----------------------------
-            ElevatedButton(
-              onPressed: goToRegisterView,
-              child: Text(FormText.signUpButton.text),
-            ),
-          ],
-        ).horizontalScrollView
-      ],
-    ).padding(pad: SizeEnum.hexa.size.withPaddingAll).verticalScrollView;
+          ),
+          // -----------------------------
+          ValueListenableBuilder(
+            valueListenable: isObscure,
+            builder: (context, obscure, child) {
+              return CustomTextFormField(
+                context,
+                controller: passwordController,
+                labelText: FormText.passwordLabel.text,
+                obscureText: obscure,
+                validator: (value) => FormValidation.of.passwordText(
+                  value,
+                  FormText.passwordLabel.text,
+                ),
+                suffixIcon: IconButton(
+                  onPressed: changeObscure,
+                  icon: Icon(
+                    obscure
+                        ? Icons.visibility_off_outlined
+                        : Icons.visibility_outlined,
+                  ),
+                ),
+              );
+            },
+          ),
+          // -----------------------------
+          RowWithSpacing(
+            spacing: SizeEnum.ennea.size,
+            children: [
+              ElevatedButton(
+                onPressed: formValidation,
+                child: Text(FormText.signInButton.text),
+              ),
+              // -----------------------------
+              ElevatedButton(
+                onPressed: goToRegisterView,
+                child: Text(FormText.signUpButton.text),
+              ),
+            ],
+          ).horizontalScrollView
+        ],
+      ).padding(pad: SizeEnum.hexa.size.withPaddingAll).verticalScrollView,
+    );
   }
 }

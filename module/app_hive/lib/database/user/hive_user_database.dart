@@ -31,25 +31,42 @@ class HiveUserDatabase extends IHiveManager<HiveUser> {
     return await addBox(user.uid!, user);
   }
 
+  ///
+  ///
+  /// --------------- [ Login Form check] ---------------
   HiveUser checkUser(String username, String password) {
     try {
+      HiveUser? response;
       List<HiveUser> users = listBox();
       //
-      final response = findHiveUser(users, username, password);
+      for (var user in users) {
+        if (user.username == username && user.password == password) {
+          response = user;
+          break;
+        }
+      }
+      //
       return response ?? HiveUser.empty();
       //
     } catch (e) {
       return HiveUser.empty();
     }
   }
-
-  HiveUser? findHiveUser(
-      List<HiveUser> userList, String username, String password) {
-    for (var element in userList) {
-      if (element.username == username && element.password == password) {
-        return element;
-      }
-    }
-    return null;
-  }
 }
+
+
+
+
+
+
+
+
+  // HiveUser? findHiveUser(
+  //     List<HiveUser> userList, String username, String password) {
+  //   for (var element in userList) {
+  //     if (element.username == username && element.password == password) {
+  //       return element;
+  //     }
+  //   }
+  //   return null;
+  // }

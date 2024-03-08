@@ -1,6 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:app_hive/app_hive.dart';
 import 'package:codeofland/codeofland.dart';
-
+import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 
 import '../../../index.dart';
@@ -17,26 +19,25 @@ mixin SplashMixin on State<SplashView> {
   @override
   void dispose() {
     super.dispose();
-    // TODO:
   }
 
   Future<void> controlMetaToPush() async {
-    bool check = true;
     await Future.delayed(DurationConst.second(2).duration);
+    //
+    if (!context.mounted) return;
     //
     AppMetaData? meta = HiveBoxesObject.of.metaDB.meta;
     //
-    if (!HiveBoxesObject.of.metaDB.isNullable) check = false;
+    if (HiveBoxesObject.of.metaDB.isNullable) return await goToAuth();
     //
-    if (meta!.lastSign!
-        .isBefore(DateTime.now().subtract(DurationConst.day(3).duration))) {
-      check = false;
-    }
+    if (meta!.lastSign!.isBefore3Days) return await goToAuth();
     //
-    if (check) {
-      //
-    } else {
-      //Navigator.pushReplacementNamed(context, RouteName.sign);
-    }
+    return await goToHome();
   }
+
+  Future<void> goToHome() async =>
+      await context.pushNamedAndRemoveUntil(MyRoute.home.name);
+
+  Future<void> goToAuth() async =>
+      await context.pushNamedAndRemoveUntil(MyRoute.authLogin.name);
 }

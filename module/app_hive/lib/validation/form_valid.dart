@@ -5,9 +5,13 @@ final class FormValidation {
   static FormValidation get of => _of ??= FormValidation._();
   FormValidation._();
   //
+  final minLength = 6;
   //
   String? text(String? text, String? label) {
     if (text.isNullOrEmpty) return '$label boş olamaz';
+    if (text!.length < minLength) {
+      return '$label en az $minLength karakter olmalıdır.';
+    }
     return null;
   }
 
@@ -38,6 +42,14 @@ final class FormValidation {
     //
     if (!time.isAfter(DateTime(1950))) {
       return '$label 1950 yılından sonra olmalıdır.';
+    }
+    return null;
+  }
+
+  String? passwordText(String? text, String? label) {
+    if (text.isNullOrEmpty) return '$label boş olamaz';
+    if (!text!.isValidMediumPassword) {
+      return '$label şifre deseni (en az 8 karakter, en az bir rakam ve bir harf)';
     }
     return null;
   }
