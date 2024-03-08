@@ -3,6 +3,7 @@ import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
+import 'package:siteyonetim/widget/custom/form_field/password_form_field.dart';
 
 import '../../../../index.dart';
 
@@ -33,28 +34,10 @@ class _LoginFormState extends State<LoginForm> with LoginFormMixin {
             ),
           ),
           // -----------------------------
-          ValueListenableBuilder(
+          PasswordFormField(
             valueListenable: isObscure,
-            builder: (context, obscure, child) {
-              return CustomTextFormField(
-                context,
-                controller: passwordController,
-                labelText: FormText.passwordLabel.text,
-                obscureText: obscure,
-                validator: (value) => FormValidation.of.passwordText(
-                  value,
-                  FormText.passwordLabel.text,
-                ),
-                suffixIcon: IconButton(
-                  onPressed: changeObscure,
-                  icon: Icon(
-                    obscure
-                        ? Icons.visibility_off_outlined
-                        : Icons.visibility_outlined,
-                  ),
-                ),
-              );
-            },
+            passwordController: passwordController,
+            labelText: FormText.passwordLabel.text,
           ),
           // -----------------------------
           RowWithSpacing(

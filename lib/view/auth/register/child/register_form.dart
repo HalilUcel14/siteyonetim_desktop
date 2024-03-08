@@ -1,3 +1,4 @@
+import 'package:app_hive/app_hive.dart';
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
 import 'package:core/core.dart';
@@ -26,31 +27,40 @@ class _RegisterFormState extends State<RegisterForm> with RegisterFormMixin {
             context,
             controller: userNameController,
             labelText: FormText.usernameLabel.text,
+            validator: (value) => FormValidation.of.text(
+              value,
+              FormText.usernameLabel.text,
+            ),
           ),
           // ---------------------------------
           CustomTextFormField(
             context,
             controller: emailController,
             labelText: FormText.emailLabel.text,
+            validator: (value) => FormValidation.of.emailText(
+              value,
+              FormText.emailHint.text,
+            ),
           ),
           // --------------------------------
-          CustomTextFormField(
-            context,
-            controller: passwordController,
+          PasswordFormField(
+            valueListenable: isObscure,
+            passwordController: passwordController,
             labelText: FormText.passwordLabel.text,
           ),
           // --------------------------------
-          CustomTextFormField(
-            context,
-            controller: confirmPasswordController,
+          PasswordFormField(
+            valueListenable: isObscure,
+            passwordController: confirmPasswordController,
             labelText: FormText.passwordLabel.text,
           ),
+          // --------------------------------
           // --------------------------------
           RowWithSpacing(
             spacing: SizeEnum.ennea.size,
             children: [
               ElevatedButton(
-                onPressed: userValidation,
+                onPressed: formValidation,
                 child: Text(FormText.signUpButton.text),
               ),
               // --------------------------------------

@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:app_hive/app_hive.dart';
 import 'package:codeofland/codeofland.dart';
 import 'package:core/core.dart';
@@ -10,8 +12,7 @@ mixin RegisterFormMixin on State<RegisterForm> {
   late TextEditingController passwordController;
   late TextEditingController emailController;
   late TextEditingController confirmPasswordController;
-
-  late HiveUserDatabase userBox;
+  late BoolNotifier isObscure = BoolNotifier(false);
 
   @override
   void initState() {
@@ -21,7 +22,7 @@ mixin RegisterFormMixin on State<RegisterForm> {
     emailController = TextEditingController();
     confirmPasswordController = TextEditingController();
     FormKeys.of.registerFormKey = GlobalKey<FormState>();
-    userBox = HiveUserDatabase();
+    isObscure = BoolNotifier(true);
   }
 
   @override
@@ -30,86 +31,47 @@ mixin RegisterFormMixin on State<RegisterForm> {
     passwordController.dispose();
     emailController.dispose();
     confirmPasswordController.dispose();
+    isObscure.dispose();
+    FormKeys.of.registerFormKey.currentState?.dispose();
     super.dispose();
   }
 
-  void userValidation() async {
-    BuildContext? mContext = FormKeys.of.registerFormKey.currentContext;
-    mContext ??= context;
-
-    //
-    if (!isValidForm()) {
-      if (!mContext.mounted) return;
-      mContext.showSnackBar(SnackBar(content: Text(formErrorMessage())));
+  void formValidation() async {
+    if (!context.mounted) return;
+    //-----------------------------------
+    if (FormKeys.of.registerFormKey.currentState == null) return;
+    //-----------------------------------
+    if (!FormKeys.of.registerFormKey.currentState!.validate()) return;
+    //-----------------------------------
+    if (passwordController.text.trim() !=
+        confirmPasswordController.text.trim()) {
+      context.showSnackBar(
+        const SnackBar(
+          content: Text('Şifreler Uyuşmuyor'),
+        ),
+      );
+      return;
     }
-    //
-    await userBox.openBox();
-    final response = await userBox.addNewUser(
+    //-----------------------------------
+    final response = await HiveBoxesObject.of.userDB.addNewUser(
       username: userNameController.text.trim(),
       password: passwordController.text.trim(),
       email: emailController.text.trim(),
     );
     //
-    if (!mContext.mounted) return;
-    if (response) {
-      goToLoginView();
-    } else {
-      mContext.showSnackBar(
+    if (!context.mounted) return;
+    if (!response) {
+      context.showSnackBar(
         const SnackBar(
           content: Text('Kayıt İşlemi Başarısız'),
         ),
       );
+      return;
     }
+    //
+    goToLoginView();
   }
 
   /// Kullanıcı Giriş Ekranına Geçiş yapar.
-  void goToLoginView() {
-    if (!context.mounted) return;
-    context.pushNamed(MyRoute.authLogin.name);
-  }
-
-  /// Tüm Controller içerisindeki değerleri kontrol eder.
-  bool isValidForm() {
-    if (userNameController.text.trim().isNullOrEmpty) return false;
-    if (passwordController.text.trim().isNullOrEmpty) return false;
-    if (confirmPasswordController.text.trim().isNullOrEmpty) return false;
-    if (emailController.text.trim().isNullOrEmpty) return false;
-    if (!emailController.text.trim().isValidEmailRegex) return false;
-    if (!passwordController.text.trim().isValidMediumPassword) return false;
-    if (confirmPasswordController.text.trim() !=
-        passwordController.text.trim()) {
-      return false;
-    }
-    return true;
-  }
-
-  /// Kontroller içerisinde bir hata var ise mesaj döndürür;
-  String formErrorMessage() {
-    if (userNameController.text.trim().isNullOrEmpty) {
-      return AppError.emptyUserName.text;
-    }
-    if (passwordController.text.trim().isNullOrEmpty) {
-      return AppError.emptyPassword.text;
-    }
-    if (confirmPasswordController.text.trim().isNullOrEmpty) {
-      return AppError.emptyPassword.text;
-    }
-    if (confirmPasswordController.text.trim() !=
-        passwordController.text.trim()) {
-      return AppError.notConfirmPassword.text;
-    }
-
-    if (emailController.text.trim().isNullOrEmpty) {
-      return AppError.emptyEmailAddress.text;
-    }
-
-    if (!emailController.text.trim().isValidEmailRegex) {
-      return AppError.notValidEmailAddress.text;
-    }
-
-    if (!passwordController.text.trim().isValidMediumPassword) {
-      return AppError.notValidMediumPassword.text;
-    }
-    return "";
-  }
+  void goToLoginView() => context.pushNamed(MyRoute.authLogin.name);
 }

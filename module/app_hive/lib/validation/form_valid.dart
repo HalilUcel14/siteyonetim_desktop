@@ -6,9 +6,12 @@ final class FormValidation {
   FormValidation._();
   //
   final minLength = 6;
+
+  bool isNullable(String? text) => text.isNullOrEmpty;
+
   //
   String? text(String? text, String? label) {
-    if (text.isNullOrEmpty) return '$label boş olamaz';
+    if (isNullable(text)) return '$label boş olamaz';
     if (text!.length < minLength) {
       return '$label en az $minLength karakter olmalıdır.';
     }
@@ -16,21 +19,21 @@ final class FormValidation {
   }
 
   String? intText(String? text, String? label) {
-    if (text.isNullOrEmpty) return '$label boş olamaz';
+    if (isNullable(text)) return '$label boş olamaz';
     if (int.tryParse(text!) == null) return '$label tamsayı olmalıdır.';
     if (int.parse(text) < 0) return '$label 0 dan büyük olmalıdır.';
     return null;
   }
 
   String? doubleText(String? text, String? label) {
-    if (text.isNullOrEmpty) return '$label boş olamaz';
+    if (isNullable(text)) return '$label boş olamaz';
     if (double.tryParse(text!) == null) return '$label ondalık olmalıdır.';
     if (double.parse(text) < 0) return '$label 0 dan büyük olmalıdır.';
     return null;
   }
 
   String? dateText(String? text, String? label) {
-    if (text.isNullOrEmpty) return '$label boş olamaz';
+    if (isNullable(text)) return '$label boş olamaz';
     //
     DateTime? time = DateTime.tryParse(text!);
     //
@@ -47,9 +50,17 @@ final class FormValidation {
   }
 
   String? passwordText(String? text, String? label) {
-    if (text.isNullOrEmpty) return '$label boş olamaz';
+    if (isNullable(text)) return '$label boş olamaz';
     if (!text!.isValidMediumPassword) {
       return '$label şifre deseni (en az 8 karakter, en az bir rakam ve bir harf)';
+    }
+    return null;
+  }
+
+  String? emailText(String? text, String? label) {
+    if (isNullable(text)) return '$label boş olamaz';
+    if (!text!.isValidEmailRegex) {
+      return '$label geçerli bir email adresi olmalıdır.';
     }
     return null;
   }
