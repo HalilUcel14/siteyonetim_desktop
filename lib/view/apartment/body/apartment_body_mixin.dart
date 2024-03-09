@@ -36,6 +36,7 @@ mixin ApartmentBodyMixin on State<ApartmentViewBody> {
         list.where((apartment) => apartment.userUid == userUid).toList();
     //
     print(userList);
+    //
     return ListView.builder(
       itemCount: widget.apartment!.floorCount,
       itemBuilder: (context, index) {

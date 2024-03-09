@@ -44,10 +44,9 @@ mixin LoginFormMixin on State<LoginForm> {
       passwordController.text.trim(),
     );
     //-----------------------------------
-    //-----------------------------------
     if (user.uid.isNullOrEmpty) {
       context.showSnackBar(
-        SnackBar(content: Text(AppError.notValidUserLogin.text)),
+        SnackBar(content: Text(FormError.emptyUserName.text)),
       );
       return;
     }
@@ -58,7 +57,7 @@ mixin LoginFormMixin on State<LoginForm> {
     //
     if (!response) {
       context.showSnackBar(
-        SnackBar(content: Text(AppError.errorLoginUser.text)),
+        SnackBar(content: Text(FormError.errorUserSign.text)),
       );
       return;
     }
@@ -77,27 +76,4 @@ mixin LoginFormMixin on State<LoginForm> {
       await context.pushNamed(MyRoute.authRegister.name);
     }
   }
-
-  //
 }
-
-///
-// bool _isValidForm() {
-//   if (userNameController.text.isNullOrEmpty) return false;
-//   if (passwordController.text.isNullOrEmpty) return false;
-//   return true;
-// }
-
-// ///
-// String _formErrorMessage() {
-//   if (userNameController.text.trim().isNullOrEmpty) {
-//     return AppError.emptyUserName.text;
-//   }
-//   if (passwordController.text.trim().isNullOrEmpty) {
-//     return AppError.emptyPassword.text;
-//   }
-//   if (!passwordController.text.trim().isValidMediumPassword) {
-//     return AppError.notValidMediumPassword.text;
-//   }
-//   return "";
-// }

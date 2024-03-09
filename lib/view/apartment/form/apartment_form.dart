@@ -24,9 +24,9 @@ class _ApartmentFormState extends State<ApartmentForm> with ApartmentFormMixin {
           spacing: SizeEnum.hexa.size,
           children: [
             // --------------------------------
-            const Text(
-              'Yeni Apartman Oluştur.',
-              style: TextStyle(
+            Text(
+              TableText.createDaire.text,
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
               ),
@@ -37,30 +37,30 @@ class _ApartmentFormState extends State<ApartmentForm> with ApartmentFormMixin {
             CustomTextFormField(
               context,
               controller: name,
-              labelText: 'Apartman İsmi',
+              labelText: TableText.apartmanName.text,
               validator: (value) => FormValidation.of.text(
                 value,
-                'Apartman İsmi',
+                TableText.apartmanName.text,
               ),
             ),
             // --------------------------------
             CustomTextFormField(
               context,
               controller: address,
-              labelText: 'Apartman Adresi',
+              labelText: TableText.apartmanAdres.text,
               validator: (value) => FormValidation.of.text(
                 value,
-                'Apartman Adresi',
+                TableText.apartmanAdres.text,
               ),
             ),
             // --------------------------------
             CustomTextFormField(
               context,
               controller: floorCount,
-              labelText: 'Apartman Kat Sayısı',
+              labelText: TableText.apartmanFloor.text,
               validator: (value) => FormValidation.of.intText(
                 value,
-                'Kat Sayısı',
+                TableText.apartmanFloor.text,
               ),
             ),
 
@@ -68,26 +68,26 @@ class _ApartmentFormState extends State<ApartmentForm> with ApartmentFormMixin {
             CustomTextFormField(
               context,
               controller: flatsCount,
-              labelText: 'Apartman Daire Sayısı',
+              labelText: TableText.apartmanFlats.text,
               validator: (value) => FormValidation.of.intText(
                 value,
-                'Daire Sayısı',
+                TableText.apartmanFlats.text,
               ),
             ),
             // --------------------------------
             RadioYesNoButton(
               notifier: isElevator,
-              title: 'Apartman İçerisinde Asansör Var mı?',
+              title: TableText.isHaveElevator.text,
             ),
 
             // --------------------------------
             CustomTextFormField(
               context,
               controller: buildYear,
-              labelText: 'Apartman Yapım Yılı',
+              labelText: TableText.apartmanYear.text,
               validator: (value) => FormValidation.of.dateText(
                 value,
-                'Yapım Yılı',
+                TableText.apartmanYear.text,
               ),
               suffixIcon: IconButton(
                 onPressed: () async => await pickBuildYear(context),

@@ -4,7 +4,6 @@ import 'package:hive/hive.dart';
 
 part 'ev_sahibi.g.dart';
 
-// TODO: TBLFlatOwner Class
 @HiveType(typeId: HiveTypes.evSahibiType)
 final class TBLEvSahibi extends BaseModel<TBLEvSahibi> {
   @override

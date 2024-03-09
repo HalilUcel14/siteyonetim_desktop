@@ -1,5 +1,5 @@
+import 'package:core/core.dart';
 import 'package:flutter/material.dart';
-import 'package:siteyonetim/view/apartment/body/apartment_body.dart';
 
 import '../../index.dart';
 
@@ -17,6 +17,12 @@ class _ApartmentViewState extends State<ApartmentView> with ApartmentViewMixin {
       key: ScaffoldKeys.of.apartmentKey,
       appBar: ApartmentAppBar(apartment: apartment),
       body: ApartmentViewBody(apartment: apartment),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          context.customShowDialog(const FormViewDialog(child: DaireForm()));
+        },
+        child: const Icon(Icons.add),
+      ),
     );
   }
 }

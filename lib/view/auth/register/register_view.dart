@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../index.dart';
 
-// TODO: Change Register all metrics to use
-
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
 

@@ -1,5 +1,3 @@
 export './duration/duration.dart';
 export './route/route.dart';
-export './text/error.dart';
-export './text/form.dart';
 export './text/title.dart';

@@ -15,32 +15,51 @@ class ApartmentViewBody extends StatefulWidget {
 class _ApartmentViewBodyState extends State<ApartmentViewBody> {
   @override
   Widget build(BuildContext context) {
+    ScrollController scrollController = ScrollController();
     return LayoutBuilder(builder: (context, sizes) {
       return ValueListenableBuilder(
-        valueListenable: HiveBoxesObject.of.apartmentDB.valueList,
+        valueListenable: HiveBoxesObject.of.daireDB.boxListenable,
         builder: (context, value, child) {
-          //
-          //
-          final String? userUid = HiveBoxesObject.of.metaDB.meta?.user?.uid;
-          //
-          if (userUid == null) {
+          // -----------------------------------
+          if (widget.apartment == null || widget.apartment?.uid == null) {
             return const Center(
-              child: Text('User not found'),
+              child: Text('Apartment not found'),
             );
           }
-          //
-          List<TBLApartment> list = value.values.toList();
-          List<TBLApartment> userList =
-              list.where((apartment) => apartment.userUid == userUid).toList();
-          //
+          // -----------------------------------
+          final List<TBLDaire> daireList = value.values.toList();
+          // -----------------------------------
+          final List<TBLDaire> userDaireList = daireList
+              .where((flats) => flats.apartmentUid == widget.apartment!.uid)
+              .toList();
+          // -----------------------------------
           return ListView.builder(
-            itemCount: userList.length,
+            controller: scrollController,
+            itemCount: widget.apartment!.floorCount ?? 0,
             itemBuilder: (context, index) {
-              return const Text('data');
+              // -----------------------------------
+              final floorList = userDaireList
+                  .where((flats) => flats.floor == index + 1)
+                  .toList();
+              print(floorList);
+              // -----------------------------------
+              return Card(
+                child: ListTile(
+                  title: Text('Floor: ${index + 1}'),
+                  subtitle: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: floorList.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title: Text('Daire: ${floorList[index].flats}'),
+                        subtitle: Text('Floor: ${floorList[index].floor}'),
+                      );
+                    },
+                  ),
+                ),
+              ).withSizedBox(height: 250, width: double.infinity);
             },
           );
-
-          // -----------------------------------
         },
       ).padding(pad: SizeEnum.hexa.size.withPaddingAll);
     });

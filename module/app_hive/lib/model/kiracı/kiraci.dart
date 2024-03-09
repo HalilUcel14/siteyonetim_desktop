@@ -5,8 +5,6 @@ import '../../app_hive.dart';
 
 part 'kiraci.g.dart';
 
-// TODO: TBLTenant Class
-
 @HiveType(typeId: HiveTypes.kiraciType)
 final class TBLKiraci extends BaseModel<TBLKiraci> {
   @override
