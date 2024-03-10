@@ -1,8 +1,7 @@
-import 'package:app_hive/app_hive.dart';
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 
-import '../../../index.dart';
+import '../../index.dart';
 
 mixin DaireFormMixin on State<DaireForm> {
   late TextEditingController floor;
@@ -45,39 +44,19 @@ mixin DaireFormMixin on State<DaireForm> {
     super.dispose();
   }
 
-  void submitOwnerFlats() {
-    final listOwner = HiveBoxesObject.of.evSahibiDB.listBox();
+  void saveFormNewFlats() {
     //
-    final List<Widget> listView = listOwner
-        .map((owner) => ListTile(
-              title: Text('${owner.customer?.name}'),
-              subtitle: Text('${owner.customer?.email}'),
-            ))
-        .toList();
+    if (FormKeys.of.daireFormKey.currentState == null) return;
     //
+    if (!FormKeys.of.daireFormKey.currentState!.validate()) return;
+    //
+  }
 
+  void submitOwnerFlats() {
     //
     context.customShowDialog(
-      FormViewDialog(
-        child: Stack(
-          children: [
-            SingleChildScrollView(
-              child: Column(
-                children: listView,
-              ),
-            ),
-            Positioned(
-              bottom: 20,
-              right: 20,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text('Kapat'),
-              ),
-            ),
-          ],
-        ),
+      const FormViewDialog(
+        child: EvSahibiList(),
       ),
     );
   }

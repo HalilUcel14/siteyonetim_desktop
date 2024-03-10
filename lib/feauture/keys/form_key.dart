@@ -9,4 +9,7 @@ final class FormKeys {
   late GlobalKey<FormState> loginFormKey;
   late GlobalKey<FormState> apartmentFormKey;
   late GlobalKey<FormState> daireFormKey;
+  late GlobalKey<FormState> evSahibiFormKey;
+  late GlobalKey<FormState> kiraciFormKey;
+  late GlobalKey<FormState> customerFormKey;
 }

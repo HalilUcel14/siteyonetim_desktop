@@ -1,7 +1,6 @@
 import 'package:codeofland/codeofland.dart';
 
 abstract class CustomerModel<T> extends BaseModel<T> {
-  String? get userUid;
   String? get name;
   String? get email;
   String? get identityNo;

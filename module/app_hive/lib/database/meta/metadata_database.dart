@@ -11,6 +11,8 @@ class AppMetaDataBase extends IHiveManager<AppMetaData> {
 
   AppMetaData? get meta => box.get(MetaKeys.key.text);
 
+  String? get userUid => meta?.user?.uid;
+
   bool get isNullable {
     if (meta?.lastSign == null ||
         meta?.uid == null ||

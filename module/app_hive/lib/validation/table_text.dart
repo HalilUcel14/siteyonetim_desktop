@@ -1,6 +1,11 @@
 enum TableText {
+  listOwner('Ev Sahipleri Listesi'),
+  listTenant('Kiracılar Listesi'),
+  //
   createApartman('Yeni Apartman Oluştur'),
   createDaire('Yeni Daire Oluştur'),
+  createTenant('Yeni Kiracı Oluştur'),
+  createOwner('Yeni EvSahibi Oluştur'),
   // -------------------------------------
   apartmanName('Apartman İsmi'),
   apartmanAdres('Apartman Adresi'),
@@ -18,6 +23,15 @@ enum TableText {
   daireOwner('Daire Sahibi'),
   daireIsOwner('Daire Sahibi var mı?'),
   daireIsRented('Daire Kiralık mı?'),
+  // -------------------------------------
+  individualName('Kişi Adı ve Soyadı'),
+  companyName('Firma Adı'),
+  customerEmail('E-Posta Adresi'),
+  customerPhone('Telefon Numarası'),
+  customerAdres('Adres'),
+  individualIndentityNo('T.C. Kimlik Numarası'),
+  companyIdentityNo('Vergi Numarası'),
+  // -------------------------------------
   ;
 
   final String text;

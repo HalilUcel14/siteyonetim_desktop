@@ -3,7 +3,7 @@ import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
 import 'package:flutter/material.dart';
 
-import '../../../index.dart';
+import '../../index.dart';
 
 class DaireForm extends StatefulWidget {
   const DaireForm({super.key});
@@ -17,22 +17,15 @@ class _DaireFormState extends State<DaireForm> with DaireFormMixin {
   Widget build(BuildContext context) {
     return Form(
       key: FormKeys.of.daireFormKey,
+      // --------------------------------
       child: SingleChildScrollView(
         child: ColumnWithSpacing(
-          spacing: SizeEnum.ennea.size,
+          spacing: SizeEnum.hexa.size,
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             // --------------------------------
-            Text(
-              TableText.createApartman.text,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
-            ),
-            // --------------------------------
-            const Divider(),
+            FormTitle(title: TableText.createDaire.text),
             // --------------------------------
             CustomTextFormField(
               context,
@@ -58,7 +51,7 @@ class _DaireFormState extends State<DaireForm> with DaireFormMixin {
               context,
               controller: squareM,
               labelText: TableText.daireSquare.text,
-              validator: (value) => FormValidation.of.intText(
+              validator: (value) => FormValidation.of.intNullableText(
                 value,
                 TableText.daireSquare.text,
               ),
@@ -68,7 +61,7 @@ class _DaireFormState extends State<DaireForm> with DaireFormMixin {
               context,
               controller: netSquareM,
               labelText: TableText.daireNetSquare.text,
-              validator: (value) => FormValidation.of.intText(
+              validator: (value) => FormValidation.of.intNullableText(
                 value,
                 TableText.daireNetSquare.text,
               ),
@@ -78,7 +71,7 @@ class _DaireFormState extends State<DaireForm> with DaireFormMixin {
               context,
               controller: room,
               labelText: TableText.daireRoom.text,
-              validator: (value) => FormValidation.of.intText(
+              validator: (value) => FormValidation.of.intNullableText(
                 value,
                 TableText.daireRoom.text,
               ),
@@ -100,6 +93,9 @@ class _DaireFormState extends State<DaireForm> with DaireFormMixin {
                     onPressed: () => submitOwnerFlats(),
                     icon: const Icon(Icons.view_list_rounded),
                   ),
+                  validator: (text) => value
+                      ? FormValidation.of.text(text, TableText.daireOwner.text)
+                      : null,
                 ).isVisibility(visible: value);
               },
             ),
@@ -116,8 +112,16 @@ class _DaireFormState extends State<DaireForm> with DaireFormMixin {
                   context,
                   controller: tenant,
                   labelText: TableText.daireTenant.text,
+                  validator: (text) => value
+                      ? FormValidation.of.text(text, TableText.daireTenant.text)
+                      : null,
                 ).isVisibility(visible: value);
               },
+            ),
+            // --------------------------------
+            ElevatedButton(
+              onPressed: () => saveFormNewFlats(),
+              child: const Text('Kaydet'),
             ),
           ],
         ).padding(pad: SizeEnum.ennea.size.withPaddingAll),
@@ -125,4 +129,3 @@ class _DaireFormState extends State<DaireForm> with DaireFormMixin {
     );
   }
 }
-//: TODO:

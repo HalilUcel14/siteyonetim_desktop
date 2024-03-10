@@ -11,12 +11,32 @@ class FormViewDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return AspectRatio(
       aspectRatio: 9 / 16,
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          color: context.colorScheme.background,
-          borderRadius: SizeEnum.hexa.size.radiusCircle,
+      child: Stack(
+        children: [
+          DecoratedBox(
+            decoration: BoxDecoration(
+              color: context.colorScheme.background,
+              borderRadius: SizeEnum.hexa.size.radiusCircle,
+            ),
+            child: child,
+          ),
+          _closeButton(context),
+        ],
+      ),
+    );
+  }
+
+  Positioned _closeButton(BuildContext context) {
+    return Positioned(
+      top: 10,
+      right: 10,
+      child: CloseButton(
+        color: Colors.white,
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all<Color>(
+            context.colorScheme.errorContainer,
+          ),
         ),
-        child: child,
       ),
     );
   }

@@ -47,6 +47,11 @@ final class LightTheme extends ITheme {
         background: Colors.white,
         onBackground: Colors.black,
         // --------------------------------
+        error: Color(0xFFCF0A0A),
+        errorContainer: Color(0xFFDC5F00),
+        onError: Colors.white,
+        onErrorContainer: Colors.white,
+        // --------------------------------
         surfaceTint: Colors.blueGrey,
         //
         shadow: Color(0xFFC5C5C5),

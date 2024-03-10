@@ -18,36 +18,30 @@ class TBLCompanyAdapter extends TypeAdapter<TBLCompany> {
     };
     return TBLCompany(
       uid: fields[0] as String?,
-      userUid: fields[1] as String?,
-      name: fields[2] as String?,
-      identityNo: fields[4] as String?,
-      email: fields[3] as String?,
-      phone: fields[5] as String?,
-      address: fields[6] as String?,
-      isActive: fields[7] as bool?,
+      name: fields[1] as String?,
+      identityNo: fields[3] as String?,
+      email: fields[2] as String?,
+      phone: fields[4] as String?,
+      address: fields[5] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, TBLCompany obj) {
     writer
-      ..writeByte(8)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.uid)
       ..writeByte(1)
-      ..write(obj.userUid)
-      ..writeByte(2)
       ..write(obj.name)
-      ..writeByte(3)
+      ..writeByte(2)
       ..write(obj.email)
-      ..writeByte(4)
+      ..writeByte(3)
       ..write(obj.identityNo)
-      ..writeByte(5)
+      ..writeByte(4)
       ..write(obj.phone)
-      ..writeByte(6)
-      ..write(obj.address)
-      ..writeByte(7)
-      ..write(obj.isActive);
+      ..writeByte(5)
+      ..write(obj.address);
   }
 
   @override

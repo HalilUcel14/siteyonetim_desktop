@@ -17,6 +17,7 @@ class _ApartmentFormState extends State<ApartmentForm> with ApartmentFormMixin {
   Widget build(BuildContext context) {
     return Form(
       key: FormKeys.of.apartmentFormKey,
+      // --------------------------------
       child: SingleChildScrollView(
         child: ColumnWithSpacing(
           mainAxisSize: MainAxisSize.min,
@@ -24,15 +25,7 @@ class _ApartmentFormState extends State<ApartmentForm> with ApartmentFormMixin {
           spacing: SizeEnum.hexa.size,
           children: [
             // --------------------------------
-            Text(
-              TableText.createDaire.text,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
-            ),
-            // --------------------------------
-            const Divider(),
+            FormTitle(title: TableText.createApartman.text),
             // --------------------------------
             CustomTextFormField(
               context,
@@ -95,19 +88,9 @@ class _ApartmentFormState extends State<ApartmentForm> with ApartmentFormMixin {
               ),
             ),
             // --------------------------------
-            RowWithSpacing(
-              mainAxisAlignment: MainAxisAlignment.center,
-              spacing: SizeEnum.ennea.size,
-              children: [
-                ElevatedButton(
-                  onPressed: () => goToBack(),
-                  child: Text(AppString.close.text),
-                ),
-                ElevatedButton(
-                  onPressed: () async => await formValidation(),
-                  child: Text(AppString.save.text),
-                ),
-              ],
+            ElevatedButton(
+              onPressed: () async => await formValidation(),
+              child: Text(AppString.save.text),
             ),
           ],
         ).padding(pad: SizeEnum.ennea.size.withPaddingAll),
