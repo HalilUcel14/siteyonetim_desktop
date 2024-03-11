@@ -40,6 +40,7 @@ class _DetailDialogsState extends State<DetailDialogs> with DetailDialogMixin {
               color: iconDataColor,
             ),
           ),
+          // --------------------------------
           Text(widget.title),
           // --------------------------------
           ElevatedButton(

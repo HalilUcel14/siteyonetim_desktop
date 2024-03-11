@@ -6,16 +6,17 @@ import 'package:flutter/material.dart';
 
 import '../../index.dart';
 
-class EvSahibiList extends StatelessWidget {
-  const EvSahibiList({super.key});
+class KiraciList extends StatelessWidget {
+  const KiraciList({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-      valueListenable: HiveBoxesObject.of.evSahibiDB.boxListenable,
+      valueListenable: HiveBoxesObject.of.kiraciDB.boxListenable,
       builder: (context, box, child) {
-        List<TBLEvSahibi> list = box.values.toList();
+        List<TBLKiraci> list = box.values.toList();
         //
+
         return Stack(
           children: [
             // --------------------------------
@@ -26,7 +27,7 @@ class EvSahibiList extends StatelessWidget {
               right: SizeEnum.hexa.size,
               child: FloatingActionButton(
                 onPressed: () => context.customShowDialog(
-                  const FormViewDialog(child: EvSahibiForm()),
+                  const FormViewDialog(child: KiraciForm()),
                 ),
                 child: const Icon(Icons.add),
               ),
@@ -34,36 +35,29 @@ class EvSahibiList extends StatelessWidget {
             // --------------------------------
           ],
         );
-
-        //
       },
     );
   }
 
-  Center buildEmptyList() => const Center(child: Text('Ev Sahibi Yok'));
+  Center buildEmptyList() => const Center(child: Text('Kiraci Yok'));
 
-  Widget buildList(List<TBLEvSahibi> list, BuildContext context) {
+  Widget buildList(List<TBLKiraci> list, BuildContext context) {
     return Column(
       children: [
-        // ------------------------
-        FormTitle(title: TableText.listOwner.text),
-        // ------------------------
         ListView.separated(
           itemCount: list.length,
           separatorBuilder: (context, index) => const Divider(),
           itemBuilder: (context, index) {
-            // ------------------------
             return Card(
               child: ListTile(
                 title: Text('${list[index].customer?.name}'),
                 subtitle: Text('${list[index].customer?.email}'),
                 leading: const Icon(Icons.person),
-                onTap: () => context.pop<TBLEvSahibi>(result: list[index]),
+                onTap: () => context.pop<TBLKiraci>(result: list[index]),
               ),
             );
           },
         ).expanded(),
-        // ------------------------
       ],
     ).padding(pad: SizeEnum.hexa.size.withPaddingAll);
   }

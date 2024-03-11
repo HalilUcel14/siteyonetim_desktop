@@ -7,24 +7,24 @@ import 'package:flutter/material.dart';
 
 import '../../index.dart';
 
-mixin EvSahibiFormMixin on State<EvSahibiForm> {
+mixin KiraciFormMixin on State<KiraciForm> {
   late GlobalKey<CustomerFormState> customerKey;
 
   @override
   void initState() {
     super.initState();
     customerKey = GlobalKey();
-    FormKeys.of.evSahibiFormKey = GlobalKey<FormState>();
+    FormKeys.of.kiraciFormKey = GlobalKey<FormState>();
   }
 
   @override
   void dispose() {
     customerKey.currentState?.dispose();
-    FormKeys.of.evSahibiFormKey.currentState?.dispose();
+    FormKeys.of.kiraciFormKey.currentState?.dispose();
     super.dispose();
   }
 
-  void saveFormNewOwner() async {
+  void saveFormNewTenant() async {
     if (FormKeys.of.customerFormKey.currentState == null) return;
     if (!FormKeys.of.customerFormKey.currentState!.validate()) return;
     //
@@ -42,7 +42,7 @@ mixin EvSahibiFormMixin on State<EvSahibiForm> {
     }
 
     //
-    TBLEvSahibi owner = TBLEvSahibi(
+    TBLKiraci tenant = TBLKiraci(
       uid: RandomKey.generate(),
       userUid: HiveBoxesObject.of.metaDB.userUid,
       customer: customer,
@@ -50,13 +50,13 @@ mixin EvSahibiFormMixin on State<EvSahibiForm> {
     );
     //
     final bool response =
-        await HiveBoxesObject.of.evSahibiDB.addNewOwner(owner);
+        await HiveBoxesObject.of.kiraciDB.addNewTenant(tenant);
     //
     if (!context.mounted) return;
     if (!response) {
       context.customShowDialog(
         const CustomUserDialog.error(
-          text: 'Ev Sahibi Eklenemedi',
+          text: 'Kiracı Eklenemedi',
         ),
       );
       return;

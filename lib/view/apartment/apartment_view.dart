@@ -19,7 +19,11 @@ class _ApartmentViewState extends State<ApartmentView> with ApartmentViewMixin {
       body: ApartmentViewBody(apartment: apartment),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          context.customShowDialog(const FormViewDialog(child: DaireForm()));
+          context.customShowDialog(
+            FormViewDialog(
+              child: DaireForm(apartment: apartment),
+            ),
+          );
         },
         child: const Icon(Icons.add),
       ),

@@ -1,17 +1,26 @@
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
 import 'package:flutter/material.dart';
-import 'package:siteyonetim/index.dart';
+
+import '../../index.dart';
 
 mixin DetailDialogMixin on State<DetailDialogs> {
   @override
   void initState() {
     super.initState();
+    closeDialog();
   }
 
   @override
   void dispose() {
     super.dispose();
+  }
+
+  Future<void> closeDialog() async {
+    if (!context.mounted) return;
+    await Future.delayed(DurationConst.second(1).duration);
+    // ignore: use_build_context_synchronously
+    Navigator.of(context).pop();
   }
 
   BoxConstraints get boxConstraints => const BoxConstraints(

@@ -6,7 +6,9 @@ import 'package:flutter/material.dart';
 import '../../index.dart';
 
 class DaireForm extends StatefulWidget {
-  const DaireForm({super.key});
+  const DaireForm({super.key, this.apartment});
+
+  final TBLApartment? apartment;
 
   @override
   State<DaireForm> createState() => _DaireFormState();
@@ -113,6 +115,10 @@ class _DaireFormState extends State<DaireForm> with DaireFormMixin {
                   context,
                   controller: tenant,
                   labelText: TableText.daireTenant.text,
+                  suffixIcon: IconButton(
+                    onPressed: () => submitTenantFlats(),
+                    icon: const Icon(Icons.view_list_rounded),
+                  ),
                   validator: (text) => value
                       ? FormValidation.of.text(text, TableText.daireTenant.text)
                       : null,

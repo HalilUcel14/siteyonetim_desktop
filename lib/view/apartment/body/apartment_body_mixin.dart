@@ -1,63 +1,63 @@
 import 'package:app_hive/app_hive.dart';
-import 'package:codeofwidget/codeofwidget.dart';
+import 'package:codeofland/codeofland.dart';
 import 'package:flutter/material.dart';
 
 import '../../../index.dart';
 
 mixin ApartmentBodyMixin on State<ApartmentViewBody> {
+  late ScrollController floorController;
+
   @override
   void initState() {
     super.initState();
+
+    floorController = ScrollController();
   }
 
   @override
   void dispose() {
+    floorController.dispose();
+
     super.dispose();
   }
 
-  String? get userUid => HiveBoxesObject.of.metaDB.meta?.user?.uid;
-
-  Widget buildFlats(dynamic box) {
-    //
+  Widget? haveAnyApartment() {
     if (widget.apartment == null) {
       return const Center(
-        child: Text('Apartman Bilgisi Bulunamadı.'),
+        child: Text('Apartment not found'),
       );
     }
-    //
-    if (userUid == null) {
+    return null;
+  }
+
+  Widget? haveAnyFlats(List<TBLDaire> value) {
+    if (value.isEmpty) {
       return const Center(
-        child: Text('Kullanıcı Bulunamadı.'),
+        child: Text('Flats not found'),
       );
     }
-    //
-    List<TBLApartment> list = box.values.toList();
-    List<TBLApartment> userList =
-        list.where((apartment) => apartment.userUid == userUid).toList();
-    //
-    print(userList);
-    //
-    return ListView.builder(
-      itemCount: widget.apartment!.floorCount,
-      itemBuilder: (context, index) {
-        return floorCard(index);
-      },
-    );
+    return null;
   }
 
-  Widget floorCard(int index) {
-    return Card(
-      child: ColumnWithSpacing(
-        children: [
-          Text('Kat : $index'),
-          //
-          flatsCard(index),
-        ],
-      ),
-    );
+  List<TBLDaire> getApartmentFlats(List<TBLDaire> value) {
+    if (widget.apartment!.uid.isNullOrEmpty) return [];
+    // -----------------------------------
+    return value
+        .where((flats) => flats.apartmentUid == widget.apartment!.uid)
+        .toList();
   }
 
-  Widget flatsCard(int index) {
-    return Text('Daire : $index');
+  List<List<TBLDaire>> getFlatsOnFloor(List<TBLDaire> list) {
+    final List<List<TBLDaire>> result = [];
+    // -----------------------------------
+    for (var i = 0; i < widget.apartment!.floorCount!; i++) {
+      final List<TBLDaire> flatsOnFloor = list.where((flats) {
+        return flats.floor == i + 1;
+      }).toList();
+      result.add(flatsOnFloor);
+    }
+    // -----------------------------------
+    print(result);
+    return result;
   }
 }
