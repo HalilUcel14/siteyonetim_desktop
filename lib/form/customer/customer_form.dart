@@ -6,15 +6,16 @@ import 'package:flutter/material.dart';
 import '../../index.dart';
 
 class CustomerForm extends StatefulWidget {
-  const CustomerForm({super.key});
+  const CustomerForm({Key? key}) : super(key: key);
 
   @override
-  State<CustomerForm> createState() => _CustomerFormState();
+  State<CustomerForm> createState() => CustomerFormState();
 }
 
-class _CustomerFormState extends State<CustomerForm> with CustomerFormMixin {
+class CustomerFormState extends State<CustomerForm> with CustomerFormMixin {
   @override
   Widget build(BuildContext context) {
+    // --------------------------------
     return Form(
       key: FormKeys.of.customerFormKey,
       // --------------------------------
@@ -96,11 +97,6 @@ class _CustomerFormState extends State<CustomerForm> with CustomerFormMixin {
                 text,
                 TableText.customerAdres.text,
               ),
-            ),
-            // --------------------------------
-            ElevatedButton(
-              onPressed: () => saveFormNewCustomer(),
-              child: const Text('Kaydet'),
             ),
             // --------------------------------
           ],

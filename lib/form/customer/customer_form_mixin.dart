@@ -40,14 +40,10 @@ mixin CustomerFormMixin on State<CustomerForm> {
     super.dispose();
   }
 
-  CustomerModel saveFormNewCustomer() {
+  CustomerModel? sendCustomerModel() {
     //
-    if (FormKeys.of.customerFormKey.currentState == null) {
-      return TBLIndividual.empty();
-    }
-    if (!FormKeys.of.customerFormKey.currentState!.validate()) {
-      return TBLIndividual.empty();
-    }
+    if (FormKeys.of.customerFormKey.currentState == null) return null;
+    if (!FormKeys.of.customerFormKey.currentState!.validate()) return null;
     //
     CustomerModel model;
     //
@@ -73,10 +69,6 @@ mixin CustomerFormMixin on State<CustomerForm> {
 
     return model;
   }
-
-  ///
-  ///
-  void goToBack() => Navigator.pop(context);
 
   ///
   ///

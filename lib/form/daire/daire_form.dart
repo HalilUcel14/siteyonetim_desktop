@@ -88,6 +88,7 @@ class _DaireFormState extends State<DaireForm> with DaireFormMixin {
                 return CustomTextFormField(
                   context,
                   controller: owner,
+                  readOnly: true,
                   labelText: TableText.daireOwner.text,
                   suffixIcon: IconButton(
                     onPressed: () => submitOwnerFlats(),

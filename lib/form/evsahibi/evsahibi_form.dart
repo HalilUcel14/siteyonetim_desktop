@@ -15,8 +15,10 @@ class EvSahibiForm extends StatefulWidget {
 class _EvSahibiFormState extends State<EvSahibiForm> with EvSahibiFormMixin {
   @override
   Widget build(BuildContext context) {
+    // --------------------------------
     return Form(
       key: FormKeys.of.evSahibiFormKey,
+      // --------------------------------
       child: SingleChildScrollView(
         child: ColumnWithSpacing(
           spacing: SizeEnum.hexa.size,
@@ -26,7 +28,12 @@ class _EvSahibiFormState extends State<EvSahibiForm> with EvSahibiFormMixin {
             // --------------------------------
             FormTitle(title: TableText.createOwner.text),
             // --------------------------------
-            const CustomerForm(),
+            CustomerForm(key: customerKey),
+            // --------------------------------
+            ElevatedButton(
+              onPressed: () => saveFormNewOwner(),
+              child: const Text('Kaydet'),
+            ),
             // --------------------------------
           ],
         ).padding(pad: SizeEnum.ennea.size.withPaddingAll),

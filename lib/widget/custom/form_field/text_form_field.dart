@@ -12,6 +12,7 @@ final class CustomTextFormField extends TextFormField {
     required String labelText,
     String? hintText,
     super.validator,
+    super.readOnly,
     bool obscureText = false,
     Widget? prefixIcon,
     Widget? suffixIcon,
