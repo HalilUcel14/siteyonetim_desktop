@@ -49,6 +49,8 @@ class _MyAppState extends State<MyApp> with MainAppMixin {
     return MaterialApp(
       title: AppString.materialTitle.text,
       //
+      debugShowCheckedModeBanner: false,
+      //
       builder: (context, child) {
         return Directionality(
           textDirection: TextDirection.ltr,

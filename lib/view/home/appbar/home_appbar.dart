@@ -1,31 +1,36 @@
-import 'package:codeofland/codeofland.dart';
-import 'package:codeofwidget/codeofwidget.dart';
 import 'package:flutter/material.dart';
 
 import '../../../index.dart';
 
-class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
+class HomeAppBar extends StatefulWidget implements PreferredSizeWidget {
   const HomeAppBar({super.key});
 
   @override
-  AppBar build(BuildContext context) {
-    return AppBar(
-      toolbarHeight: double.infinity,
-      leadingWidth: SizeEnum.penta.size * 2,
-      leading: IconButton(
-        onPressed: () => ScaffoldKeys.of.homeKey.openDrawerSafety,
-        icon: LayoutBuilder(builder: (context, constraints) {
-          return Icon(
-            Icons.menu_open_rounded,
-            size: constraints.maxHeight * PercentEnum.pSixty.size,
-          );
-        }),
-      ),
-    );
-  }
+  State<HomeAppBar> createState() => _HomeAppBarState();
 
   @override
   Size get preferredSize => AppBarSize.small.size;
+}
 
-  //
+class _HomeAppBarState extends State<HomeAppBar> with HomeAppBarMixin {
+  @override
+  AppBar build(BuildContext context) {
+    return AppBar(
+      toolbarHeight: toolbarHeight,
+      leadingWidth: leadingWidth,
+      leading: LayoutBuilder(
+        builder: (context, size) {
+          return IconButton(
+            onPressed: () => iconPressed,
+            icon: Icon(Icons.menu_open_rounded, size: iconSize(size)),
+          );
+        },
+      ),
+      title: const CBoldText(
+        'Ana Sayfa',
+        styles: StyleType.labelMedium,
+        type: TextType.secondary,
+      ),
+    );
+  }
 }

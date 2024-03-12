@@ -1,6 +1,4 @@
-import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
-import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 
 import '../../index.dart';
@@ -21,19 +19,8 @@ class _HoveViewState extends State<HomeView> with HomeViewMixin {
       key: ScaffoldKeys.of.homeKey,
       appBar: const HomeAppBar(),
       drawer: const HomeViewDrawer(),
-      body: const HomeViewBody().padding(
-        pad: SizeEnum.hexa.size.withPaddingAll,
-      ),
-      floatingActionButton: floatingButton(context),
-    );
-  }
-
-  FloatingActionButton floatingButton(BuildContext context) {
-    return FloatingActionButton(
-      child: const Icon(Icons.home),
-      onPressed: () => context.customShowDialog(
-        const FormViewDialog(child: ApartmentForm()),
-      ),
+      body: const HomeViewBody().padding(pad: padding),
+      floatingActionButton: floatingButton,
     );
   }
 }

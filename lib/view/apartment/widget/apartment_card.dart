@@ -27,18 +27,19 @@ class ApartmentCard extends StatelessWidget {
               MyRoute.apartment.name,
               agrument: apartment,
             ),
-            child: Text(
+            child: CBoldText(
               '${apartment.name}',
+              styles: StyleType.bodyLarge,
               style: TextStyles.bodyLarge.style(context)?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
             ),
           ).expanded(),
           // --------------------------
-          BoldText(
+          CBoldText(
             '(${apartment.buildYear!.year})',
-            styles: TextStyles.bodyLarge,
-            style: const TextStyle(fontWeight: FontWeight.bold),
+            styles: StyleType.headlineLarge,
+            type: TextType.error,
           ).expanded(),
           // --------------------------
         ],

@@ -6,3 +6,4 @@ export './dialog/detail_dialog.dart';
 export './dialog/detail_dialog_mixin.dart';
 export './dialog/user_dialog.dart';
 export './form_view/form_view.dart';
+export './text/index.dart';
