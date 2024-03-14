@@ -1,5 +1,6 @@
 import 'package:app_hive/app_hive.dart';
 import 'package:codeofland/codeofland.dart';
+import 'package:flutter/material.dart';
 
 class FormValidator {
   static FormValidator? _of;
@@ -22,5 +23,12 @@ class FormValidator {
     if (!value.isValidMediumPassword) return FormError.notValidPassword.text;
     //
     return null;
+  }
+
+  bool confirmPasswordValidator(
+    TextEditingController password,
+    TextEditingController confirmPassword,
+  ) {
+    return password.text.trim() == confirmPassword.text.trim();
   }
 }
