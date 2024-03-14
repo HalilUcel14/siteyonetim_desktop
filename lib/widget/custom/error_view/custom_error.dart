@@ -1,37 +1,29 @@
 import 'package:codeofland/codeofland.dart';
-import 'package:codeofwidget/codeofwidget.dart';
 import 'package:flutter/material.dart';
 
-class CustomErrorWidget extends StatelessWidget {
-  final FlutterErrorDetails errorDetails;
-  //
-  const CustomErrorWidget({
-    super.key,
-    required this.errorDetails,
-  });
+class CustomErrorView extends StatelessWidget {
+  const CustomErrorView({super.key, required this.details});
+
+  final FlutterErrorDetails details;
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: ColumnWithSpacing(
-        spacing: SizeEnum.hexa.size,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            Icons.error_outline,
-            color: Colors.red,
-            size: SizeEnum.mega.size,
-          ),
-          const WBoldText(
-            'Error Occurred!',
-            wStyle: WTextStyle.titleLarge,
-          ),
-          WBoldText(
-            errorDetails.exceptionAsString(),
-            textAlign: TextAlign.center,
-            wStyle: WTextStyle.bodyMedium,
-          ),
-        ],
+    return Material(
+      child: Container(
+        color: Colors.green.shade600,
+        child: Builder(builder: (context) {
+          return Column(
+            children: [
+              Center(
+                child: Text(details.exception.toString()),
+              ),
+              ElevatedButton(
+                onPressed: () => context.pop(),
+                child: const Text('Geri Dön'),
+              ),
+            ],
+          );
+        }),
       ),
     );
   }

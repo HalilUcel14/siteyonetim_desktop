@@ -12,24 +12,7 @@ void main() async {
   await HiveBoxesObject.of.initBoxes();
   //
   ErrorWidget.builder = (FlutterErrorDetails details) {
-    return Material(
-      child: Container(
-        color: Colors.green.shade600,
-        child: Builder(builder: (context) {
-          return Column(
-            children: [
-              Center(
-                child: Text(details.exception.toString()),
-              ),
-              ElevatedButton(
-                onPressed: () => context.pop(),
-                child: const Text('Geri Dön'),
-              ),
-            ],
-          );
-        }),
-      ),
-    );
+    return CustomErrorView(details: details);
   };
   //
   runApp(const MyApp());
