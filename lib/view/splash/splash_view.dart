@@ -51,7 +51,7 @@ class _SplashChild extends StatelessWidget {
         builder: (context, constraints) {
           return WIconAsset(
             path: MyAsset.apartment.iconPng,
-            size: constraints.maxWidth * PercentEnum.pNinety.size,
+            size: constraints.maxWidth * WPercent.pNinety.size,
           );
         },
       );

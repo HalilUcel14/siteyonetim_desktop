@@ -1,6 +1,6 @@
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
-import 'package:core/core.dart';
+
 import 'package:flutter/material.dart';
 
 import '../../index.dart';
@@ -26,7 +26,9 @@ mixin HomeViewMixin on State<HomeView> {
       onPressed: () {
         if (!context.mounted) return;
         context.customShowDialog(
-          const FormViewDialog(child: ApartmentForm()),
+          dialog: CustomDialog(
+            child: const FormViewDialog(child: ApartmentForm()),
+          ),
         );
       },
     );

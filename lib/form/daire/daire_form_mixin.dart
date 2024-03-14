@@ -1,6 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:app_hive/app_hive.dart';
 import 'package:codeofland/codeofland.dart';
-import 'package:codeofland/other/random_key/random_key.dart';
+import 'package:codeofwidget/codeofwidget.dart';
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 
@@ -76,8 +78,10 @@ mixin DaireFormMixin on State<DaireForm> {
     //
     if (daire.apartmentUid.isNullOrEmpty) {
       context.customShowDialog(
-        const CustomUserDialog.error(
-          text: 'Apartman Verisi Seçilmedi',
+        dialog: CustomDialog(
+          child: const CustomUserDialog.error(
+            text: 'Apartman Verisi Seçilmedi',
+          ),
         ),
       );
       return;
@@ -85,8 +89,10 @@ mixin DaireFormMixin on State<DaireForm> {
     //
     if (daire < widget.apartment!) {
       context.customShowDialog(
-        const CustomUserDialog.error(
-          text: 'Daire Kat ve Kapı No su Apartman Kat ve Daire nosunu aşamaz',
+        dialog: CustomDialog(
+          child: const CustomUserDialog.error(
+            text: 'Daire Kat ve Kapı No su Apartman Kat ve Daire nosunu aşamaz',
+          ),
         ),
       );
       return;
@@ -97,8 +103,10 @@ mixin DaireFormMixin on State<DaireForm> {
     if (!context.mounted) return;
     if (!response) {
       context.customShowDialog(
-        const CustomUserDialog.error(
-          text: 'Daire Eklenemedi',
+        dialog: CustomDialog(
+          child: const CustomUserDialog.error(
+            text: 'Daire Eklenemedi',
+          ),
         ),
       );
       return;
@@ -114,8 +122,10 @@ mixin DaireFormMixin on State<DaireForm> {
   void submitOwnerFlats() async {
     //
     ownerValue = await context.customShowDialog<TBLEvSahibi>(
-      const FormViewDialog(
-        child: EvSahibiList(),
+      dialog: CustomDialog(
+        child: const FormViewDialog(
+          child: EvSahibiList(),
+        ),
       ),
     );
     //
@@ -129,8 +139,10 @@ mixin DaireFormMixin on State<DaireForm> {
   void submitTenantFlats() async {
     //
     tenantValue = await context.customShowDialog<TBLKiraci>(
-      const FormViewDialog(
-        child: KiraciList(),
+      dialog: CustomDialog(
+        child: const FormViewDialog(
+          child: KiraciList(),
+        ),
       ),
     );
     //

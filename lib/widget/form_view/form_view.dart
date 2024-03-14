@@ -28,8 +28,8 @@ class FormViewDialog extends StatelessWidget {
 
   Positioned _closeButton(BuildContext context) {
     return Positioned(
-      top: 10,
-      right: 10,
+      top: 8,
+      right: 8,
       child: CloseButton(
         color: Colors.white,
         style: ButtonStyle(

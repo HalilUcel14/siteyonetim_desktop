@@ -1,7 +1,7 @@
 import 'package:app_hive/app_hive.dart';
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
-import 'package:core/core.dart';
+
 import 'package:flutter/material.dart';
 
 import '../../index.dart';
@@ -26,7 +26,7 @@ class EvSahibiList extends StatelessWidget {
               right: SizeEnum.hexa.size,
               child: FloatingActionButton(
                 onPressed: () => context.customShowDialog(
-                  const FormViewDialog(child: EvSahibiForm()),
+                  dialog: CustomDialog(child: const EvSahibiForm()),
                 ),
                 child: const Icon(Icons.add),
               ),

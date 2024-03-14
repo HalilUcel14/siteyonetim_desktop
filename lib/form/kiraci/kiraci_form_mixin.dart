@@ -2,7 +2,7 @@
 
 import 'package:app_hive/app_hive.dart';
 import 'package:codeofland/other/random_key/random_key.dart';
-import 'package:core/core.dart';
+import 'package:codeofwidget/codeofwidget.dart';
 import 'package:flutter/material.dart';
 
 import '../../index.dart';
@@ -34,8 +34,10 @@ mixin KiraciFormMixin on State<KiraciForm> {
     if (!context.mounted) return;
     if (customer == null) {
       context.customShowDialog(
-        const CustomUserDialog.error(
-          text: 'Müşteri Verileri Girilmedi',
+        dialog: CustomDialog(
+          child: const CustomUserDialog.error(
+            text: 'Müşteri Verileri Girilmedi',
+          ),
         ),
       );
       return;
@@ -55,8 +57,10 @@ mixin KiraciFormMixin on State<KiraciForm> {
     if (!context.mounted) return;
     if (!response) {
       context.customShowDialog(
-        const CustomUserDialog.error(
-          text: 'Kiracı Eklenemedi',
+        dialog: CustomDialog(
+          child: const CustomUserDialog.error(
+            text: 'Kiracı Eklenemedi',
+          ),
         ),
       );
       return;

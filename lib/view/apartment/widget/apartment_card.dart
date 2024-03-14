@@ -23,16 +23,12 @@ class ApartmentCard extends StatelessWidget {
           ).padding(pad: SizeEnum.octa.size.withPaddingAll).expanded(flex: 5),
           // -------------------------
           BorderButton(
-            onPressed: () async => await context.pushNamed(
+            onPressed: () async => await Navigator.of(context).pushNamed(
               MyRoute.apartment.name,
-              agrument: apartment,
+              arguments: apartment,
             ),
-            child: CBoldText(
+            child: WBoldText(
               '${apartment.name}',
-              styles: StyleType.bodyLarge,
-              style: TextStyles.bodyLarge.style(context)?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
             ),
           ).expanded(),
           // --------------------------

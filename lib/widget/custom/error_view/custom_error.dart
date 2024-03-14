@@ -22,14 +22,14 @@ class CustomErrorWidget extends StatelessWidget {
             color: Colors.red,
             size: SizeEnum.mega.size,
           ),
-          const BoldText(
+          const WBoldText(
             'Error Occurred!',
-            styles: TextStyles.titleLarge,
+            wStyle: WTextStyle.titleLarge,
           ),
-          BoldText(
+          WBoldText(
             errorDetails.exceptionAsString(),
             textAlign: TextAlign.center,
-            styles: TextStyles.bodyMedium,
+            wStyle: WTextStyle.bodyMedium,
           ),
         ],
       ),

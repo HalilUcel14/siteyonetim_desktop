@@ -1,4 +1,4 @@
-import 'package:core/core.dart';
+import 'package:codeofwidget/codeofwidget.dart';
 import 'package:flutter/material.dart';
 
 import '../../index.dart';
@@ -20,8 +20,10 @@ class _ApartmentViewState extends State<ApartmentView> with ApartmentViewMixin {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           context.customShowDialog(
-            FormViewDialog(
-              child: DaireForm(apartment: apartment),
+            dialog: CustomDialog(
+              child: FormViewDialog(
+                child: DaireForm(apartment: apartment),
+              ),
             ),
           );
         },

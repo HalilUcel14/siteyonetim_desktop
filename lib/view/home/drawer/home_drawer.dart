@@ -16,7 +16,7 @@ final class HomeViewDrawer extends StatelessWidget with HomeDrawerMixin {
           return ColumnWithSpacing(
             children: [
               CircleAvatar(
-                radius: constraints.maxWidth * PercentEnum.pQuarter.size,
+                radius: constraints.maxWidth * WPercent.pQuarter.size,
                 backgroundColor: context.colorScheme.primary,
               ),
               //
