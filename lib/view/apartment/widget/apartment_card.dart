@@ -32,10 +32,10 @@ class ApartmentCard extends StatelessWidget {
             ),
           ).expanded(),
           // --------------------------
-          CBoldText(
+          WBoldText(
             '(${apartment.buildYear!.year})',
-            styles: StyleType.headlineLarge,
-            type: TextType.error,
+            wStyle: WTextStyle.titleLarge,
+            wColor: WTextColor.onError,
           ).expanded(),
           // --------------------------
         ],

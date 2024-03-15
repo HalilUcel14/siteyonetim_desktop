@@ -32,20 +32,27 @@ class _DetailDialogsState extends State<DetailDialogs> with DetailDialogMixin {
         children: [
           // --------------------------------
           CircleAvatar(
-            radius: SizeEnum.tetra.size,
+            radius: SizeEnum.penta.size,
             backgroundColor: iconColor,
             child: Icon(
               icon,
-              size: SizeEnum.penta.size,
+              size: SizeEnum.mega.size,
               color: iconDataColor,
             ),
           ),
           // --------------------------------
-          Text(widget.title),
+          Card(
+            child: WBoldText(
+              widget.title,
+              wStyle: WTextStyle.bodyLarge,
+              wColor: WTextColor.onPrimary,
+              style: const TextStyle(),
+            ).padding(pad: 8.withPaddingAll),
+          ),
           // --------------------------------
           ElevatedButton(
-            onPressed: () {},
-            child: const Text('Kapat'),
+            onPressed: () => context.pop(),
+            child: const WBoldText('Kapat'),
           ),
         ],
       ),

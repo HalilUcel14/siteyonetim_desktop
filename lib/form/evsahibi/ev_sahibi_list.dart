@@ -26,7 +26,11 @@ class EvSahibiList extends StatelessWidget {
               right: SizeEnum.hexa.size,
               child: FloatingActionButton(
                 onPressed: () => context.customShowDialog(
-                  dialog: CustomDialog(child: const EvSahibiForm()),
+                  dialog: CustomDialog(
+                    child: const FormViewDialog(
+                      child: EvSahibiForm(),
+                    ),
+                  ),
                 ),
                 child: const Icon(Icons.add),
               ),

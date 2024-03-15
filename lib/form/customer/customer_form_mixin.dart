@@ -94,35 +94,12 @@ mixin CustomerFormMixin on State<CustomerForm> {
     if (int.tryParse(text!) == null) return '$label tamsayı olmalıdır.';
     // ------------------------------
     if (!customerChoose.value) {
-      if (text.isIndividualIdentity) return '$label 11 haneli olmalıdır.';
+      if (!text.isIndividualIdentity) return '$label 11 haneli olmalıdır.';
     } else {
-      if (text.isCompanyIdentity) return '$label 11 veya 10 haneli olmalıdır.';
+      if (!text.isCompanyIdentity) return '$label 11 veya 10 haneli olmalıdır.';
     }
     // ------------------------------
     if (int.parse(text) < 0) return '$label 0 dan büyük olmalıdır.';
     return null;
   }
 }
-    //
-    // final TBLEvSahibi owner = TBLEvSahibi(
-    //   uid: RandomKey.generate(),
-    //   userUid: HiveBoxesObject.of.metaDB.meta?.user?.uid,
-    //   customer: model,
-    //   isActive: true,
-    // );
-    // //
-    // final response = await HiveBoxesObject.of.evSahibiDB.addNewOwner(owner);
-    // //
-    // if (!context.mounted) return;
-    // //
-    // if (!response) {
-    //   context.showSnackBar(
-    //     const SnackBar(
-    //       content: Text('Kayıt başarısız.'),
-    //       backgroundColor: Colors.red,
-    //     ),
-    //   );
-    //   return;
-    // }
-    // //
-    // goToBack();

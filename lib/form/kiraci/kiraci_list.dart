@@ -27,7 +27,9 @@ class KiraciList extends StatelessWidget {
               child: FloatingActionButton(
                 onPressed: () => context.customShowDialog(
                   dialog: CustomDialog(
-                    child: const KiraciForm(),
+                    child: const FormViewDialog(
+                      child: KiraciForm(),
+                    ),
                   ),
                 ),
                 child: const Icon(Icons.add),

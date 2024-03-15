@@ -8,7 +8,6 @@ mixin DetailDialogMixin on State<DetailDialogs> {
   @override
   void initState() {
     super.initState();
-    closeDialog();
   }
 
   @override
@@ -16,23 +15,16 @@ mixin DetailDialogMixin on State<DetailDialogs> {
     super.dispose();
   }
 
-  Future<void> closeDialog() async {
-    if (!context.mounted) return;
-    await Future.delayed(DurationConst.second(1).duration);
-    // ignore: use_build_context_synchronously
-    Navigator.of(context).pop();
-  }
-
   BoxConstraints get boxConstraints => const BoxConstraints(
         maxWidth: 300,
         minHeight: 150,
-        minWidth: 200,
+        minWidth: 300,
         maxHeight: 200,
       );
 
   BoxDecoration get decoration => BoxDecoration(
         color: containerColor(widget.type),
-        borderRadius: SizeEnum.ennea.size.radiusCircle,
+        borderRadius: SizeEnum.hexa.size.radiusCircle,
         boxShadow: [
           BoxShadow(
             color: context.colorScheme.shadow,
@@ -69,7 +61,7 @@ mixin DetailDialogMixin on State<DetailDialogs> {
     }
   }
 
-  Color get iconColor => context.colorScheme.tertiary;
+  Color get iconColor => context.colorScheme.tertiaryContainer;
 
   Color get iconDataColor => context.colorScheme.primary;
 }

@@ -1,3 +1,4 @@
+import 'package:codeofwidget/codeofwidget.dart';
 import 'package:flutter/material.dart';
 
 import '../../../index.dart';
@@ -26,10 +27,10 @@ class _HomeAppBarState extends State<HomeAppBar> with HomeAppBarMixin {
           );
         },
       ),
-      title: const CBoldText(
+      title: const WBoldText(
         'Ana Sayfa',
-        styles: StyleType.labelMedium,
-        type: TextType.secondary,
+        wStyle: WTextStyle.labelMedium,
+        wColor: WTextColor.onPrimary,
       ),
     );
   }

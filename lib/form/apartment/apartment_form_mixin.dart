@@ -2,6 +2,7 @@
 
 import 'package:app_hive/app_hive.dart';
 import 'package:codeofland/codeofland.dart';
+import 'package:codeofwidget/codeofwidget.dart';
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 
@@ -43,20 +44,24 @@ mixin ApartmentFormMixin on State<ApartmentForm> {
     if (FormKeys.of.apartmentFormKey.currentState == null) return;
     if (!FormKeys.of.apartmentFormKey.currentState!.validate()) return;
     //
-    final String? userUid = HiveBoxesObject.of.metaDB.meta?.user?.uid;
+    final String? userUid = HiveBoxesObject.of.metaDB.userUid;
     //
     if (!context.mounted) return;
     //
-    if (userUid == null) {
-      context.showSnackBar(
-        const SnackBar(content: Text('Kullanıcı Bulunamadı')),
+    if (userUid != null) {
+      context.customShowDialog(
+        dialog: CustomDialog(
+          child: const CustomUserDialog.error(
+            text: 'Kullanıcı Bulunamadı',
+          ),
+        ),
       );
       return;
     }
     //
     final response = await HiveBoxesObject.of.apartmentDB.createNewApartment(
       name.text.trim(),
-      userUid,
+      HiveBoxesObject.of.metaDB.userUid!,
       address.text.trim(),
       int.parse(floorCount.text.trim()),
       int.parse(flatsCount.text.trim()),
