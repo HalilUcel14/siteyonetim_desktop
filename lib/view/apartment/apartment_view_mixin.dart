@@ -22,7 +22,8 @@ mixin ApartmentViewMixin on State<ApartmentView> {
 
   @override
   void didChangeDependencies() {
-    apartment = context.genericObject<TBLApartment>();
+    //  genericObject<TBLApartment>();
+    apartment = context.getArgumentsWithTpye<TBLApartment>();
     //
     if (apartment == null) context.pop();
     //

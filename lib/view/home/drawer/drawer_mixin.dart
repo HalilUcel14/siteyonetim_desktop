@@ -3,8 +3,6 @@ import 'package:codeofland/codeofland.dart';
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 
-import '../../../index.dart';
-
 mixin HomeDrawerMixin on StatelessWidget {
   Future<String> userName() async {
     final metaData = AppMetaDataBase();
@@ -21,7 +19,7 @@ mixin HomeDrawerMixin on StatelessWidget {
     await metaData.openBox();
     await metaData.logOutUser(MetaKeys.key.text);
     //
-    await ScaffoldKeys.of.homeKey.pushNamedAndRemoveUntil(
+    await ScaffoldKeys.of.homeKey.pushReplacementNamedNullable(
       MyRoute.authLogin.name,
     );
   }

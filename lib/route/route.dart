@@ -1,7 +1,7 @@
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 
-import '../../index.dart';
+import '../index.dart';
 
 class RouteType<T> {
   final String name;

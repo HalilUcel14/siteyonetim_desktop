@@ -1,6 +1,7 @@
 import 'package:app_hive/app_hive.dart';
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
+import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 
 import '../../../index.dart';
@@ -68,9 +69,9 @@ class _RegisterFormState extends State<RegisterForm> with RegisterFormMixin {
                 child: Text(FormText.signInButton.text),
               ),
             ],
-          ).horizontalScrollView
+          ).scrollHorizontal()
         ],
-      ).padding(pad: SizeEnum.hexa.size.withPaddingAll).verticalScrollView,
+      ).padding(pad: SizeEnum.hexa.size.withPaddingAll).scrollVertical(),
     );
   }
 }

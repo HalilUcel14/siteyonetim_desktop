@@ -1,6 +1,7 @@
 import 'package:app_hive/app_hive.dart';
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
+import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 
 import '../../../index.dart';
@@ -17,6 +18,7 @@ class _LoginFormState extends State<LoginForm> with LoginFormMixin {
   Widget build(BuildContext context) {
     return Form(
       key: FormKeys.of.loginFormKey,
+      // -----------------------------
       child: ColumnWithSpacing(
         mainAxisAlignment: MainAxisAlignment.center,
         spacing: SizeEnum.tetra.size,
@@ -51,9 +53,9 @@ class _LoginFormState extends State<LoginForm> with LoginFormMixin {
                 child: Text(FormText.signUpButton.text),
               ),
             ],
-          ).horizontalScrollView
+          ).scrollHorizontal()
         ],
-      ).padding(pad: SizeEnum.hexa.size.withPaddingAll).verticalScrollView,
+      ).padding(pad: SizeEnum.hexa.size.withPaddingAll).scrollVertical(),
     );
   }
 }

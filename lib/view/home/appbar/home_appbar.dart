@@ -10,7 +10,7 @@ class HomeAppBar extends StatefulWidget implements PreferredSizeWidget {
   State<HomeAppBar> createState() => _HomeAppBarState();
 
   @override
-  Size get preferredSize => AppBarSize.small.size;
+  Size get preferredSize => WAppBarSize.small.size;
 }
 
 class _HomeAppBarState extends State<HomeAppBar> with HomeAppBarMixin {

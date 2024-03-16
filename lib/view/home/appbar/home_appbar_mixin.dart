@@ -1,5 +1,6 @@
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
+import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 
 import '../../../index.dart';
@@ -10,5 +11,5 @@ mixin HomeAppBarMixin on State<HomeAppBar> {
 
   double iconSize(BoxConstraints size) => size.maxHeight * WPercent.pHalf.size;
 
-  void get iconPressed => ScaffoldKeys.of.homeKey.openDrawerSafety;
+  void get iconPressed => ScaffoldKeys.of.homeKey.openDrawerNullable;
 }

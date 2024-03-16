@@ -4,8 +4,6 @@ import 'package:codeofwidget/codeofwidget.dart';
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 
-import '../../../index.dart';
-
 class ApartmentCard extends StatelessWidget {
   final TBLApartment apartment;
   const ApartmentCard({super.key, required this.apartment});
