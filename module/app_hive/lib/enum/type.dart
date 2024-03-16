@@ -5,3 +5,10 @@ enum UserType {
   proPlus,
   express,
 }
+
+enum UserRole {
+  admin,
+  manager,
+  owner,
+  tenant,
+}

@@ -6,4 +6,12 @@ class BoolNotifier extends ValueNotifier<bool> {
   void change() {
     value = !value;
   }
+
+  void setTrue() {
+    value = true;
+  }
+
+  void setFalse() {
+    value = false;
+  }
 }
