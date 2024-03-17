@@ -9,85 +9,33 @@ class HiveUserDatabase extends IHiveManager<HiveUser> {
 
   ValueListenable<Box<HiveUser>> get valueList => box.listenable();
 
-  // ---------------------------------
-
-  Future<bool> addNewUser({
+  HiveUser customUser({
     required String username,
+    required String emailAddress,
     required String password,
-    required String email,
-  }) async {
-    //------------------------------
-    HiveUser user = HiveUser(
+  }) {
+    return HiveUser(
       uid: RandomKey.generate(),
-      createdAt: DateTime.now(),
-      emailAddress: email,
-      password: password,
       username: username,
+      emailAddress: emailAddress,
+      password: password,
+      createdAt: DateTime.now(),
+      isActive: true,
       role: UserRole.manager.name,
       userType: UserType.free.name,
-      isActive: true,
     );
-    //------------------------------
-    if (checkRegisterUserNameOrEmail(username, email)) {
-      return await addBox(user.uid!, user);
-    } else {
-      return false;
-    }
   }
 
-  ///
-  ///
-  bool checkRegisterUserNameOrEmail(String username, String email) {
-    try {
-      List<HiveUser> users = listBox();
-      //
-      for (var user in users) {
-        if (user.username == username || user.emailAddress == email) {
-          return false;
-        }
-      }
-      //
-      return true;
-      //
-    } catch (e) {
-      return false;
-    }
-  }
-
-  /// --------------- [ Login Form check] ---------------
-  HiveUser checkLoginUser(String username, String password) {
-    try {
-      HiveUser? response;
-      List<HiveUser> users = listBox();
-      //
-      for (var user in users) {
-        if (user.username == username && user.password == password) {
-          response = user;
-          break;
-        }
-      }
-      //
-      return response ?? HiveUser.empty();
-      //
-    } catch (e) {
-      return HiveUser.empty();
-    }
+  Future<bool> createUser({
+    required String username,
+    required String emailAddress,
+    required String password,
+  }) {
+    HiveUser user = customUser(
+      username: username,
+      emailAddress: emailAddress,
+      password: password,
+    );
+    return addBox(user.uid!, user);
   }
 }
-
-
-
-
-
-
-
-
-  // HiveUser? findHiveUser(
-  //     List<HiveUser> userList, String username, String password) {
-  //   for (var element in userList) {
-  //     if (element.username == username && element.password == password) {
-  //       return element;
-  //     }
-  //   }
-  //   return null;
-  // }

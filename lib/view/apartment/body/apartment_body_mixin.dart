@@ -57,7 +57,7 @@ mixin ApartmentBodyMixin on State<ApartmentViewBody> {
       result.add(flatsOnFloor);
     }
     // -----------------------------------
-    print(result);
+
     return result;
   }
 }

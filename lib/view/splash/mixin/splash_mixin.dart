@@ -28,7 +28,7 @@ mixin SplashMixin on State<SplashView> {
     //
     AppMetaData? meta = HiveBoxesObject.of.metaDB.meta;
     //
-    if (HiveBoxesObject.of.metaDB.isNullable) return await goToAuth();
+    if (!HiveBoxesObject.of.metaDB.isActiveUser) return await goToAuth();
     //
     if (meta!.lastSign!.isBefore3Days) return await goToAuth();
     //

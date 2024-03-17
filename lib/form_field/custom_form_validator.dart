@@ -1,5 +1,6 @@
 import 'package:codeofland/codeofland.dart';
 import 'package:flutter/material.dart';
+import 'package:siteyonetim/form_field/form_setting.dart';
 
 import '../index.dart';
 
@@ -31,5 +32,15 @@ class FormValidator {
     TextEditingController confirmPassword,
   ) {
     return password.text.trim() == confirmPassword.text.trim();
+  }
+
+  String? userValidator(String? value) {
+    if (value.isNullOrEmpty) return FormError.emptyUserName.text;
+    //
+    if (value!.length < FormSettings.of.userLength) {
+      return FormError.shortUsername.text;
+    }
+    //
+    return null;
   }
 }

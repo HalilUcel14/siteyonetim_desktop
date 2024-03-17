@@ -13,24 +13,13 @@ class AppMetaDataBase extends IHiveManager<AppMetaData> {
 
   String? get userUid => meta?.user?.uid;
 
-  bool get isNullable {
-    if (meta?.lastSign == null ||
-        meta?.uid == null ||
-        meta?.user?.uid == null) {
-      return true;
-    }
-    return false;
-  }
-
-  Future<bool> logOutUser(String id) async {
+  Future<bool> logOutUser() async {
     return await updateBox(
-      id,
+      MetaKeys.key.text,
       AppMetaData(
-        uid: id,
-        user: HiveUser.empty(),
-        lastSign: DateTime.now().subtract(
-          DurationConst.day(7).duration,
-        ),
+        uid: MetaKeys.key.text,
+        user: null,
+        lastSign: null,
       ),
     );
   }

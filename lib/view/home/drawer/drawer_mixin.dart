@@ -17,7 +17,7 @@ mixin HomeDrawerMixin on StatelessWidget {
   void logOutFunction() async {
     final metaData = AppMetaDataBase();
     await metaData.openBox();
-    await metaData.logOutUser(MetaKeys.key.text);
+    await metaData.logOutUser();
     //
     await ScaffoldKeys.of.homeKey.pushReplacementNamedNullable(
       MyRoute.authLogin.name,

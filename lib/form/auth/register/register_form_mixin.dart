@@ -17,34 +17,38 @@ mixin RegisterFormMixin on State<RegisterForm> {
   @override
   void initState() {
     super.initState();
+    // --------------------------------
     userNameController = TextEditingController();
     passwordController = TextEditingController();
     emailController = TextEditingController();
     confirmPasswordController = TextEditingController();
+    // --------------------------------
     FormKeys.of.registerFormKey = GlobalKey<FormState>();
     isObscure = BoolNotifier(true);
   }
 
   @override
   void dispose() {
+    // --------------------------------
     userNameController.dispose();
     passwordController.dispose();
     emailController.dispose();
     confirmPasswordController.dispose();
+    // --------------------------------
     isObscure.dispose();
     FormKeys.of.registerFormKey.currentState?.dispose();
+    // --------------------------------
     super.dispose();
   }
 
   void formValidation() async {
-    if (!context.mounted) return;
     //-----------------------------------
-    if (FormKeys.of.registerFormKey.currentState == null) return;
+    if (FormKeys.of.registerFormKey.safetyValidate()) return;
     //-----------------------------------
-    if (!FormKeys.of.registerFormKey.currentState!.validate()) return;
-    //-----------------------------------
-    if (passwordController.text.trim() !=
-        confirmPasswordController.text.trim()) {
+    if (!FormValidator.of.confirmPasswordValidator(
+      passwordController,
+      confirmPasswordController,
+    )) {
       context.showSnackBar(
         const SnackBar(
           content: Text('Şifreler Uyuşmuyor'),
@@ -53,19 +57,17 @@ mixin RegisterFormMixin on State<RegisterForm> {
       return;
     }
     //-----------------------------------
-    final response = await HiveBoxesObject.of.userDB.addNewUser(
+    final response = await HiveBoxesObject.of.userDB.createUser(
       username: userNameController.text.trim(),
+      emailAddress: emailController.text.trim(),
       password: passwordController.text.trim(),
-      email: emailController.text.trim(),
     );
     //
     if (!context.mounted) return;
     if (!response) {
       context.showSnackBar(
-        const SnackBar(
-          content: Text(
-            'Kayıt İşlemi Başarısız Email yada UserName daha önce kullanılmış olabilir.',
-          ),
+        SnackBar(
+          content: Text(FormError.errorUserRegister.text),
         ),
       );
       return;

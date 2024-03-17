@@ -17,6 +17,7 @@ mixin LoginFormMixin on State<LoginForm> {
     super.initState();
     userNameController = TextEditingController();
     passwordController = TextEditingController();
+    // ------------------------
     isObscure = BoolNotifier(true);
     FormKeys.of.loginFormKey = GlobalKey<FormState>();
   }
@@ -25,44 +26,32 @@ mixin LoginFormMixin on State<LoginForm> {
   void dispose() {
     userNameController.dispose();
     passwordController.dispose();
+    // ------------------------
     isObscure.dispose();
     FormKeys.of.loginFormKey.currentState?.dispose();
     super.dispose();
   }
 
-  void changeObscure() => isObscure.change();
-
-  formValidation() async {
-    if (!context.mounted) return;
+  void formValidation() async {
     //-----------------------------------
-    if (FormKeys.of.loginFormKey.currentState == null) return;
-    //-----------------------------------
-    if (!FormKeys.of.loginFormKey.currentState!.validate()) return;
-    //-----------------------------------
-    final user = HiveBoxesObject.of.userDB.checkLoginUser(
+    // This function check the form validation
+    if (!FormKeys.of.loginFormKey.safetyValidate()) return;
+    //--------------------------------
+    if (DBLoginUser().signIn(
       userNameController.text.trim(),
       passwordController.text.trim(),
-    );
-    //-----------------------------------
-    if (user.uid.isNullOrEmpty) {
-      context.showSnackBar(
-        SnackBar(content: Text(FormError.emptyUserName.text)),
-      );
-      return;
+    )) {
+      return goToHomeView();
     }
-    //-----------------------------------
-    final bool response = await HiveBoxesObject.of.metaDB.logInUser(user);
-    //---------------------------------
+    //--------------------------------
     if (!context.mounted) return;
-    //
-    if (!response) {
-      context.showSnackBar(
-        SnackBar(content: Text(FormError.errorUserSign.text)),
-      );
-      return;
-    }
-    //
-    goToHomeView();
+    // ------------------------
+    context.showSnackBar(
+      SnackBar(
+          content: Text(
+        FormError.errorUserSign.text,
+      )),
+    );
   }
 
   void goToHomeView() async {
@@ -74,6 +63,12 @@ mixin LoginFormMixin on State<LoginForm> {
   void goToRegisterView() async {
     if (context.mounted) {
       await context.pushNamed(MyRoute.authRegister.name);
+    }
+  }
+
+  void goToForgotPasswordView() async {
+    if (context.mounted) {
+      await context.pushNamed(MyRoute.authForgot.name);
     }
   }
 }

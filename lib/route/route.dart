@@ -20,6 +20,7 @@ final class AppRoute {
     MyRoute.splash.name: (context) => const SplashView(),
     MyRoute.authLogin.name: (context) => const LoginView(),
     MyRoute.authRegister.name: (context) => const RegisterView(),
+    MyRoute.authForgot.name: (context) => const ForgotView(),
     MyRoute.apartment.name: (context) => const ApartmentView(),
   };
 }
