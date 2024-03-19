@@ -17,14 +17,14 @@ final class LightTheme extends ITheme {
         titleTextStyle: TextStyle(
           fontWeight: FontWeight.bold,
           color: colorScheme.onBackground,
-          fontSize: SizeEnum.ennea.size,
+          fontSize: SizeType.ennea.size,
         ),
       );
 
   CardTheme get cardTheme => CardTheme(
         color: colorScheme.tertiaryContainer,
         shadowColor: colorScheme.shadow,
-        elevation: SizeEnum.hexa.size,
+        elevation: SizeType.hexa.size,
       );
 
   @override

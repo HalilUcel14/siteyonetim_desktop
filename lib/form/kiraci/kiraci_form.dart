@@ -20,7 +20,7 @@ class _KiraciFormState extends State<KiraciForm> with KiraciFormMixin {
       // --------------------------------
       child: SingleChildScrollView(
         child: ColumnWithSpacing(
-          spacing: SizeEnum.hexa.size,
+          spacing: SizeType.hexa.size,
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -35,7 +35,7 @@ class _KiraciFormState extends State<KiraciForm> with KiraciFormMixin {
             ),
             // --------------------------------
           ],
-        ).padding(pad: SizeEnum.ennea.size.withPaddingAll),
+        ).padding(pad: SizeType.ennea.size.withPaddingAll),
       ),
     );
   }

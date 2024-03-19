@@ -32,11 +32,11 @@ class _DetailDialogsState extends State<DetailDialogs> with DetailDialogMixin {
         children: [
           // --------------------------------
           CircleAvatar(
-            radius: SizeEnum.penta.size,
+            radius: SizeType.penta.size,
             backgroundColor: iconColor,
             child: Icon(
               icon,
-              size: SizeEnum.mega.size,
+              size: SizeType.mega.size,
               color: iconDataColor,
             ),
           ),

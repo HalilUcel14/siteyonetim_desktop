@@ -27,7 +27,7 @@ class _LoginFormState extends State<LoginForm> with LoginFormMixin {
         ),
         // ------------------------
         RowWithSpacing(
-          spacing: SizeEnum.ennea.size,
+          spacing: SizeType.ennea.size,
           children: [
             ElevatedButton(
               onPressed: formValidation,

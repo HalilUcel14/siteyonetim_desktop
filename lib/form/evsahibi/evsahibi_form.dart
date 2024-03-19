@@ -21,7 +21,7 @@ class _EvSahibiFormState extends State<EvSahibiForm> with EvSahibiFormMixin {
       // --------------------------------
       child: SingleChildScrollView(
         child: ColumnWithSpacing(
-          spacing: SizeEnum.hexa.size,
+          spacing: SizeType.hexa.size,
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -36,7 +36,7 @@ class _EvSahibiFormState extends State<EvSahibiForm> with EvSahibiFormMixin {
             ),
             // --------------------------------
           ],
-        ).padding(pad: SizeEnum.ennea.size.withPaddingAll),
+        ).padding(pad: SizeType.ennea.size.withPaddingAll),
       ),
     );
   }

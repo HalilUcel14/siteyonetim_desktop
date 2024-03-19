@@ -50,7 +50,7 @@ class _ApartmentViewBodyState extends State<ApartmentViewBody>
         );
         // -----------------------------------
       },
-    ).padding(pad: SizeEnum.hexa.size.withPaddingAll);
+    ).padding(pad: SizeType.hexa.size.withPaddingAll);
   }
 }
 

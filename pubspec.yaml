@@ -43,7 +43,7 @@ dependencies:
     path: "module/app_hive"
   
   equatable: ^2.0.5
-  codeofland: ^1.4.0
+  codeofland: ^1.4.1
   codeofwidget: ^1.3.0
 
 dev_dependencies:

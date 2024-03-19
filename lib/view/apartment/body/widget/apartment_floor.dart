@@ -16,7 +16,7 @@ class ApartmentFloorCard extends StatelessWidget {
         children: [
           Container(
             height: double.infinity,
-            width: SizeEnum.mega.size,
+            width: SizeType.mega.size,
             decoration: BoxDecoration(
               color: context.colorScheme.secondaryContainer,
               borderRadius: const BorderRadius.only(

@@ -48,7 +48,7 @@ class UserApartmanList extends StatelessWidget {
                 : constraints.maxWidth > 400
                     ? 2
                     : 1,
-        crossAxisSpacing: SizeEnum.hexa.size,
-        mainAxisSpacing: SizeEnum.hexa.size,
+        crossAxisSpacing: SizeType.hexa.size,
+        mainAxisSpacing: SizeType.hexa.size,
       );
 }

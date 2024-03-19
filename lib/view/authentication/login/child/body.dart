@@ -20,7 +20,7 @@ class LoginViewBody extends StatelessWidget {
           ],
         ).withSizedBox(
           height: double.infinity,
-          width: SizeEnum.zeta.size,
+          width: SizeType.zeta.size,
         ),
       ),
     );

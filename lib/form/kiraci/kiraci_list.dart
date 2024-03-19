@@ -22,8 +22,8 @@ class KiraciList extends StatelessWidget {
             list.isEmpty ? buildEmptyList() : buildList(list, context),
             // --------------------------------
             Positioned(
-              bottom: SizeEnum.hexa.size,
-              right: SizeEnum.hexa.size,
+              bottom: SizeType.hexa.size,
+              right: SizeType.hexa.size,
               child: FloatingActionButton(
                 onPressed: () => context.customShowDialog(
                   dialog: CustomDialog(
@@ -62,6 +62,6 @@ class KiraciList extends StatelessWidget {
           },
         ).expanded(),
       ],
-    ).padding(pad: SizeEnum.hexa.size.withPaddingAll);
+    ).padding(pad: SizeType.hexa.size.withPaddingAll);
   }
 }

@@ -31,7 +31,7 @@ class _RegisterFormState extends State<RegisterForm> with RegisterFormMixin {
         ),
         // --------------------------------
         RowWithSpacing(
-          spacing: SizeEnum.ennea.size,
+          spacing: SizeType.ennea.size,
           children: [
             ElevatedButton(
               onPressed: formValidation,

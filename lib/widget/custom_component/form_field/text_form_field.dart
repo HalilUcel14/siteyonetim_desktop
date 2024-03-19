@@ -23,11 +23,11 @@ final class CustomTextFormField extends TextFormField {
             labelText: labelText,
             hintText: hintText,
             prefixIcon: Padding(
-              padding: SizeEnum.hexa.size.withPaddingLeft,
+              padding: SizeType.hexa.size.withPaddingLeft,
               child: prefixIcon,
             ),
             suffixIcon: Padding(
-              padding: SizeEnum.hexa.size.withPaddingRight,
+              padding: SizeType.hexa.size.withPaddingRight,
               child: suffixIcon,
             ),
             errorBorder: FormOutlineBorder(context.colorScheme.error),
@@ -38,7 +38,7 @@ final class CustomTextFormField extends TextFormField {
             ),
             disabledBorder: FormOutlineBorder(context.colorScheme.surface),
             border: FormOutlineBorder(Colors.black),
-            contentPadding: SizeEnum.ennea.size.withPaddingAll,
+            contentPadding: SizeType.ennea.size.withPaddingAll,
           ),
         );
 }

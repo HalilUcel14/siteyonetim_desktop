@@ -24,7 +24,7 @@ mixin DetailDialogMixin on State<DetailDialogs> {
 
   BoxDecoration get decoration => BoxDecoration(
         color: containerColor(widget.type),
-        borderRadius: SizeEnum.hexa.size.radiusCircle,
+        borderRadius: SizeType.hexa.size.radiusCircle,
         boxShadow: [
           BoxShadow(
             color: context.colorScheme.shadow,

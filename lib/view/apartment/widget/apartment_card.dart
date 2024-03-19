@@ -18,7 +18,7 @@ class ApartmentCard extends StatelessWidget {
           WIconAsset(
             path: MyAsset.apartment2.iconPng,
             size: double.infinity,
-          ).padding(pad: SizeEnum.octa.size.withPaddingAll).expanded(flex: 5),
+          ).padding(pad: SizeType.octa.size.withPaddingAll).expanded(flex: 5),
           // -------------------------
           BorderButton(
             onPressed: () async => await Navigator.of(context).pushNamed(
@@ -37,7 +37,7 @@ class ApartmentCard extends StatelessWidget {
           ).expanded(),
           // --------------------------
         ],
-      ).padding(pad: SizeEnum.octa.size.withPaddingAll),
+      ).padding(pad: SizeType.octa.size.withPaddingAll),
     ).aspectRatio(2 / 3);
   }
 }

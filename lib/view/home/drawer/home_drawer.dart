@@ -29,7 +29,7 @@ final class HomeViewDrawer extends StatelessWidget with HomeDrawerMixin {
                 child: const Text('Logout'),
               ),
             ],
-          ).padding(pad: SizeEnum.ennea.size.withPaddingAll);
+          ).padding(pad: SizeType.ennea.size.withPaddingAll);
         },
       ),
     );

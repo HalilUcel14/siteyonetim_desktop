@@ -23,7 +23,7 @@ class _DaireFormState extends State<DaireForm> with DaireFormMixin {
       // --------------------------------
       child: SingleChildScrollView(
         child: ColumnWithSpacing(
-          spacing: SizeEnum.hexa.size,
+          spacing: SizeType.hexa.size,
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -132,7 +132,7 @@ class _DaireFormState extends State<DaireForm> with DaireFormMixin {
               child: const Text('Kaydet'),
             ),
           ],
-        ).padding(pad: SizeEnum.ennea.size.withPaddingAll),
+        ).padding(pad: SizeType.ennea.size.withPaddingAll),
       ),
     );
   }

@@ -21,7 +21,7 @@ class CustomerFormState extends State<CustomerForm> with CustomerFormMixin {
       // --------------------------------
       child: SingleChildScrollView(
         child: ColumnWithSpacing(
-          spacing: SizeEnum.hexa.size,
+          spacing: SizeType.hexa.size,
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

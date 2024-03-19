@@ -24,7 +24,7 @@ class RadioYesNoButton extends StatelessWidget {
           children: [
             Text(title),
             RowWithSpacing(
-              spacing: SizeEnum.hexa.size,
+              spacing: SizeType.hexa.size,
               children: [
                 ...[
                   Radio.adaptive(

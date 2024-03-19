@@ -7,7 +7,7 @@ import '../../../index.dart';
 
 mixin HomeAppBarMixin on State<HomeAppBar> {
   double get toolbarHeight => double.infinity;
-  double get leadingWidth => SizeEnum.penta.size * 2;
+  double get leadingWidth => SizeType.penta.size * 2;
 
   double iconSize(BoxConstraints size) => size.maxHeight * WPercent.pHalf.size;
 

@@ -84,10 +84,10 @@ packages:
     dependency: "direct main"
     description:
       name: codeofland
-      sha256: "87472de991a470d56d6b98d03dcf31b85e41e0c6a135bd5198cb46b6f84ee111"
+      sha256: "451c84151b8a2fefa7938d19b4264666f62561d00a0ee89971c92262ed516a68"
       url: "https://pub.dev"
     source: hosted
-    version: "1.4.0"
+    version: "1.4.1"
   codeofwidget:
     dependency: "direct main"
     description:

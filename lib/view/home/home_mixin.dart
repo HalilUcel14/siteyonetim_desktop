@@ -18,7 +18,7 @@ mixin HomeViewMixin on State<HomeView> {
     super.dispose();
   }
 
-  EdgeInsets get padding => SizeEnum.hexa.size.withPaddingAll;
+  EdgeInsets get padding => SizeType.hexa.size.withPaddingAll;
 
   FloatingActionButton get floatingButton {
     return FloatingActionButton(

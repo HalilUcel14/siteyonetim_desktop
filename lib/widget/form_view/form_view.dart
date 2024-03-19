@@ -18,9 +18,9 @@ class CustomFormView extends StatelessWidget {
       key: formKey,
       child: ColumnWithSpacing(
         mainAxisAlignment: MainAxisAlignment.center,
-        spacing: SizeEnum.tetra.size,
+        spacing: SizeType.tetra.size,
         children: children,
       ),
-    ).padding(pad: SizeEnum.hexa.size.withPaddingAll).scrollVertical();
+    ).padding(pad: SizeType.hexa.size.withPaddingAll).scrollVertical();
   }
 }
