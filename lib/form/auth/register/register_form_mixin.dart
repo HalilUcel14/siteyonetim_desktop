@@ -45,17 +45,17 @@ mixin RegisterFormMixin on State<RegisterForm> {
     //-----------------------------------
     if (FormKeys.of.registerFormKey.safetyValidate()) return;
     //-----------------------------------
-    if (!FormValidator.of.confirmPasswordValidator(
-      passwordController,
-      confirmPasswordController,
-    )) {
-      context.showSnackBar(
-        const SnackBar(
-          content: Text('Şifreler Uyuşmuyor'),
-        ),
-      );
-      return;
-    }
+    // if (!FormValidator.of.confirmPasswordValidator(
+    //   passwordController,
+    //   confirmPasswordController,
+    // )) {
+    //   context.showSnackBar(
+    //     const SnackBar(
+    //       content: Text('Şifreler Uyuşmuyor'),
+    //     ),
+    //   );
+    //   return;
+    // }
     //-----------------------------------
     final response = await HiveBoxesObject.of.userDB.createUser(
       username: userNameController.text.trim(),

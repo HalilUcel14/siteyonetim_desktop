@@ -31,9 +31,8 @@ class _DaireFormState extends State<DaireForm> with DaireFormMixin {
             FormTitle(title: FormText.createDaire.text),
             // --------------------------------
             CustomTextFormField(
-              context,
               controller: floor,
-              labelText: FormText.daireFloor.text,
+              // labelText: FormText.daireFloor.text,
               // validator: (value) => FormValidation.of.intText(
               //   value,
               //   FormText.daireFloor.text,
@@ -41,9 +40,8 @@ class _DaireFormState extends State<DaireForm> with DaireFormMixin {
             ),
             // --------------------------------
             CustomTextFormField(
-              context,
               controller: flats,
-              labelText: FormText.daireNumber.text,
+              // labelText: FormText.daireNumber.text,
               // validator: (value) => FormValidation.of.intText(
               //   value,
               //   FormText.daireNumber.text,
@@ -51,9 +49,8 @@ class _DaireFormState extends State<DaireForm> with DaireFormMixin {
             ),
             // --------------------------------
             CustomTextFormField(
-              context,
               controller: squareM,
-              labelText: FormText.daireSquare.text,
+              // labelText: FormText.daireSquare.text,
               // validator: (value) => FormValidation.of.intNullableText(
               //   value,
               //   FormText.daireSquare.text,
@@ -61,9 +58,8 @@ class _DaireFormState extends State<DaireForm> with DaireFormMixin {
             ),
             // --------------------------------
             CustomTextFormField(
-              context,
               controller: netSquareM,
-              labelText: FormText.daireNetSquare.text,
+              // labelText: FormText.daireNetSquare.text,
               // validator: (value) => FormValidation.of.intNullableText(
               //   value,
               //   FormText.daireNetSquare.text,
@@ -71,9 +67,8 @@ class _DaireFormState extends State<DaireForm> with DaireFormMixin {
             ),
             // --------------------------------
             CustomTextFormField(
-              context,
               controller: room,
-              labelText: FormText.daireRoom.text,
+              // labelText: FormText.daireRoom.text,
               // validator: (value) => FormValidation.of.intNullableText(
               //   value,
               //   FormText.daireRoom.text,
@@ -89,14 +84,13 @@ class _DaireFormState extends State<DaireForm> with DaireFormMixin {
               valueListenable: isOwner,
               builder: (context, value, child) {
                 return CustomTextFormField(
-                  context,
                   controller: owner,
                   readOnly: true,
-                  labelText: FormText.daireOwner.text,
-                  suffixIcon: IconButton(
-                    onPressed: () => submitOwnerFlats(),
-                    icon: const Icon(Icons.view_list_rounded),
-                  ),
+                  // labelText: FormText.daireOwner.text,
+                  // suffixIcon: IconButton(
+                  //   onPressed: () => submitOwnerFlats(),
+                  //   icon: const Icon(Icons.view_list_rounded),
+                  // ),
                   // validator: (text) => value
                   //     ? FormValidation.of.text(text, FormText.daireOwner.text)
                   //     : null,
@@ -113,13 +107,12 @@ class _DaireFormState extends State<DaireForm> with DaireFormMixin {
               valueListenable: isTenant,
               builder: (context, value, child) {
                 return CustomTextFormField(
-                  context,
                   controller: tenant,
-                  labelText: FormText.daireTenant.text,
-                  suffixIcon: IconButton(
-                    onPressed: () => submitTenantFlats(),
-                    icon: const Icon(Icons.view_list_rounded),
-                  ),
+                  // labelText: FormText.daireTenant.text,
+                  // suffixIcon: IconButton(
+                  //   onPressed: () => submitTenantFlats(),
+                  //   icon: const Icon(Icons.view_list_rounded),
+                  // ),
                   // validator: (text) => value
                   //     ? FormValidation.of.text(text, FormText.daireTenant.text)
                   //     : null,

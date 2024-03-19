@@ -20,23 +20,22 @@ class _ApartmentFormState extends State<ApartmentForm>
         FormTitle(title: FormText.createApartman.text),
         // --------------------------------
         CustomTextFormField(
-          context,
           controller: name,
-          labelText: FormText.apartmanName.text,
+          decoration: nameDecoration(),
           validator: (value) => nameValidator(value),
         ),
         // --------------------------------
         CustomTextFormField(
-          context,
           controller: address,
-          labelText: FormText.apartmanAdres.text,
-          validator: (value) => nameValidator(value),
+          validator: (value) => addressValidator(value),
+          decoration: addressDecoration(),
         ),
+
         // --------------------------------
-        CustomFormField.of(context).withLabelForm(
-          floorCount,
-          labelText: FormText.apartmanFloor.text,
-        ),
+        // CustomFormField.of(context).withLabelForm(
+        //   floorCount,
+        //   labelText: FormText.apartmanFloor.text,
+        // ),
       ],
     );
 

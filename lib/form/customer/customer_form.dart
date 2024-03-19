@@ -35,11 +35,10 @@ class CustomerFormState extends State<CustomerForm> with CustomerFormMixin {
               valueListenable: customerChoose,
               builder: (context, value, child) {
                 return CustomTextFormField(
-                  context,
                   controller: customerName,
-                  labelText: value
-                      ? FormText.companyName.text
-                      : FormText.individualName.text,
+                  // labelText: value
+                  //     ? FormText.companyName.text
+                  //     : FormText.individualName.text,
                   // validator: (text) => FormValidation.of.text(
                   //   text,
                   //   value
@@ -54,11 +53,10 @@ class CustomerFormState extends State<CustomerForm> with CustomerFormMixin {
               valueListenable: customerChoose,
               builder: (context, value, child) {
                 return CustomTextFormField(
-                  context,
                   controller: customerIdentityNo,
-                  labelText: value
-                      ? FormText.companyIdentityNo.text
-                      : FormText.individualIndentityNo.text,
+                  // labelText: value
+                  //     ? FormText.companyIdentityNo.text
+                  //     : FormText.individualIndentityNo.text,
                   validator: (text) => textNullableIdentitNo(
                     text,
                     value
@@ -70,9 +68,8 @@ class CustomerFormState extends State<CustomerForm> with CustomerFormMixin {
             ),
             // --------------------------------
             CustomTextFormField(
-              context,
               controller: customerEmail,
-              labelText: FormText.customerEmail.text,
+              // labelText: FormText.customerEmail.text,
               // validator: (text) => FormValidation.of.emailNullableText(
               //   text,
               //   FormText.customerEmail.text,
@@ -80,9 +77,8 @@ class CustomerFormState extends State<CustomerForm> with CustomerFormMixin {
             ),
             // --------------------------------
             CustomTextFormField(
-              context,
               controller: customerPhone,
-              labelText: FormText.customerPhone.text,
+              // labelText: FormText.customerPhone.text,
               // validator: (text) => FormValidation.of.phoneNullableText(
               //   text,
               //   FormText.customerPhone.text,
@@ -90,9 +86,8 @@ class CustomerFormState extends State<CustomerForm> with CustomerFormMixin {
             ),
             // --------------------------------
             CustomTextFormField(
-              context,
               controller: customerAddress,
-              labelText: FormText.customerAdres.text,
+              // labelText: FormText.customerAdres.text,
               // validator: (text) => FormValidation.of.textNullable(
               //   text,
               //   FormText.customerAdres.text,

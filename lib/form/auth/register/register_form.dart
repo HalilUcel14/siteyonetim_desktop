@@ -19,16 +19,16 @@ class _RegisterFormState extends State<RegisterForm> with RegisterFormMixin {
       formKey: FormKeys.of.registerFormKey,
       children: [
         // ---------------------------------
-        CustomFormField.of(context).userForm(userNameController),
-        // ---------------------------------
-        CustomFormField.of(context).emailForm(emailController),
-        // --------------------------------
-        CustomFormField.of(context).passwordForm(isObscure, passwordController),
-        // --------------------------------
-        CustomFormField.of(context).passwordForm(
-          isObscure,
-          confirmPasswordController,
-        ),
+        // CustomFormField.of(context).userForm(userNameController),
+        // // ---------------------------------
+        // CustomFormField.of(context).emailForm(emailController),
+        // // --------------------------------
+        // CustomFormField.of(context).passwordForm(isObscure, passwordController),
+        // // --------------------------------
+        // CustomFormField.of(context).passwordForm(
+        //   isObscure,
+        //   confirmPasswordController,
+        // ),
         // --------------------------------
         RowWithSpacing(
           spacing: SizeType.ennea.size,
