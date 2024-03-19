@@ -1,7 +1,7 @@
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 
-import '../index.dart';
+import '../../index.dart';
 
 class CustomFormField {
   BuildContext context;
@@ -59,6 +59,20 @@ class CustomFormField {
       builder: (context, obscureValue, child) {
         return _passwordForm(controller, obscure);
       },
+    );
+  }
+
+  TextFormField withLabelForm(
+    TextEditingController controller, {
+    String? labelText,
+    String? hintText,
+  }) {
+    return CustomTextFormField(
+      context,
+      controller: controller,
+      labelText: labelText ?? '',
+      hintText: hintText,
+      validator: (value) => FormValidator.of.passwordValidator(value),
     );
   }
 }

@@ -1,4 +1,3 @@
-import 'package:app_hive/app_hive.dart';
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
 import 'package:core/core.dart';
@@ -27,7 +26,7 @@ class _EvSahibiFormState extends State<EvSahibiForm> with EvSahibiFormMixin {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // --------------------------------
-            FormTitle(title: TableText.createOwner.text),
+            FormTitle(title: FormText.createOwner.text),
             // --------------------------------
             CustomerForm(key: customerKey),
             // --------------------------------

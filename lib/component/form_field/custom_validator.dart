@@ -1,8 +1,8 @@
+import 'package:app_hive/app_hive.dart';
 import 'package:codeofland/codeofland.dart';
 import 'package:flutter/material.dart';
-import 'package:siteyonetim/form_field/form_setting.dart';
 
-import '../index.dart';
+import '../../index.dart';
 
 class FormValidator {
   static FormValidator? _of;
@@ -41,6 +41,22 @@ class FormValidator {
       return FormError.shortUsername.text;
     }
     //
+    return null;
+  }
+
+  String? text(String? value) {
+    if (value.isNullOrEmpty) return FormError.emptyField.text;
+    //
+    if (value!.length < FormSettings.of.fieldLength) {
+      return FormError.shortField.text;
+    }
+    return null;
+  }
+
+  String? intText(String? text, TBLApartment apt) {
+    if (text.isNullOrEmpty) return FormError.emptyField.text;
+    if (int.tryParse(text!) == null) return FormError.integerField.text;
+    if (int.parse(text) < 0) return FormError.positiveInteger.text;
     return null;
   }
 }

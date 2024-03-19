@@ -9,9 +9,9 @@ class AuhtImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraint) {
-        return WIconAsset(
+        return WImageAsset(
           path: MyAsset.sign.iconPng,
-          size: constraint.maxWidth * .8,
+          size: constraint.maxWidth * WPercent.p3Quarter.size,
         );
       },
     );

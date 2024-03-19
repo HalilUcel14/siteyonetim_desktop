@@ -5,6 +5,7 @@ enum FormError {
   notValidPassword(
     'Şifre deseni (en az 8 karakter, en az bir rakam ve bir harf) olmalıdır',
   ),
+  notValidConfirmPassword('Şifreler eşleşmiyor'),
   // Email
   emptyEmail('E-Posta boş olamaz'),
   notValidEmail('E-Posta Adresi geçerli değil'),
@@ -12,12 +13,17 @@ enum FormError {
   // Username
   emptyUserName('Kullanıcı Adı boş olamaz'),
   shortUsername('Kullanıcı Adı en az 3 karakter olmalıdır'),
-
+  // Sign
   errorUserSign('Kullanıcı Adı veya Şifre Hatalı olabilir'),
   errorUserRegister('Kullanıcı Adı veya Email daha önce kullanılmış olabilir'),
-
-  notValidConfirmPassword('Şifreler eşleşmiyor'),
+  // Date
   notValidDate('Girilen Değer Tarih olmalıdır. Örn: (2021-01-01)'),
+  // Text Field
+  emptyField('Bu alan boş olamaz'),
+  shortField('Bu alan en az 3 karakter olmalıdır'),
+  integerField('Bu alan tamsayı olmalıdır'),
+  positiveInteger('Bu alan pozitif tamsayı olmalıdır'),
+  harmonyFailed('Girilen değer Apartman ile uyumlu değil'),
   ;
 
   final String text;

@@ -1,5 +1,4 @@
-export './apartment/apartment_form.dart';
-export './apartment/apartment_form_mixin.dart';
+export './apartment/index.dart';
 //
 export './auth/index.dart';
 //

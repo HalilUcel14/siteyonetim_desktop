@@ -1,7 +1,6 @@
 import 'package:app_hive/app_hive.dart';
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
-
 import 'package:flutter/material.dart';
 
 import '../../index.dart';
@@ -50,7 +49,7 @@ class EvSahibiList extends StatelessWidget {
     return Column(
       children: [
         // ------------------------
-        FormTitle(title: TableText.listOwner.text),
+        FormTitle(title: FormText.listOwner.text),
         // ------------------------
         ListView.separated(
           itemCount: list.length,

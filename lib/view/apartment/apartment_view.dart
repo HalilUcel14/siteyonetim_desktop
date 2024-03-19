@@ -1,4 +1,3 @@
-import 'package:codeofwidget/codeofwidget.dart';
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 
@@ -18,18 +17,14 @@ class _ApartmentViewState extends State<ApartmentView> with ApartmentViewMixin {
       key: ScaffoldKeys.of.apartmentKey,
       appBar: ApartmentAppBar(apartment: apartment),
       body: ApartmentViewBody(apartment: apartment),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          context.customShowDialog(
-            dialog: CustomDialog(
-              child: FormViewDialog(
-                child: DaireForm(apartment: apartment),
-              ),
-            ),
-          );
-        },
-        child: const Icon(Icons.add),
-      ),
+      floatingActionButton: floatButton(context),
+    );
+  }
+
+  FloatingActionButton floatButton(BuildContext context) {
+    return FloatingActionButton(
+      onPressed: () => daireDialog(),
+      child: const Icon(Icons.add),
     );
   }
 }

@@ -5,4 +5,5 @@ class FormSettings {
 
   final double formFieldSpacing = 20.0;
   final int userLength = 3;
+  final int fieldLength = 3;
 }

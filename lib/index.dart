@@ -1,7 +1,6 @@
+export './component/index.dart';
+export './feauture/index.dart';
 export './form/index.dart';
-export './form_field/index.dart';
-export './route/route.dart';
-export './theme/index.dart';
 export './view/index.dart';
 export './widget/index.dart';
 

@@ -1,5 +1,3 @@
-import 'package:app_hive/app_hive.dart';
-
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 
@@ -27,10 +25,10 @@ class PasswordFormField extends StatelessWidget {
           controller: passwordController,
           labelText: labelText,
           obscureText: obscure,
-          validator: (value) => FormValidation.of.passwordText(
-            value,
-            labelText,
-          ),
+          // validator: (value) => FormValidation.of.passwordText(
+          //   value,
+          //   labelText,
+          // ),
           suffixIcon: IconButton(
             onPressed: () => valueListenable.change(),
             icon: Icon(

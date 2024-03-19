@@ -1,4 +1,3 @@
-import 'package:app_hive/app_hive.dart';
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
 import 'package:core/core.dart';
@@ -39,14 +38,14 @@ class CustomerFormState extends State<CustomerForm> with CustomerFormMixin {
                   context,
                   controller: customerName,
                   labelText: value
-                      ? TableText.companyName.text
-                      : TableText.individualName.text,
-                  validator: (text) => FormValidation.of.text(
-                    text,
-                    value
-                        ? TableText.companyName.text
-                        : TableText.individualName.text,
-                  ),
+                      ? FormText.companyName.text
+                      : FormText.individualName.text,
+                  // validator: (text) => FormValidation.of.text(
+                  //   text,
+                  //   value
+                  //       ? FormText.companyName.text
+                  //       : FormText.individualName.text,
+                  // ),
                 );
               },
             ),
@@ -58,13 +57,13 @@ class CustomerFormState extends State<CustomerForm> with CustomerFormMixin {
                   context,
                   controller: customerIdentityNo,
                   labelText: value
-                      ? TableText.companyIdentityNo.text
-                      : TableText.individualIndentityNo.text,
+                      ? FormText.companyIdentityNo.text
+                      : FormText.individualIndentityNo.text,
                   validator: (text) => textNullableIdentitNo(
                     text,
                     value
-                        ? TableText.companyIdentityNo.text
-                        : TableText.individualIndentityNo.text,
+                        ? FormText.companyIdentityNo.text
+                        : FormText.individualIndentityNo.text,
                   ),
                 );
               },
@@ -73,31 +72,31 @@ class CustomerFormState extends State<CustomerForm> with CustomerFormMixin {
             CustomTextFormField(
               context,
               controller: customerEmail,
-              labelText: TableText.customerEmail.text,
-              validator: (text) => FormValidation.of.emailNullableText(
-                text,
-                TableText.customerEmail.text,
-              ),
+              labelText: FormText.customerEmail.text,
+              // validator: (text) => FormValidation.of.emailNullableText(
+              //   text,
+              //   FormText.customerEmail.text,
+              // ),
             ),
             // --------------------------------
             CustomTextFormField(
               context,
               controller: customerPhone,
-              labelText: TableText.customerPhone.text,
-              validator: (text) => FormValidation.of.phoneNullableText(
-                text,
-                TableText.customerPhone.text,
-              ),
+              labelText: FormText.customerPhone.text,
+              // validator: (text) => FormValidation.of.phoneNullableText(
+              //   text,
+              //   FormText.customerPhone.text,
+              // ),
             ),
             // --------------------------------
             CustomTextFormField(
               context,
               controller: customerAddress,
-              labelText: TableText.customerAdres.text,
-              validator: (text) => FormValidation.of.textNullable(
-                text,
-                TableText.customerAdres.text,
-              ),
+              labelText: FormText.customerAdres.text,
+              // validator: (text) => FormValidation.of.textNullable(
+              //   text,
+              //   FormText.customerAdres.text,
+              // ),
             ),
             // --------------------------------
           ],

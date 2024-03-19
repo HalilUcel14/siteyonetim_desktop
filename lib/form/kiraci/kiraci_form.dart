@@ -1,4 +1,3 @@
-import 'package:app_hive/app_hive.dart';
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
 import 'package:core/core.dart';
@@ -26,7 +25,7 @@ class _KiraciFormState extends State<KiraciForm> with KiraciFormMixin {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // --------------------------------
-            FormTitle(title: TableText.createTenant.text),
+            FormTitle(title: FormText.createTenant.text),
             // --------------------------------
             CustomerForm(key: customerKey),
             // --------------------------------
