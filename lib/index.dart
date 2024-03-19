@@ -10,3 +10,4 @@ export './widget/index.dart';
 // TODO: Pro Plan ve diğerleri için RandomKey üret. Bu key ile UserID key birleştir.
 // TODO: Formları Form_Field ile oluştur.
 // TODO: IHive için valueListenable ekle.
+// TODO: Create EventCounter Read Write Delete ve Update işlemleri yap. , ChangeNotifier kullan.
