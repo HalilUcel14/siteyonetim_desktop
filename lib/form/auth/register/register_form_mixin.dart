@@ -12,7 +12,6 @@ mixin RegisterFormMixin on State<RegisterForm> {
   late TextEditingController passwordController;
   late TextEditingController emailController;
   late TextEditingController confirmPasswordController;
-  late BoolNotifier isObscure = BoolNotifier(false);
 
   @override
   void initState() {
@@ -24,7 +23,6 @@ mixin RegisterFormMixin on State<RegisterForm> {
     confirmPasswordController = TextEditingController();
     // --------------------------------
     FormKeys.of.registerFormKey = GlobalKey<FormState>();
-    isObscure = BoolNotifier(true);
   }
 
   @override
@@ -35,7 +33,6 @@ mixin RegisterFormMixin on State<RegisterForm> {
     emailController.dispose();
     confirmPasswordController.dispose();
     // --------------------------------
-    isObscure.dispose();
     FormKeys.of.registerFormKey.currentState?.dispose();
     // --------------------------------
     super.dispose();
@@ -43,19 +40,13 @@ mixin RegisterFormMixin on State<RegisterForm> {
 
   void formValidation() async {
     //-----------------------------------
-    if (FormKeys.of.registerFormKey.safetyValidate()) return;
+    if (!FormKeys.of.registerFormKey.safetyValidate()) return;
     //-----------------------------------
-    // if (!FormValidator.of.confirmPasswordValidator(
-    //   passwordController,
-    //   confirmPasswordController,
-    // )) {
-    //   context.showSnackBar(
-    //     const SnackBar(
-    //       content: Text('Şifreler Uyuşmuyor'),
-    //     ),
-    //   );
-    //   return;
-    // }
+    if (!isConfirmPassword) {
+      CustomSnackbar(context)
+          .showInfo(message: FormError.notValidConfirmPassword.text);
+      return;
+    }
     //-----------------------------------
     final response = await HiveBoxesObject.of.userDB.createUser(
       username: userNameController.text.trim(),
@@ -63,7 +54,7 @@ mixin RegisterFormMixin on State<RegisterForm> {
       password: passwordController.text.trim(),
     );
     //
-    if (!context.mounted) return;
+
     if (!response) {
       context.showSnackBar(
         SnackBar(
@@ -78,4 +69,7 @@ mixin RegisterFormMixin on State<RegisterForm> {
 
   /// Kullanıcı Giriş Ekranına Geçiş yapar.
   void goToLoginView() => context.pushNamed(MyRoute.authLogin.name);
+
+  bool get isConfirmPassword =>
+      passwordController.text.trim() == confirmPasswordController.text.trim();
 }

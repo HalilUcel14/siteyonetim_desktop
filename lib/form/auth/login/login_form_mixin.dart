@@ -10,7 +10,6 @@ import '../../../index.dart';
 mixin LoginFormMixin on State<LoginForm> {
   late TextEditingController userNameController;
   late TextEditingController passwordController;
-  late BoolNotifier isObscure;
 
   @override
   void initState() {
@@ -18,7 +17,6 @@ mixin LoginFormMixin on State<LoginForm> {
     userNameController = TextEditingController();
     passwordController = TextEditingController();
     // ------------------------
-    isObscure = BoolNotifier(true);
     FormKeys.of.loginFormKey = GlobalKey<FormState>();
   }
 
@@ -27,7 +25,6 @@ mixin LoginFormMixin on State<LoginForm> {
     userNameController.dispose();
     passwordController.dispose();
     // ------------------------
-    isObscure.dispose();
     FormKeys.of.loginFormKey.currentState?.dispose();
     super.dispose();
   }
@@ -37,11 +34,13 @@ mixin LoginFormMixin on State<LoginForm> {
     // This function check the form validation
     if (!FormKeys.of.loginFormKey.safetyValidate()) return;
     //--------------------------------
-    if (DBLoginUser().signIn(
+    final response = DBLoginUser().signIn(
       userNameController.text.trim(),
       passwordController.text.trim(),
-    )) {
-      return goToHomeView();
+    );
+    if (response) {
+      goToHomeView();
+      return;
     }
     //--------------------------------
     if (!context.mounted) return;

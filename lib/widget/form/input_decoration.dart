@@ -8,8 +8,8 @@ class CustomFormDecoration extends InputDecoration {
     BuildContext context, {
     super.labelText,
     super.hintText,
-    super.prefixIcon,
-    super.suffixIcon,
+    Widget? suffixIcon,
+    Widget? prefixIcon,
   }) : super(
           errorBorder: FormOutlineBorder(context.colorScheme.error),
           enabledBorder: FormOutlineBorder(context.colorScheme.primary),
@@ -20,5 +20,11 @@ class CustomFormDecoration extends InputDecoration {
           disabledBorder: FormOutlineBorder(context.colorScheme.surface),
           border: FormOutlineBorder(Colors.black),
           contentPadding: SizeType.ennea.size.withPaddingAll,
+          suffixIcon: suffixIcon?.padding(
+            pad: SizeType.hexa.size.withPaddingAll,
+          ),
+          prefixIcon: prefixIcon?.padding(
+            pad: SizeType.hexa.size.withPaddingAll,
+          ),
         );
 }

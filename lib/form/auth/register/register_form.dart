@@ -12,35 +12,65 @@ class RegisterForm extends StatefulWidget {
   State<RegisterForm> createState() => _RegisterFormState();
 }
 
-class _RegisterFormState extends State<RegisterForm> with RegisterFormMixin {
+class _RegisterFormState extends State<RegisterForm>
+    with RegisterFormMixin, RegisterFormValidatorMixin {
   @override
   Widget build(BuildContext context) {
     return CustomFormView(
       formKey: FormKeys.of.registerFormKey,
       children: [
         // ---------------------------------
-        // CustomFormField.of(context).userForm(userNameController),
-        // // ---------------------------------
-        // CustomFormField.of(context).emailForm(emailController),
-        // // --------------------------------
-        // CustomFormField.of(context).passwordForm(isObscure, passwordController),
-        // // --------------------------------
-        // CustomFormField.of(context).passwordForm(
-        //   isObscure,
-        //   confirmPasswordController,
-        // ),
+        CustomTextFormField(
+          controller: userNameController,
+          decoration: userNameDecoration,
+          forceField: true,
+          validator: (value) => userNameValidator(value),
+        ),
+        // ---------------------------------
+        CustomTextFormField(
+          controller: emailController,
+          decoration: emailDecoration,
+          forceField: true,
+          validator: (value) => emailValidator(value),
+        ),
+        // --------------------------------
+        ValueListenableBuilder(
+          valueListenable: isObscure,
+          builder: (context, obscure, child) {
+            return CustomTextFormField(
+              controller: passwordController,
+              decoration: passwordDecoration,
+              obscureText: obscure,
+              forceField: true,
+              validator: (value) => passwordValidator(value),
+            );
+          },
+        ),
+        // --------------------------------
+        ValueListenableBuilder(
+          valueListenable: isObscure,
+          builder: (context, obscure, child) {
+            return CustomTextFormField(
+              controller: confirmPasswordController,
+              decoration: confirmDecoration,
+              obscureText: obscure,
+              forceField: true,
+              validator: (value) => passwordValidator(value),
+            );
+          },
+        ),
         // --------------------------------
         RowWithSpacing(
           spacing: SizeType.ennea.size,
           children: [
             ElevatedButton(
               onPressed: formValidation,
-              child: Text(FormText.signUpButton.text),
+              child: WBoldText(FormText.signUpButton.text),
             ),
             // --------------------------------------
             ElevatedButton(
               onPressed: goToLoginView,
-              child: Text(FormText.signInButton.text),
+              child: WBoldText(FormText.signInButton.text),
             ),
           ],
         ).scrollHorizontal(),

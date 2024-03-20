@@ -5,11 +5,11 @@ class DBLoginUser {
   bool signIn(String username, String password) {
     try {
       HiveUser? response = HiveBoxesObject.of.userDB.listBox().firstWhere(
-            (element) =>
-                element.username == username && element.password == password,
+            (e) => e.username == username && e.password == password,
             orElse: () => HiveUser.empty(),
           );
       // --------------------
+
       if (!response.isNull) {
         HiveBoxesObject.of.metaDB.logInUser(response);
         return true;

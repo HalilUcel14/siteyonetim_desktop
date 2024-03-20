@@ -16,15 +16,13 @@ final class CustomTextFormField extends TextFormField {
           obscureText: obscureText,
           decoration: decoration,
           validator: (value) {
-            forceField
-                ? value.isNullOrEmpty
-                    ? 'Bu alan boş bırakılamaz'
-                    : null
-                : null;
+            if (forceField) {
+              return value.isNullOrEmpty ? 'Bu alan boş bırakılamaz' : null;
+            }
             //--------------------------------
             validator?.call(value);
-            //--------------------------------
             return null;
+            //--------------------------------
           },
         );
 }

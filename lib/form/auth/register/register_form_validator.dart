@@ -1,8 +1,9 @@
+import 'package:codeofland/codeofland.dart';
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:siteyonetim/index.dart';
 
-mixin LoginFormValidatorMixin on State<LoginForm> {
+mixin RegisterFormValidatorMixin on State<RegisterForm> {
   late BoolNotifier isObscure;
 
   @override
@@ -20,12 +21,26 @@ mixin LoginFormValidatorMixin on State<LoginForm> {
   CustomFormDecoration get userNameDecoration => CustomFormDecoration(
         context,
         labelText: FormText.usernameLabel.text,
-        hintText: FormText.usernameHint.text,
         suffixIcon: const Icon(Icons.person),
       );
 
   String? userNameValidator(String? value) {
-    if ((value?.length ?? 0) < 3) return FormError.shortUsername.text;
+    if ((value?.length ?? 0) < FormSettings.fieldLength.value) {
+      return FormError.shortField.text;
+    }
+    return null;
+  }
+
+  CustomFormDecoration get emailDecoration => CustomFormDecoration(
+        context,
+        labelText: FormText.emailLabel.text,
+        suffixIcon: const Icon(Icons.email),
+      );
+
+  String? emailValidator(String? value) {
+    if ((value ?? '').isValidEmailRegex) {
+      return FormError.notValidEmail.text;
+    }
     return null;
   }
 
@@ -45,6 +60,21 @@ mixin LoginFormValidatorMixin on State<LoginForm> {
     if ((value?.length ?? 0) < FormSettings.passwordLength.value) {
       return FormError.shortPassword.text;
     }
+    if ((value ?? '').isValidMediumPassword) {
+      return FormError.notValidPassword.text;
+    }
     return null;
   }
+
+  CustomFormDecoration get confirmDecoration => CustomFormDecoration(
+        context,
+        labelText: FormText.confirmPasswordLabel.text,
+        hintText: FormText.confirmPasswordHint.text,
+        suffixIcon: GestureDetector(
+          onTap: () => isObscure.change(),
+          child: isObscure.value
+              ? const Icon(Icons.visibility)
+              : const Icon(Icons.visibility_off),
+        ),
+      );
 }

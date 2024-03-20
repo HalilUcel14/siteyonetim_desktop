@@ -2,7 +2,6 @@ import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
-import 'package:siteyonetim/form/auth/login/login_form_validator.dart';
 
 import '../../../index.dart';
 
@@ -24,25 +23,34 @@ class _LoginFormState extends State<LoginForm>
         CustomTextFormField(
           controller: userNameController,
           decoration: userNameDecoration,
+          forceField: true,
           validator: (value) => userNameValidator(value),
         ),
-        // CustomFormField.of(context).userForm(userNameController),
-        // // ------------------------
-        // CustomFormField.of(context).passwordForm(
-        //   isObscure,
-        //   passwordController,
-        // ),
+        // ------------------------
+        ValueListenableBuilder(
+          valueListenable: isObscure,
+          builder: (context, obscure, child) {
+            return CustomTextFormField(
+              controller: passwordController,
+              obscureText: obscure,
+              forceField: true,
+              decoration: passwordDecoration,
+              validator: (value) => passwordValidator(value),
+            );
+          },
+        ),
         // ------------------------
         RowWithSpacing(
           spacing: SizeType.ennea.size,
           children: [
             ElevatedButton(
               onPressed: formValidation,
-              child: Text(FormText.signInButton.text),
+              child: WBoldText(FormText.signInButton.text),
             ),
+            // ------------------------
             ElevatedButton(
               onPressed: goToRegisterView,
-              child: Text(FormText.signUpButton.text),
+              child: WBoldText(FormText.signUpButton.text),
             ),
           ],
         ).scrollHorizontal()
