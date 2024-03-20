@@ -12,3 +12,7 @@ export './widget/index.dart';
 // TODO: Create EventCounter Read Write Delete ve Update işlemleri yap. , ChangeNotifier kullan.
 // TODO: Form alanları düzelt
 // ------------------------
+// TODO: CLASS DBResponse {
+  // T data;
+  // String message;
+// }

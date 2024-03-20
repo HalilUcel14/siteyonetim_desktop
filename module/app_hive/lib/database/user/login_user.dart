@@ -6,22 +6,39 @@ class DBLoginUser {
   static DBLoginUser get of => _of ??= DBLoginUser._init();
   DBLoginUser._init();
 
-  bool signIn(String username, String password) {
+  Future<HiveResponse<HiveUser>> signIn(
+      String username, String password) async {
     try {
-      HiveUser? response = HiveBoxesObject.of.userDB.listBox().firstWhere(
+      HiveUser? user = HiveBoxesObject.of.userDB.listBox().firstWhere(
             (e) => e.username == username && e.password == password,
             orElse: () => HiveUser.empty(),
           );
       // --------------------
-
-      if (!response.isNull) {
-        HiveBoxesObject.of.metaDB.logInUser(response);
-        return true;
+      if (user.isNull) {
+        return HiveResponse(
+          data: null,
+          message: 'Kullanıcı ve Parola Eşleşmedi',
+          hasError: true,
+        );
       }
-      return false;
+
+      final logTest = await HiveBoxesObject.of.metaDB.logInUser(user);
+      //
+      if (logTest) {
+        return HiveResponse(
+          data: user,
+          message: 'Giriş Başarılı',
+          hasError: false,
+        );
+      }
+      return HiveResponse(
+        data: null,
+        message: 'Giriş Yapılamadı',
+        hasError: true,
+      );
     } catch (e) {
       HiveException.read(e.toString()).debugPrint;
-      return false;
+      return HiveResponse(data: null, message: e.toString(), hasError: true);
     }
   }
 

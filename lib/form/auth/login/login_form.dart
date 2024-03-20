@@ -24,6 +24,7 @@ class _LoginFormState extends State<LoginForm>
           controller: userNameController,
           decoration: userNameDecoration,
           forceField: true,
+          minimumValueLenght: FormSettings.userLength.value.toInt(),
           validator: (value) => userNameValidator(value),
         ),
         // ------------------------
@@ -34,6 +35,7 @@ class _LoginFormState extends State<LoginForm>
               controller: passwordController,
               obscureText: obscure,
               forceField: true,
+              minimumValueLenght: FormSettings.passwordLength.value.toInt(),
               decoration: passwordDecoration,
               validator: (value) => passwordValidator(value),
             );
