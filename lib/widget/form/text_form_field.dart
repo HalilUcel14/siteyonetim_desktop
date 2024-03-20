@@ -10,15 +10,20 @@ final class CustomTextFormField extends TextFormField {
     super.controller,
     String? Function(String?)? validator,
     bool obscureText = false,
-    bool forceField = false,
     CustomFormDecoration? decoration,
+    bool forceField = false,
+    int minimumValueLenght = 0,
   }) : super(
           obscureText: obscureText,
           decoration: decoration,
           validator: (value) {
-            if (forceField) {
-              return value.isNullOrEmpty ? 'Bu alan boş bırakılamaz' : null;
+            if (forceField || minimumValueLenght > 0) {
+              if (value.isNullOrEmpty) return 'Bu alan boş bırakılamaz';
+              if (value!.length < minimumValueLenght) {
+                return 'Bu alan en az $minimumValueLenght karakter olmalıdır';
+              }
             }
+
             //--------------------------------
             validator?.call(value);
             return null;

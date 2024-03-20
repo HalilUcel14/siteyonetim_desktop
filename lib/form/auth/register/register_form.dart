@@ -24,6 +24,7 @@ class _RegisterFormState extends State<RegisterForm>
           controller: userNameController,
           decoration: userNameDecoration,
           forceField: true,
+          minimumValueLenght: FormSettings.fieldLength.value.toInt(),
           validator: (value) => userNameValidator(value),
         ),
         // ---------------------------------
@@ -42,6 +43,7 @@ class _RegisterFormState extends State<RegisterForm>
               decoration: passwordDecoration,
               obscureText: obscure,
               forceField: true,
+              minimumValueLenght: FormSettings.passwordLength.value.toInt(),
               validator: (value) => passwordValidator(value),
             );
           },
@@ -54,6 +56,7 @@ class _RegisterFormState extends State<RegisterForm>
               controller: confirmPasswordController,
               decoration: confirmDecoration,
               obscureText: obscure,
+              minimumValueLenght: FormSettings.passwordLength.value.toInt(),
               forceField: true,
               validator: (value) => passwordValidator(value),
             );

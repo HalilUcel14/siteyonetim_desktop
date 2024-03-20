@@ -44,7 +44,7 @@ dependencies:
   
   equatable: ^2.0.5
   codeofland: ^1.4.1
-  codeofwidget: ^1.3.0
+  codeofwidget: ^1.3.1
 
 dev_dependencies:
   flutter_test:

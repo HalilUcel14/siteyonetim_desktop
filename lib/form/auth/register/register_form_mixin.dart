@@ -44,23 +44,20 @@ mixin RegisterFormMixin on State<RegisterForm> {
     //-----------------------------------
     if (!isConfirmPassword) {
       CustomSnackbar(context)
-          .showInfo(message: FormError.notValidConfirmPassword.text);
+          .showError(message: FormError.notValidConfirmPassword.text);
       return;
     }
     //-----------------------------------
-    final response = await HiveBoxesObject.of.userDB.createUser(
+    final response = await DBLoginUser.of.signUp(
       username: userNameController.text.trim(),
-      emailAddress: emailController.text.trim(),
+      email: emailController.text.trim(),
       password: passwordController.text.trim(),
     );
     //
 
     if (!response) {
-      context.showSnackBar(
-        SnackBar(
-          content: Text(FormError.errorUserRegister.text),
-        ),
-      );
+      CustomSnackbar(context)
+          .showError(message: FormError.errorUserRegister.text);
       return;
     }
     //

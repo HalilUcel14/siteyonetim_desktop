@@ -2,6 +2,10 @@ import 'package:app_hive/app_hive.dart';
 import 'package:codeofland/feauture/exception/index.dart';
 
 class DBLoginUser {
+  static DBLoginUser? _of;
+  static DBLoginUser get of => _of ??= DBLoginUser._init();
+  DBLoginUser._init();
+
   bool signIn(String username, String password) {
     try {
       HiveUser? response = HiveBoxesObject.of.userDB.listBox().firstWhere(
@@ -21,7 +25,10 @@ class DBLoginUser {
     }
   }
 
-  Future<bool> signUp(String username, String email, String password) async {
+  Future<bool> signUp(
+      {required String username,
+      required String email,
+      required String password}) async {
     try {
       if (HiveBoxesObject.of.userDB.isHaveUserName(username)) {
         return Future.value(false);
