@@ -8,6 +8,13 @@ final class LightTheme extends ITheme {
         elevatedButtonTheme: elevatedButton,
         cardTheme: cardTheme,
         appBarTheme: appBar,
+        drawerTheme: drawer,
+      );
+
+  DrawerThemeData get drawer => DrawerThemeData(
+        width: SizeType.teta.size,
+        elevation: SizeType.hexa.size,
+        shadowColor: colorScheme.shadow,
       );
 
   AppBarTheme get appBar => AppBarTheme(

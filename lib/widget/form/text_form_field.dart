@@ -23,9 +23,10 @@ final class CustomTextFormField extends TextFormField {
                 return 'Bu alan en az $minimumValueLenght karakter olmalıdır';
               }
             }
-
             //--------------------------------
-            validator?.call(value);
+            if (validator != null) {
+              return validator(value);
+            }
             return null;
             //--------------------------------
           },

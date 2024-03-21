@@ -9,33 +9,29 @@ class HiveUserDatabase extends IHiveManager<HiveUser> {
 
   ValueListenable<Box<HiveUser>> get valueList => box.listenable();
 
-  HiveUser customUser({
-    required String username,
-    required String emailAddress,
-    required String password,
-  }) {
-    return HiveUser(
-      uid: RandomKey.generate(),
-      username: username,
-      emailAddress: emailAddress,
-      password: password,
-      createdAt: DateTime.now(),
-      isActive: true,
-      role: UserRole.manager.name,
-      userType: UserType.free.name,
-    );
-  }
-
-  Future<bool> createUser({
-    required String username,
-    required String emailAddress,
-    required String password,
-  }) {
-    HiveUser user = customUser(
-      username: username,
-      emailAddress: emailAddress,
-      password: password,
-    );
-    return addBox(user.uid!, user);
+  Future<HiveUser> createUser(
+    String username,
+    String emailAddress,
+    String password,
+  ) async {
+    try {
+      HiveUser user = HiveUser(
+        uid: RandomKey.generate(),
+        username: username,
+        emailAddress: emailAddress,
+        password: password,
+        createdAt: DateTime.now(),
+        isActive: true,
+        role: UserRole.manager.name,
+        userType: UserType.free.name,
+      );
+      //
+      await addBox(user.uid!, user);
+      //
+      return user;
+    } catch (e) {
+      HiveException.write(e.toString()).debugPrint;
+      return HiveUser.empty();
+    }
   }
 }

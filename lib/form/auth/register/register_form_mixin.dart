@@ -55,9 +55,8 @@ mixin RegisterFormMixin on State<RegisterForm> {
     );
     //
 
-    if (!response) {
-      CustomSnackbar(context)
-          .showError(message: FormError.errorUserRegister.text);
+    if (response.hasError) {
+      CustomSnackbar(context).showError(message: response.message);
       return;
     }
     //

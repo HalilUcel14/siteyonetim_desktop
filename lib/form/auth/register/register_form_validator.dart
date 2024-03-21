@@ -38,7 +38,8 @@ mixin RegisterFormValidatorMixin on State<RegisterForm> {
       );
 
   String? emailValidator(String? value) {
-    if ((value ?? '').isValidEmailRegex) {
+    if (value.isNullOrEmpty) return FormError.emptyField.text;
+    if (!value!.isValidEmailRegex) {
       return FormError.notValidEmail.text;
     }
     return null;
@@ -57,10 +58,8 @@ mixin RegisterFormValidatorMixin on State<RegisterForm> {
       );
 
   String? passwordValidator(String? value) {
-    if ((value?.length ?? 0) < FormSettings.passwordLength.value) {
-      return FormError.shortPassword.text;
-    }
-    if ((value ?? '').isValidMediumPassword) {
+    if (value.isNullOrEmpty) return FormError.emptyField.text;
+    if (!value!.isValidMediumPassword) {
       return FormError.notValidPassword.text;
     }
     return null;

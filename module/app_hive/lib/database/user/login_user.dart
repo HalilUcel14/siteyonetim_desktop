@@ -42,26 +42,47 @@ class DBLoginUser {
     }
   }
 
-  Future<bool> signUp(
+  Future<HiveResponse<HiveUser>> signUp(
       {required String username,
       required String email,
       required String password}) async {
     try {
       if (HiveBoxesObject.of.userDB.isHaveUserName(username)) {
-        return Future.value(false);
+        return HiveResponse(
+          data: null,
+          message: 'Kullanıcı Adı Kullanılıyor',
+          hasError: true,
+        );
       }
       if (HiveBoxesObject.of.userDB.isHaveEmail(email)) {
-        return Future.value(false);
+        return HiveResponse(
+          data: null,
+          message: 'Email Adresi Kullanılıyor',
+          hasError: true,
+        );
       }
       //
-      return await HiveBoxesObject.of.userDB.createUser(
-        username: username,
-        emailAddress: email,
-        password: password,
+      final response = await HiveBoxesObject.of.userDB.createUser(
+        username,
+        email,
+        password,
+      );
+
+      if (!response.isNull) {
+        return HiveResponse(
+          data: response,
+          message: 'Kayıt Başarılı',
+          hasError: false,
+        );
+      }
+      return HiveResponse(
+        data: null,
+        message: 'Kayıt Yapılamadı',
+        hasError: true,
       );
     } catch (e) {
       HiveException.write(e.toString()).debugPrint;
-      return Future.value(false);
+      return HiveResponse(data: null, message: e.toString(), hasError: true);
     }
   }
 

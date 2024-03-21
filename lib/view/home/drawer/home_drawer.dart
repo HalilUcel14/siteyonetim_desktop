@@ -10,28 +10,22 @@ final class HomeViewDrawer extends StatelessWidget with HomeDrawerMixin {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      width: 300,
-      child: LayoutBuilder(
-        builder: (context, constraints) {
-          return ColumnWithSpacing(
-            children: [
-              CircleAvatar(
-                radius: constraints.maxWidth * WPercent.pQuarter.size,
-                backgroundColor: context.colorScheme.primary,
-              ),
-              //
-              futureText(),
-              //
-              const Spacer(),
-              //
-              ElevatedButton(
-                onPressed: logOutFunction,
-                child: const Text('Logout'),
-              ),
-            ],
-          ).padding(pad: SizeType.ennea.size.withPaddingAll);
-        },
-      ),
+      child: ColumnWithSpacing(
+        children: [
+          CircleAvatar(
+            backgroundColor: context.colorScheme.primary,
+          ).aspectRatio(1).padding(pad: SizeType.ennea.size.withPaddingAll),
+          //
+          futureText(),
+          //
+          const Spacer(),
+          //
+          ElevatedButton(
+            onPressed: logOutFunction,
+            child: const Text('Logout'),
+          ),
+        ],
+      ).padding(pad: SizeType.ennea.size.withPaddingAll),
     );
   }
 }

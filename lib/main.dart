@@ -30,10 +30,13 @@ class _MyAppState extends State<MyApp> with MainAppMixin {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      //
+
       title: AppString.materialTitle.text,
       //
       debugShowCheckedModeBanner: false,
       //
+      // TODO: Plans Banner for the app Free Banner
       builder: (context, child) {
         return Directionality(
           textDirection: TextDirection.ltr,
