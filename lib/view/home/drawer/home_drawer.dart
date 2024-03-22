@@ -15,8 +15,7 @@ final class HomeViewDrawer extends StatelessWidget with HomeDrawerMixin {
           CircleAvatar(
             backgroundColor: context.colorScheme.primary,
           ).aspectRatio(1).padding(pad: SizeType.ennea.size.withPaddingAll),
-          //
-          futureText(),
+
           //
           const Spacer(),
           //
