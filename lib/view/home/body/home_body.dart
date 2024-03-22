@@ -16,7 +16,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const HomeBodyLeftChild().expanded(flex: 2),
+        const ApartmentListCard().expanded(flex: 2),
         // --------------------------------
         // --------------------------------
         const HomeBodyRightChild().expanded(flex: 1),
