@@ -7,3 +7,4 @@ export './kiraci/kiraci.dart';
 export './meta/metadata_database.dart';
 export './user/hive_user_database.dart';
 export './user/login_user.dart';
+export './apartment/create_apartment.dart';

@@ -23,13 +23,16 @@ class _HomeAppBarState extends State<HomeAppBar> with HomeAppBarMixin {
         builder: (context, size) {
           return IconButton(
             onPressed: () => iconPressed,
-            icon: Icon(Icons.menu_open_rounded, size: iconSize(size)),
+            icon: Icon(
+              Icons.menu_open_rounded,
+              size: iconSize(size),
+            ),
           );
         },
       ),
       title: const WBoldText(
         'Ana Sayfa',
-        wStyle: WTextStyle.labelMedium,
+        wStyle: WTextStyle.headlineLarge,
         wColor: WTextColor.onPrimary,
       ),
     );

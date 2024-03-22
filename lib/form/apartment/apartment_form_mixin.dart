@@ -2,7 +2,6 @@
 
 import 'package:app_hive/app_hive.dart';
 import 'package:codeofland/codeofland.dart';
-import 'package:codeofwidget/codeofwidget.dart';
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 
@@ -41,36 +40,26 @@ mixin ApartmentFormMixin on State<ApartmentForm> {
   }
 
   Future<void> formValidation() async {
-    if (FormKeys.of.apartmentFormKey.currentState == null) return;
-    if (!FormKeys.of.apartmentFormKey.currentState!.validate()) return;
+    if (!FormKeys.of.apartmentFormKey.safetyValidate()) return;
     //
     final String? userUid = HiveBoxesObject.of.metaDB.userUid;
     //
-    if (!context.mounted) return;
-    //
-    if (userUid != null) {
-      context.customShowDialog(
-        dialog: CustomDialog(
-          child: const CustomUserDialog.error(
-            text: 'Kullanıcı Bulunamadı',
-          ),
-        ),
-      );
+    if (userUid == null) {
+      CustomSnackbar(context)
+          .showError(message: FormError.notFindActiveUser.text);
       return;
     }
     //
-    final response = await HiveBoxesObject.of.apartmentDB.createNewApartment(
-      name.text.trim(),
-      HiveBoxesObject.of.metaDB.userUid!,
-      address.text.trim(),
-      int.parse(floorCount.text.trim()),
-      int.parse(flatsCount.text.trim()),
-      DateTime.parse(buildYear.text.trim()),
-      isElevator.value,
-      true, // 'İsActive
+    final response = await DBApartment.of.create(
+      name: name.text.trim(),
+      address: address.text.trim(),
+      floorCount: int.parse(floorCount.text.trim()),
+      flatsCount: int.parse(flatsCount.text.trim()),
+      buildYear: DateTime.parse(buildYear.text.trim()),
+      haveElevator: isElevator.value,
     );
-    //
-    if (!response) {
+    // TODO: Response Kontrolü yapılacak
+    if (!response.hasError) {
       context.showSnackBar(
         const SnackBar(content: Text('Apartman Oluşturulamadı')),
       );
@@ -84,7 +73,7 @@ mixin ApartmentFormMixin on State<ApartmentForm> {
     if (context.canPop()) return context.pop();
   }
 
-  Future<void> pickBuildYear(BuildContext context) async {
+  Future<void> pickBuildYear() async {
     final DateTime? picked = await showDatePicker(
       context: context,
       firstDate: DateTime(1950),
@@ -98,5 +87,12 @@ mixin ApartmentFormMixin on State<ApartmentForm> {
       buildYear.text = '$year-$month-$day';
     }
     return;
+  }
+
+  IconButton buildYearIcon() {
+    return IconButton(
+      onPressed: () async => await pickBuildYear(),
+      icon: const Icon(Icons.calendar_month),
+    );
   }
 }

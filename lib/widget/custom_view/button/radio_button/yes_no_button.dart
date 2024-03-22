@@ -20,10 +20,10 @@ class RadioYesNoButton extends StatelessWidget {
       builder: (context, yesNo, child) {
         return Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(title),
             RowWithSpacing(
+              mainAxisAlignment: MainAxisAlignment.center,
               spacing: SizeType.hexa.size,
               children: [
                 ...[

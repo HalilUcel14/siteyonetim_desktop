@@ -10,16 +10,18 @@ class HomeViewBody extends StatefulWidget {
   State<HomeViewBody> createState() => _HomeViewBodyState();
 }
 
-class _HomeViewBodyState extends State<HomeViewBody> {
+class _HomeViewBodyState extends State<HomeViewBody> with HomeBodyMixin {
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const HomeBodyLeftChild().expanded(flex: 2),
+        const ApartmentListCard().expanded(flex: apartmentFlex),
         // --------------------------------
         // --------------------------------
-        const HomeBodyRightChild().expanded(flex: 1),
+        const HomeBodyRightChild()
+            .expanded(flex: detailFlex)
+            .isVisibility(visible: isOpenDetail),
       ],
     );
   }

@@ -84,10 +84,10 @@ packages:
     dependency: "direct main"
     description:
       name: codeofland
-      sha256: "451c84151b8a2fefa7938d19b4264666f62561d00a0ee89971c92262ed516a68"
+      sha256: "838cb9c131b2346f8505fdf8e2c62c12bccba99682757306f8cc8b28220a893e"
       url: "https://pub.dev"
     source: hosted
-    version: "1.4.1"
+    version: "1.4.2"
   codeofwidget:
     dependency: "direct main"
     description:
@@ -263,7 +263,7 @@ packages:
     source: hosted
     version: "2.2.3"
   hive_flutter:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: hive_flutter
       sha256: dca1da446b1d808a51689fb5d0c6c9510c0a2ba01e22805d492c73b68e33eecc

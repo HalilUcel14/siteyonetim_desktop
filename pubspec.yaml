@@ -43,8 +43,9 @@ dependencies:
     path: "module/app_hive"
   
   equatable: ^2.0.5
-  codeofland: ^1.4.1
+  codeofland: ^1.4.2
   codeofwidget: ^1.3.1
+  hive_flutter: ^1.1.0
 
 dev_dependencies:
   flutter_test:
