@@ -30,8 +30,8 @@ class _HomeAppBarState extends State<HomeAppBar> with HomeAppBarMixin {
           );
         },
       ),
-      title: const WBoldText(
-        'Ana Sayfa',
+      title: WBoldText(
+        lang.notifier!.isTr ? 'Ana Sayfa' : 'Home Page',
         wStyle: WTextStyle.headlineLarge,
         wColor: WTextColor.onPrimary,
       ),

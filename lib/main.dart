@@ -32,8 +32,8 @@ class _MyAppState extends State<MyApp> with MainAppMixin {
   @override
   Widget build(BuildContext context) {
     //
-    return LanguageManager(
-      lang: lang,
+    return LanguageNotifier(
+      notifier: lang,
       child: MaterialApp(
         //
         title: AppString.materialTitle.text,

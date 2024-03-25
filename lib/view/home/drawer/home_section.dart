@@ -7,7 +7,7 @@ class HomeDrawerSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final lang = LanguageManager.of(context).lang;
+    final languageManager = LanguageNotifier.of(context);
     return ColumnWithSpacing(
       children: [
         ElevatedButton(
@@ -16,15 +16,10 @@ class HomeDrawerSection extends StatelessWidget {
         ),
         ElevatedButton(
           onPressed: () {
-            lang.setEN;
+            languageManager.notifier!.change();
           },
-          child: WBoldText(lang.isTr ? 'İngilizce' : 'Türkçe'),
-        ),
-        ElevatedButton(
-          onPressed: () {
-            lang.setTR;
-          },
-          child: WBoldText(lang.isTr ? 'İngilizce' : 'Türkçe'),
+          child: WBoldText(
+              languageManager.notifier!.isTr ? 'İngilizce' : 'Türkçe'),
         ),
       ],
     );
