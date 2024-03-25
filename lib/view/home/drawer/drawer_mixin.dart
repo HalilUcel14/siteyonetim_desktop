@@ -11,4 +11,25 @@ mixin HomeDrawerMixin on StatelessWidget {
       MyRoute.authLogin.name,
     );
   }
+
+  bool isNullableUser() {
+    if (HiveBoxesObject.of.metaDB.meta.isNull) return true;
+    final HiveUser? value = HiveBoxesObject.of.metaDB.meta!.user;
+    if (value.isNull) return true;
+    return false;
+  }
+
+  String getUserName() {
+    if (!isNullableUser()) {
+      return HiveBoxesObject.of.metaDB.meta!.user!.username!;
+    }
+    return '';
+  }
+
+  String? getPlan() {
+    if (!isNullableUser()) {
+      return HiveBoxesObject.of.metaDB.meta!.user!.userType;
+    }
+    return null;
+  }
 }

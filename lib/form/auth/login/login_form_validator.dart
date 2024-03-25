@@ -11,12 +11,6 @@ mixin LoginFormValidatorMixin on State<LoginForm> {
     isObscure = BoolNotifier(true);
   }
 
-  @override
-  void dispose() {
-    isObscure.dispose();
-    super.dispose();
-  }
-
   CustomFormDecoration get userNameDecoration => CustomFormDecoration(
         context,
         labelText: FormText.usernameLabel.text,

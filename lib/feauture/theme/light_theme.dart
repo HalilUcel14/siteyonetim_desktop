@@ -39,7 +39,7 @@ final class LightTheme extends ITheme {
         primary: Color(0xFF81A739),
         primaryContainer: Color(0xFFB9D585), //Color.fromARGB(255, 69, 233, 74),
         onPrimary: Colors.black,
-        onPrimaryContainer: Colors.black87,
+        onPrimaryContainer: Colors.white,
         // --------------------------------
         secondary: Color(0xFFCF0A0A),
         secondaryContainer: Color(0xFFDC5F00),

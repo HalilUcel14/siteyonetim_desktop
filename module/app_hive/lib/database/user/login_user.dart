@@ -9,6 +9,13 @@ class DBLoginUser {
   Future<HiveResponse<HiveUser>> signIn(
       String username, String password) async {
     try {
+      if (!HiveBoxesObject.of.userDB.isHaveUserName(username)) {
+        return HiveResponse(
+          message: 'Kullanıcı Adı Bulunamadı!',
+          hasError: true,
+        );
+      }
+      // --------------------
       HiveUser? user = HiveBoxesObject.of.userDB.listBox().firstWhere(
             (e) => e.username == username && e.password == password,
             orElse: () => HiveUser.empty(),

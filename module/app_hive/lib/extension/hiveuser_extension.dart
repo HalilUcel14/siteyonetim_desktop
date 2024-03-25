@@ -5,7 +5,8 @@ extension HiveUserNullExtension on HiveUser? {
   bool get isNull {
     if (this == null) return true;
     if (this == HiveUser.empty()) return true;
-    if (this!.uid == null) return true;
+    if (this!.uid.isNullOrEmpty) return true;
+    if (this!.username.isNullOrEmpty) return true;
     return false;
   }
 }

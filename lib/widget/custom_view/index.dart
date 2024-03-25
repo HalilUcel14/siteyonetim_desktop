@@ -1,4 +1,3 @@
-export './apartman_list/apartman_list.dart';
 export './button/index.dart';
 export './dialog/detail_dialog.dart';
 export './dialog/detail_dialog_mixin.dart';
