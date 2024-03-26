@@ -35,5 +35,5 @@ final class DarkTheme extends ITheme {
       );
 
   @override
-  ElevatedButtonThemeData get elevatedButton => throw UnimplementedError();
+  ElevatedButtonThemeData get elevatedButton => const ElevatedButtonThemeData();
 }

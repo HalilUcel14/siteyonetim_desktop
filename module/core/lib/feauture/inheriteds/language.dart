@@ -19,7 +19,6 @@ class LangManager extends ChangeNotifier {
 
   void change() {
     _type = _type == LangType.tr ? LangType.en : LangType.tr;
-    print(_type);
     notifyListeners();
   }
 
@@ -47,32 +46,5 @@ class LanguageNotifier extends InheritedNotifier<LangManager> {
   @override
   bool updateShouldNotify(InheritedNotifier<LangManager> oldWidget) {
     return oldWidget.notifier!.type != notifier!.type;
-  }
-}
-
-class LanguageManager extends InheritedWidget {
-  final LangManager langManager;
-  final VoidCallback change;
-
-  const LanguageManager({
-    super.key,
-    required this.langManager,
-    required this.change,
-    required super.child,
-  });
-
-  static LanguageManager? maybeOf(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<LanguageManager>();
-  }
-
-  static LanguageManager of(BuildContext context) {
-    final response = maybeOf(context);
-    assert(response != null, 'LanguageManager not found in context');
-    return response!;
-  }
-
-  @override
-  bool updateShouldNotify(LanguageManager oldWidget) {
-    return oldWidget.langManager.type != langManager.type;
   }
 }

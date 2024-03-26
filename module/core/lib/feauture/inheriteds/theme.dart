@@ -2,34 +2,49 @@ import 'package:flutter/material.dart';
 
 enum ThemeType { light, dark }
 
-class ThemeTypeManager {
-  ThemeType type = ThemeType.light;
+class ThemeModeType extends ChangeNotifier {
+  ThemeType _type = ThemeType.light;
 
-  void setLight() => type = ThemeType.light;
-  void setDark() => type = ThemeType.dark;
-}
+  ThemeType get type => _type;
 
-class ThemeManager extends InheritedWidget {
-  final ThemeTypeManager themeType;
-
-  const ThemeManager({
-    super.key,
-    required this.themeType,
-    required super.child,
-  });
-
-  static ThemeManager? maybeOf(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<ThemeManager>();
+  void setLight() {
+    _type = ThemeType.light;
+    notifyListeners();
   }
 
-  static ThemeManager of(BuildContext context) {
+  void setDark() {
+    _type = ThemeType.dark;
+    notifyListeners();
+  }
+
+  void change() {
+    _type = isLight ? ThemeType.dark : ThemeType.light;
+    notifyListeners();
+  }
+
+  bool get isLight => _type == ThemeType.light;
+  bool get isDark => _type == ThemeType.dark;
+}
+
+class ThemeNotifier extends InheritedNotifier<ThemeModeType> {
+  const ThemeNotifier({
+    super.key,
+    required ThemeModeType notifier,
+    required super.child,
+  }) : super(notifier: notifier);
+
+  static ThemeNotifier? maybeOf(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<ThemeNotifier>();
+  }
+
+  static ThemeNotifier of(BuildContext context) {
     final response = maybeOf(context);
-    assert(response != null, ' Have Not exist in Context');
+    assert(response != null, 'ThemeNotifier not found in context');
     return response!;
   }
 
   @override
-  bool updateShouldNotify(ThemeManager oldWidget) {
-    return oldWidget.themeType != themeType;
+  bool updateShouldNotify(InheritedNotifier<ThemeModeType> oldWidget) {
+    return oldWidget.notifier!.type != notifier!.type;
   }
 }
