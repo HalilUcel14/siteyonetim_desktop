@@ -12,21 +12,23 @@ class HomeDrawerSection extends StatelessWidget {
       children: [
         ElevatedButton(
           onPressed: () {},
-          child: const WBoldText('Ana Sayfa'),
+          child: const WBoldText(text: 'Ana Sayfa'),
         ),
         ElevatedButton(
           onPressed: () {
             languageManager.notifier!.change();
           },
           child: WBoldText(
-              languageManager.notifier!.isTr ? 'İngilizce' : 'Türkçe'),
+              text: languageManager.notifier!.isTr ? 'İngilizce' : 'Türkçe'),
         ),
         ElevatedButton(
           onPressed: () {
             ThemeNotifier.of(context).notifier!.change();
           },
           child: WBoldText(
-              ThemeNotifier.of(context).notifier!.isLight ? 'Dark' : 'Light'),
+              text: ThemeNotifier.of(context).notifier!.isLight
+                  ? 'Dark'
+                  : 'Light'),
         ),
       ],
     );

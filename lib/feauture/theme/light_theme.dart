@@ -29,7 +29,7 @@ final class LightTheme extends ITheme {
       );
 
   CardTheme get cardTheme => CardTheme(
-        color: colorScheme.surface,
+        color: colorScheme.tertiaryContainer,
         shadowColor: colorScheme.shadow,
         elevation: SizeType.hexa.size,
       );

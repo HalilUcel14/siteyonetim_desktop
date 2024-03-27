@@ -2,6 +2,7 @@ enum MyAsset {
   apartment,
   apartment2,
   apartment3,
+  apartment4,
   electric,
   elevator,
   gas,

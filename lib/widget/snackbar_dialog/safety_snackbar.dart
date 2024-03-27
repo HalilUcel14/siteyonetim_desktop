@@ -81,9 +81,9 @@ class SnackBarView extends StatelessWidget {
             color: getIconColor(type, context),
           ),
           WBoldText(
-            message,
+            text: message,
             wStyle: WTextStyle.titleMedium,
-            wColor: WTextColor.onPrimaryContainer,
+            wColor: WColor.onPrimaryContainer,
             style: const TextStyle(overflow: TextOverflow.ellipsis),
             maxLines: 3,
           ).expanded(),

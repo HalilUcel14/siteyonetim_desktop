@@ -12,6 +12,7 @@ final class HomeViewDrawer extends StatelessWidget with HomeDrawerMixin {
   Widget build(BuildContext context) {
     return Drawer(
       child: ColumnWithSpacing(
+        key: GlobalKey(),
         children: [
           // -------------------
           CircleAvatar(
@@ -22,15 +23,15 @@ final class HomeViewDrawer extends StatelessWidget with HomeDrawerMixin {
               .padding(pad: SizeType.ennea.size.withPaddingHorizontal),
           // -------------------
           WBoldText(
-            getUserName(),
+            text: getUserName(),
             wStyle: WTextStyle.headlineSmall,
-            wColor: WTextColor.onPrimary,
+            wColor: WColor.onPrimary,
           ),
           // --------------------
           WBoldText(
-            '${getPlan()}',
+            text: '${getPlan()}',
             wStyle: WTextStyle.headlineSmall,
-            wColor: WTextColor.onPrimary,
+            wColor: WColor.onPrimary,
           ),
           //
           Divider(

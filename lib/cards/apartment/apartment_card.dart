@@ -1,5 +1,4 @@
 import 'package:app_hive/app_hive.dart';
-import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
@@ -10,49 +9,40 @@ class ApartmentCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onDoubleTap: () => doubleTab(context),
-      child: Card(
-        elevation: 8,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(SizeType.tetra.size),
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: WColor.onBackground.color(context),
+          width: 1,
         ),
-        child: ColumnWithSpacing(
-          children: [
-            //
-            title().expanded(),
-            //
-            iconSymbol.expanded(flex: 5),
-            //
-            buildYear().expanded(),
-            //
-          ],
-        ).padding(pad: SizeType.octa.size.withPaddingTop),
+      ),
+      child: ColumnWithSpacing(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        key: GlobalKey(),
+        children: [
+          iconSymbol,
+          title(context).flexible(),
+        ],
       ),
     );
   }
 
   Widget get iconSymbol {
     return WIconAsset(
-      path: MyAsset.apartment2.iconPng,
-      size: double.infinity,
-    ).padding(pad: SizeType.hexa.size.withPaddingAll);
+      path: MyAsset.apartment4.iconPng,
+      size: 200,
+    );
   }
 
-  Widget title() {
-    return WBoldText(
-      '${apartment.name}',
-      wStyle: WTextStyle.titleLarge,
-      wColor: WTextColor.onPrimaryContainer,
-    ).fittedBox();
-  }
-
-  Widget buildYear() {
-    return WBoldText(
-      '(${apartment.buildYear?.year})',
-      wStyle: WTextStyle.titleLarge,
-      wColor: WTextColor.onPrimaryContainer,
-    ).fittedBox();
+  Widget title(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () => doubleTab(context),
+      child: WBoldText(
+        text: '${apartment.name}',
+        wStyle: WTextStyle.titleLarge,
+        wColor: WColor.onBackground,
+      ),
+    ).withSizedBox(height: 36, width: 150);
   }
 
   void doubleTab(BuildContext context) => Navigator.of(context).pushNamed(

@@ -43,16 +43,16 @@ class _DetailDialogsState extends State<DetailDialogs> with DetailDialogMixin {
           // --------------------------------
           Card(
             child: WBoldText(
-              widget.title,
+              text: widget.title,
               wStyle: WTextStyle.bodyLarge,
-              wColor: WTextColor.onPrimary,
+              wColor: WColor.onPrimary,
               style: const TextStyle(),
             ).padding(pad: 8.withPaddingAll),
           ),
           // --------------------------------
           ElevatedButton(
             onPressed: () => context.pop(),
-            child: const WBoldText('Kapat'),
+            child: const WBoldText(text: 'Kapat'),
           ),
         ],
       ),

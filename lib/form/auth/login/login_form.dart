@@ -47,12 +47,12 @@ class _LoginFormState extends State<LoginForm>
           children: [
             ElevatedButton(
               onPressed: formValidation,
-              child: WBoldText(FormText.signInButton.text),
+              child: WBoldText(text: FormText.signInButton.text),
             ),
             // ------------------------
             ElevatedButton(
               onPressed: goToRegisterView,
-              child: WBoldText(FormText.signUpButton.text),
+              child: WBoldText(text: FormText.signUpButton.text),
             ),
           ],
         ).scrollHorizontal()

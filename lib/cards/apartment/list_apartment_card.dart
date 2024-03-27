@@ -8,8 +8,6 @@ import '../../index.dart';
 class ApartmentListCard extends StatelessWidget with ApartmentListMixin {
   const ApartmentListCard({super.key});
 
-  //TODO: Function yaz box<T> için list dönsün veya list(userid) ile user Apartment list dönsünl
-
   @override
   Widget build(BuildContext context) {
     return apartmentListenable(
@@ -24,7 +22,9 @@ class ApartmentListCard extends StatelessWidget with ApartmentListMixin {
               gridDelegate: delegate(sizes),
               itemCount: list.length,
               itemBuilder: (context, index) {
-                return ApartmentCard(apartment: list[index]);
+                return ApartmentCard(
+                  apartment: list[index],
+                );
               },
             );
           },
