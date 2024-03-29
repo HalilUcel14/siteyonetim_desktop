@@ -66,23 +66,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //
-
-    bool? isLight() {
-      final response = ThemeNotifier.of(context).notifier;
-      if (response == null) return null;
-      return response.isLight;
-    }
-
     return MaterialApp(
       //
       title: AppString.materialTitle.text,
       //
       debugShowCheckedModeBanner: false,
       //
-
-      //
-      theme: isLight() ?? true ? LightTheme().theme : DarkTheme().theme,
+      theme: context.isThemeLight ? LightTheme().theme : DarkTheme().theme,
       //
       routes: AppRoute.of.route,
       initialRoute: MyRoute.splash.name,

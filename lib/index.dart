@@ -4,7 +4,6 @@ export './form/index.dart';
 export './view/index.dart';
 export './widget/index.dart';
 
-
 // TODO: WBoldText ve WNormalText için TextStyle varsa copyWith yoksa Manuel Style
 // TODO: Daire girilirken Apartman Kat ve Numarasından fazla girilemez.
 // TODO: Pro Plan ve diğerleri için RandomKey üret. Bu key ile UserID key birleştir.
@@ -14,6 +13,7 @@ export './widget/index.dart';
 // TODO: Form alanları düzelt
 // ------------------------
 // TODO: CLASS DBResponse {
-  // T data;
-  // String message;
+// T data;
+// String message;
 // }
+
