@@ -90,5 +90,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-// TODO: WBoldText ve WText düzeltmesi yap. super type olsun yada stless olsun
