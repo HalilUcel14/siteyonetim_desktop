@@ -7,15 +7,16 @@ import 'package:flutter/material.dart';
 import '../../index.dart';
 
 class DaireForm extends StatefulWidget {
-  const DaireForm({super.key, this.apartment});
+  const DaireForm({super.key, required this.apartment});
 
-  final TBLApartment? apartment;
+  final TBLApartment apartment;
 
   @override
   State<DaireForm> createState() => _DaireFormState();
 }
 
-class _DaireFormState extends State<DaireForm> with DaireFormMixin {
+class _DaireFormState extends State<DaireForm>
+    with DaireFormMixin, DaireValidatorMixin {
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -32,47 +33,43 @@ class _DaireFormState extends State<DaireForm> with DaireFormMixin {
             // --------------------------------
             CustomTextFormField(
               controller: floor,
-              // labelText: FormText.daireFloor.text,
-              // validator: (value) => FormValidation.of.intText(
-              //   value,
-              //   FormText.daireFloor.text,
-              // ),
+              decoration: floorDecoration(),
+              forceField: true,
+              validator: (value) => floorValidator(value),
             ),
             // --------------------------------
             CustomTextFormField(
               controller: flats,
-              // labelText: FormText.daireNumber.text,
-              // validator: (value) => FormValidation.of.intText(
-              //   value,
-              //   FormText.daireNumber.text,
-              // ),
+              decoration: flatsDecoration(),
+              forceField: true,
+              validator: (value) => flatsValidator(value),
             ),
             // --------------------------------
             CustomTextFormField(
               controller: squareM,
-              // labelText: FormText.daireSquare.text,
-              // validator: (value) => FormValidation.of.intNullableText(
-              //   value,
-              //   FormText.daireSquare.text,
-              // ),
+              decoration: squareMDecoration(),
+              validator: (value) => integerValidator(value),
             ),
             // --------------------------------
             CustomTextFormField(
               controller: netSquareM,
-              // labelText: FormText.daireNetSquare.text,
-              // validator: (value) => FormValidation.of.intNullableText(
-              //   value,
-              //   FormText.daireNetSquare.text,
-              // ),
+              decoration: netSquareMDecoration(),
+              validator: (value) => integerValidator(value),
             ),
             // --------------------------------
-            CustomTextFormField(
-              controller: room,
-              // labelText: FormText.daireRoom.text,
-              // validator: (value) => FormValidation.of.intNullableText(
-              //   value,
-              //   FormText.daireRoom.text,
-              // ),
+            DropdownButtonFormField(
+              decoration: CustomFormDecoration(
+                context,
+                labelText: FormText.daireRoom.text,
+              ),
+              items: RoomType.values
+                  .map((e) => DropdownMenuItem(value: e, child: Text(e.text)))
+                  .toList(),
+              onChanged: (value) => roomType = value.toString(),
+              selectedItemBuilder: (context) => RoomType.values
+                  .map((e) => Text(e.text))
+                  .toList()
+                  .cast<Widget>(),
             ),
             // --------------------------------
             RadioYesNoButton(
@@ -86,14 +83,8 @@ class _DaireFormState extends State<DaireForm> with DaireFormMixin {
                 return CustomTextFormField(
                   controller: owner,
                   readOnly: true,
-                  // labelText: FormText.daireOwner.text,
-                  // suffixIcon: IconButton(
-                  //   onPressed: () => submitOwnerFlats(),
-                  //   icon: const Icon(Icons.view_list_rounded),
-                  // ),
-                  // validator: (text) => value
-                  //     ? FormValidation.of.text(text, FormText.daireOwner.text)
-                  //     : null,
+                  decoration: ownerDecoration(owner),
+                  validator: (text) => value ? ownerValidator(text) : null,
                 ).isVisibility(visible: value);
               },
             ),
@@ -108,14 +99,9 @@ class _DaireFormState extends State<DaireForm> with DaireFormMixin {
               builder: (context, value, child) {
                 return CustomTextFormField(
                   controller: tenant,
-                  // labelText: FormText.daireTenant.text,
-                  // suffixIcon: IconButton(
-                  //   onPressed: () => submitTenantFlats(),
-                  //   icon: const Icon(Icons.view_list_rounded),
-                  // ),
-                  // validator: (text) => value
-                  //     ? FormValidation.of.text(text, FormText.daireTenant.text)
-                  //     : null,
+                  readOnly: true,
+                  decoration: tenantDecoration(tenant),
+                  validator: (text) => value ? tenantValidator(text) : null,
                 ).isVisibility(visible: value);
               },
             ),

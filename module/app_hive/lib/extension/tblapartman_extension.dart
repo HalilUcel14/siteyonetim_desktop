@@ -1,4 +1,6 @@
 import 'package:app_hive/app_hive.dart';
+import 'package:codeofland/codeofland.dart';
+import 'package:flutter/foundation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 extension ApartmentDBExtension on TBLApartment? {
@@ -15,7 +17,11 @@ extension BoxGenericExtension on Box<TBLApartment> {
     return values.toList();
   }
 
-  List<TBLApartment> getUserList(String userId) {
+  List<TBLApartment> getUserList(String? userId) {
+    if (userId.isNullOrEmpty) {
+      if (kDebugMode) debugPrint('UserId is null or empty');
+      return [];
+    }
     return values.where((element) => element.userUid == userId).toList();
   }
 }

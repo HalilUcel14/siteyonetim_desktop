@@ -25,9 +25,13 @@ enum FormError {
   emptyField('Bu alan boş olamaz'),
   shortField('Bu alan en az 3 karakter olmalıdır'),
   integerField('Bu alan tamsayı olmalıdır'),
-
+  //
   positiveInteger('Bu alan pozitif tamsayı olmalıdır'),
   harmonyFailed('Girilen değer Apartman ile uyumlu değil'),
+  //
+  apartmentEmpty('Apartman Seçimi Bulunamadı'),
+  floorCount('Bu alan Apartman Kat Sayısından büyük olamaz'),
+  flatsCount('Bu alan Apartman Daire Sayısından büyük olamaz'),
   ;
 
   final String text;

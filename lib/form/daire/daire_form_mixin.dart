@@ -16,6 +16,7 @@ mixin DaireFormMixin on State<DaireForm> {
   late TextEditingController room;
   late TextEditingController owner;
   late TextEditingController tenant;
+  late String? roomType;
   late TBLEvSahibi? ownerValue;
   late TBLKiraci? tenantValue;
   late BoolNotifier isOwner;
@@ -31,6 +32,7 @@ mixin DaireFormMixin on State<DaireForm> {
     room = TextEditingController();
     owner = TextEditingController();
     tenant = TextEditingController();
+    roomType = '';
     isOwner = BoolNotifier(false);
     isTenant = BoolNotifier(false);
     ownerValue = null;
@@ -49,7 +51,7 @@ mixin DaireFormMixin on State<DaireForm> {
     tenant.dispose();
     isOwner.dispose();
     isTenant.dispose();
-
+    //
     FormKeys.of.daireFormKey.currentState?.dispose();
     super.dispose();
   }
@@ -62,7 +64,7 @@ mixin DaireFormMixin on State<DaireForm> {
     //
     final TBLDaire daire = TBLDaire(
       uid: RandomKey.generate(),
-      apartmentUid: widget.apartment?.uid,
+      apartmentUid: widget.apartment.uid,
       floor: int.parse(floor.text),
       flats: int.parse(flats.text),
       squareMeter: int.tryParse(squareM.text) ?? 0,
@@ -87,7 +89,7 @@ mixin DaireFormMixin on State<DaireForm> {
       return;
     }
     //
-    if (daire < widget.apartment!) {
+    if (daire < widget.apartment) {
       context.customShowDialog(
         dialog: CustomDialog(
           child: const CustomUserDialog.error(
@@ -117,39 +119,5 @@ mixin DaireFormMixin on State<DaireForm> {
 
   void goToBack() {
     Navigator.of(context).pop();
-  }
-
-  void submitOwnerFlats() async {
-    //
-    ownerValue = await context.customShowDialog<TBLEvSahibi>(
-      dialog: CustomDialog(
-        child: const FormViewDialog(
-          child: EvSahibiList(),
-        ),
-      ),
-    );
-    //
-    if (ownerValue == null) return;
-    //
-    if (ownerValue!.customer == null) return;
-    //
-    owner.text = ownerValue!.customer!.name ?? '';
-  }
-
-  void submitTenantFlats() async {
-    //
-    tenantValue = await context.customShowDialog<TBLKiraci>(
-      dialog: CustomDialog(
-        child: const FormViewDialog(
-          child: KiraciList(),
-        ),
-      ),
-    );
-    //
-    if (tenantValue == null) return;
-    //
-    if (tenantValue!.customer == null) return;
-    //
-    tenant.text = tenantValue!.customer!.name ?? '';
   }
 }

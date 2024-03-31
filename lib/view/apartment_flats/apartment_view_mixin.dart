@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import '../../index.dart';
 
 mixin ApartmentViewMixin on State<ApartmentView> {
-  TBLApartment? apartment;
+  late TBLApartment apartment;
   //
   @override
   void initState() {
@@ -24,10 +24,11 @@ mixin ApartmentViewMixin on State<ApartmentView> {
   @override
   void didChangeDependencies() {
     //  genericObject<TBLApartment>();
-    apartment = context.getArgumentsWithTpye<TBLApartment>();
+    final response = context.getArgumentsWithTpye<TBLApartment>();
     //
-    if (apartment == null) context.pop();
+    if (response == null) context.pop();
     //
+    apartment = response!;
     super.didChangeDependencies();
   }
 

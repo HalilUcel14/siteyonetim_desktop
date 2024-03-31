@@ -1,52 +1,57 @@
 import 'package:app_hive/app_hive.dart';
+import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
+import 'package:siteyonetim/index.dart';
 
-class ApartmentCard extends StatelessWidget {
+class ApartmentCard extends StatefulWidget {
   final TBLApartment apartment;
   const ApartmentCard({super.key, required this.apartment});
 
   @override
+  State<ApartmentCard> createState() => _ApartmentCardState();
+}
+
+class _ApartmentCardState extends State<ApartmentCard> with ApartmentCardMixin {
+  @override
   Widget build(BuildContext context) {
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: WColor.onBackground.color(context),
-          width: 1,
-        ),
-      ),
-      child: ColumnWithSpacing(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        key: GlobalKey(),
+    return LayoutBuilder(builder: (context, size) {
+      return Column(
         children: [
-          iconSymbol,
-          title(context).flexible(),
+          // --------------------------
+          // --------------------------
+          DecoratedBox(
+            decoration: apartmentDecoration,
+            child: iconSymbol(size),
+          ).withSizedBox(width: cardWidth, height: cardHeight(size)),
+          // --------------------------
+          // --------------------------
+          DecoratedBox(
+            decoration: titleDecoration,
+            child: titleView,
+          ).withSizedBox(width: cardWidth, height: titleHeight(size)),
+          // --------------------------
+          // --------------------------
         ],
-      ),
-    );
-  }
-
-  Widget get iconSymbol {
-    return WIconAsset(
-      path: MyAsset.apartment4.iconPng,
-      size: 200,
-    );
-  }
-
-  Widget title(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () => doubleTab(context),
-      child: WBoldText(
-        text: '${apartment.name}',
-        wStyle: WTextStyle.titleLarge,
-        wColor: WColor.onBackground,
-      ),
-    ).withSizedBox(height: 36, width: 150);
-  }
-
-  void doubleTab(BuildContext context) => Navigator.of(context).pushNamed(
-        MyRoute.apartment.name,
-        arguments: apartment,
       );
+    });
+  }
+
+  Widget get titleView {
+    return GestureDetector(
+      onDoubleTap: () => doubleTab(),
+      child: WBoldText(
+        text: '${widget.apartment.name}',
+        wStyle: WTextStyle.titleLarge,
+      ).center(),
+    );
+  }
+
+  Widget iconSymbol(BoxConstraints size) {
+    return WIconAsset(
+      path: MyAsset.apartment5.iconPng,
+      size: iconHeight(size),
+    ).padding(pad: SizeType.hexa.size.withPaddingAll);
+  }
 }
