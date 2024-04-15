@@ -10,10 +10,18 @@ final class HiveRegisterAdapter {
     Hive.registerAdapter(AppMetaDataAdapter());
     Hive.registerAdapter(HiveUserAdapter());
     Hive.registerAdapter(TBLApartmentAdapter());
-    Hive.registerAdapter(TBLCompanyAdapter());
-    Hive.registerAdapter(TBLIndividualAdapter());
-    Hive.registerAdapter(TBLDaireAdapter());
-    Hive.registerAdapter(TBLEvSahibiAdapter());
-    Hive.registerAdapter(TBLKiraciAdapter());
+    Hive.registerAdapter(TBLContractsAdapter());
+    Hive.registerAdapter(TBLCustomerAdapter());
+    Hive.registerAdapter(TBLExpenseTypeAdapter());
+    Hive.registerAdapter(TBLExpensesAdapter());
+    Hive.registerAdapter(TBLFlatsAdapter());
+    Hive.registerAdapter(TBLIncomeTypeAdapter());
+    Hive.registerAdapter(TBLIncomesAdapter());
+    Hive.registerAdapter(TBLOwnerAdapter());
+    Hive.registerAdapter(TBLSubscriptionAdapter());
+    Hive.registerAdapter(TBLTenantAdapter());
+    Hive.registerAdapter(TBLAnnouncementAdapter());
+    Hive.registerAdapter(TBLReminderAdapter());
+    Hive.registerAdapter(TBLTagsAdapter());
   }
 }

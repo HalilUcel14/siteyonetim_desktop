@@ -25,9 +25,9 @@ class FlatsListCard extends StatelessWidget with FlatsListCardMixin {
         text: '${apartment.name} için Daire Bulunamadı!',
       ).center();
 
-  Widget listView(List<TBLDaire> list) {
+  Widget listView(List<TBLFlats> list) {
     return ListView.builder(
-      itemCount: apartment.floorCount ?? 0,
+      itemCount: apartment.floor ?? 0,
       padding: SizeType.ennea.size.withPaddingAll,
       itemBuilder: (context, index) {
         final floors = list.getApartmentFloorList(index + 1);
@@ -44,17 +44,17 @@ class FlatsListCard extends StatelessWidget with FlatsListCardMixin {
 }
 
 mixin FlatsListCardMixin on StatelessWidget {
-  ValueListenableBuilder<Box<TBLDaire>> daireListenable({
+  ValueListenableBuilder<Box<TBLFlats>> daireListenable({
     required Widget Function(
       BuildContext context,
-      Box<TBLDaire> box,
+      Box<TBLFlats> box,
       Widget? child,
     ) builder,
     Key? key,
   }) {
-    return ValueListenableBuilder<Box<TBLDaire>>(
+    return ValueListenableBuilder<Box<TBLFlats>>(
       key: key,
-      valueListenable: HiveBoxesObject.of.daireDB.listenable,
+      valueListenable: HiveBoxesObject.of.flatsDB.listenable,
       builder: builder,
     );
   }

@@ -11,9 +11,9 @@ class EvSahibiList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-      valueListenable: HiveBoxesObject.of.evSahibiDB.boxListenable,
+      valueListenable: HiveBoxesObject.of.ownerDB.boxListenable,
       builder: (context, box, child) {
-        List<TBLEvSahibi> list = box.values.toList();
+        List<TBLOwner> list = box.values.toList();
         //
         return Stack(
           children: [
@@ -45,7 +45,7 @@ class EvSahibiList extends StatelessWidget {
 
   Center buildEmptyList() => const Center(child: Text('Ev Sahibi Yok'));
 
-  Widget buildList(List<TBLEvSahibi> list, BuildContext context) {
+  Widget buildList(List<TBLOwner> list, BuildContext context) {
     return Column(
       children: [
         // ------------------------
@@ -61,7 +61,7 @@ class EvSahibiList extends StatelessWidget {
                 title: Text('${list[index].customer?.name}'),
                 subtitle: Text('${list[index].customer?.email}'),
                 leading: const Icon(Icons.person),
-                onTap: () => context.pop<TBLEvSahibi>(result: list[index]),
+                onTap: () => context.pop<TBLOwner>(result: list[index]),
               ),
             );
           },

@@ -50,11 +50,11 @@ mixin ApartmentFormMixin on State<ApartmentForm> {
       return;
     }
     //
-    final response = await DBApartment.of.create(
+    final response = await context.apartmentDB.create(
       name: name.text.trim(),
       address: address.text.trim(),
-      floorCount: int.parse(floorCount.text.trim()),
-      flatsCount: int.parse(flatsCount.text.trim()),
+      floor: int.parse(floorCount.text.trim()),
+      flats: int.parse(flatsCount.text.trim()),
       buildYear: DateTime.parse(buildYear.text.trim()),
       haveElevator: isElevator.value,
     );

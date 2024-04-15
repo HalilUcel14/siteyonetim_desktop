@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 class FlatsCard extends StatefulWidget {
   const FlatsCard({super.key, required this.flats});
 
-  final TBLDaire flats;
+  final TBLFlats flats;
 
   @override
   State<FlatsCard> createState() => _FlatsCardState();

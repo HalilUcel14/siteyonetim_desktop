@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:app_hive/app_hive.dart';
+import 'package:app_hive/index.dart';
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
 import 'package:core/core.dart';
@@ -29,7 +30,7 @@ mixin EvSahibiFormMixin on State<EvSahibiForm> {
     if (FormKeys.of.customerFormKey.currentState == null) return;
     if (!FormKeys.of.customerFormKey.currentState!.validate()) return;
     //
-    CustomerModel? customer = customerKey.currentState?.sendCustomerModel();
+    TBLCustomer? customer = customerKey.currentState?.sendCustomerModel();
     //
     //
     if (!context.mounted) return;
@@ -45,15 +46,14 @@ mixin EvSahibiFormMixin on State<EvSahibiForm> {
     }
 
     //
-    TBLEvSahibi owner = TBLEvSahibi(
+    TBLOwner owner = TBLOwner(
       uid: RandomKey.generate(),
       userUid: HiveBoxesObject.of.metaDB.userUid,
       customer: customer,
       isActive: true,
     );
     //
-    final bool response =
-        await HiveBoxesObject.of.evSahibiDB.addNewOwner(owner);
+    final bool response = await HiveBoxesObject.of.ownerDB.addNewOwner(owner);
     //
     if (!context.mounted) return;
     if (!response) {

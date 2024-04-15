@@ -48,9 +48,9 @@ mixin RegisterFormMixin on State<RegisterForm> {
       return;
     }
     //-----------------------------------
-    final response = await DBLoginUser.of.signUp(
+    final response = await context.userDB.create(
       username: userNameController.text.trim(),
-      email: emailController.text.trim(),
+      emailAddress: emailController.text.trim(),
       password: passwordController.text.trim(),
     );
     //

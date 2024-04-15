@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:app_hive/app_hive.dart';
+import 'package:app_hive/index.dart';
 import 'package:codeofland/other/random_key/random_key.dart';
 import 'package:codeofwidget/codeofwidget.dart';
 import 'package:core/core.dart';
@@ -29,7 +30,7 @@ mixin KiraciFormMixin on State<KiraciForm> {
     if (FormKeys.of.customerFormKey.currentState == null) return;
     if (!FormKeys.of.customerFormKey.currentState!.validate()) return;
     //
-    CustomerModel? customer = customerKey.currentState?.sendCustomerModel();
+    TBLCustomer? customer = customerKey.currentState?.sendCustomerModel();
     //
     //
     if (!context.mounted) return;
@@ -45,7 +46,7 @@ mixin KiraciFormMixin on State<KiraciForm> {
     }
 
     //
-    TBLKiraci tenant = TBLKiraci(
+    TBLTenant tenant = TBLTenant(
       uid: RandomKey.generate(),
       userUid: HiveBoxesObject.of.metaDB.userUid,
       customer: customer,
@@ -53,7 +54,7 @@ mixin KiraciFormMixin on State<KiraciForm> {
     );
     //
     final bool response =
-        await HiveBoxesObject.of.kiraciDB.addNewTenant(tenant);
+        await HiveBoxesObject.of.tenantDB.addNewTenant(tenant);
     //
     if (!context.mounted) return;
     if (!response) {

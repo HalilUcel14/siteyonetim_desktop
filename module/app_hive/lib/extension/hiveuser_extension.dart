@@ -37,4 +37,16 @@ extension HiveUserDBExtension on HiveUserDatabase {
       return false;
     }
   }
+
+  HiveUser? getUserFromUsername(String username) {
+    try {
+      return listBox().firstWhere(
+        (element) => element.username == username,
+        orElse: () => HiveUser.empty(),
+      );
+    } catch (e) {
+      HiveException.read(e.toString()).debugPrint;
+      return HiveUser.empty();
+    }
+  }
 }

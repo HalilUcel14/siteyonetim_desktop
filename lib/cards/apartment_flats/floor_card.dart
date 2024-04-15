@@ -7,7 +7,7 @@ import 'package:siteyonetim/index.dart';
 class FloorCards extends StatefulWidget {
   const FloorCards({super.key, required this.floor, required this.floorNumber});
 
-  final List<TBLDaire> floor;
+  final List<TBLFlats> floor;
   final int floorNumber;
 
   @override

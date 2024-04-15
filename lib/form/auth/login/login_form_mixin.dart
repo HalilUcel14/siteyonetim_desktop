@@ -34,9 +34,9 @@ mixin LoginFormMixin on State<LoginForm> {
     // This function check the form validation
     if (!FormKeys.of.loginFormKey.safetyValidate()) return;
     //--------------------------------
-    final response = await DBLoginUser.of.signIn(
-      userNameController.text.trim(),
-      passwordController.text.trim(),
+    final response = await context.userDB.signIn(
+      username: userNameController.text.trim(),
+      password: passwordController.text.trim(),
     );
     // ------------------------
     if (!context.mounted) return;

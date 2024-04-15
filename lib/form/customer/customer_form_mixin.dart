@@ -39,34 +39,25 @@ mixin CustomerFormMixin on State<CustomerForm> {
     super.dispose();
   }
 
-  CustomerModel? sendCustomerModel() {
+  TBLCustomer? sendCustomerModel() {
     //
     if (FormKeys.of.customerFormKey.currentState == null) return null;
     if (!FormKeys.of.customerFormKey.currentState!.validate()) return null;
     //
-    CustomerModel model;
+    return TBLCustomer(
+      uid: RandomKey.generate(),
+      name: customerName.text,
+      identityNo: customerIdentityNo.text,
+      email: customerEmail.text,
+      phone: customerPhone.text,
+      address: customerAddress.text,
+      isActive: true,
+      userUid: context.metaDB.userUid,
+      isCompany: customerChoose.value,
+      taxOffice: '',
+      taxNo: '',
+    );
     //
-    if (customerChoose.value) {
-      model = TBLCompany(
-        uid: RandomKey.generate(),
-        name: customerName.text,
-        identityNo: customerIdentityNo.text,
-        email: customerEmail.text,
-        phone: customerPhone.text,
-        address: customerAddress.text,
-      );
-    } else {
-      model = TBLIndividual(
-        uid: RandomKey.generate(),
-        name: customerName.text,
-        identityNo: customerIdentityNo.text,
-        email: customerEmail.text,
-        phone: customerPhone.text,
-        address: customerAddress.text,
-      );
-    }
-
-    return model;
   }
 
   ///

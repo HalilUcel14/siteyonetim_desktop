@@ -28,7 +28,7 @@ mixin HomeDrawerMixin on StatelessWidget {
 
   String? getPlan() {
     if (!isNullableUser()) {
-      return HiveBoxesObject.of.metaDB.meta!.user!.userType;
+      return HiveBoxesObject.of.metaDB.meta!.user!.plans;
     }
     return null;
   }

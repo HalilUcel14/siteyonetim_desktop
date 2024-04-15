@@ -21,7 +21,7 @@ mixin DaireValidatorMixin on State<DaireForm> {
     if (!value.positiveIntParse) return FormError.positiveInteger.text;
     //
     if (widget.apartment.isNullable) return FormError.apartmentEmpty.text;
-    if (widget.apartment.floorCount! < int.parse(value!)) {
+    if (widget.apartment.floor! < int.parse(value!)) {
       return FormError.floorCount.text;
     }
     return null;
@@ -42,7 +42,7 @@ mixin DaireValidatorMixin on State<DaireForm> {
     if (!value.positiveIntParse) return FormError.positiveInteger.text;
     //
     if (widget.apartment.isNullable) return FormError.apartmentEmpty.text;
-    if (widget.apartment.flatsCount! < int.parse(value!)) {
+    if (widget.apartment.flats! < int.parse(value!)) {
       return FormError.flatsCount.text;
     }
     return null;
@@ -84,7 +84,7 @@ mixin DaireValidatorMixin on State<DaireForm> {
 
   void submitOwnerFlats(TextEditingController controller) async {
     //
-    final response = await context.customShowDialog<TBLEvSahibi>(
+    final response = await context.customShowDialog<TBLOwner>(
       dialog: CustomDialog(
         child: const FormViewDialog(
           child: EvSahibiList(),
@@ -119,7 +119,7 @@ mixin DaireValidatorMixin on State<DaireForm> {
 
   void submitTenantFlats(TextEditingController controller) async {
     //
-    final response = await context.customShowDialog<TBLKiraci>(
+    final response = await context.customShowDialog<TBLTenant>(
       dialog: CustomDialog(
         child: const FormViewDialog(
           child: KiraciList(),

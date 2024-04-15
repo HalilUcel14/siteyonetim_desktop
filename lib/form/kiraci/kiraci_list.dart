@@ -11,9 +11,9 @@ class KiraciList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-      valueListenable: HiveBoxesObject.of.kiraciDB.boxListenable,
+      valueListenable: HiveBoxesObject.of.tenantDB.boxListenable,
       builder: (context, box, child) {
-        List<TBLKiraci> list = box.values.toList();
+        List<TBLTenant> list = box.values.toList();
         //
 
         return Stack(
@@ -44,7 +44,7 @@ class KiraciList extends StatelessWidget {
 
   Center buildEmptyList() => const Center(child: Text('Kiraci Yok'));
 
-  Widget buildList(List<TBLKiraci> list, BuildContext context) {
+  Widget buildList(List<TBLTenant> list, BuildContext context) {
     return Column(
       children: [
         ListView.separated(
@@ -56,7 +56,7 @@ class KiraciList extends StatelessWidget {
                 title: Text('${list[index].customer?.name}'),
                 subtitle: Text('${list[index].customer?.email}'),
                 leading: const Icon(Icons.person),
-                onTap: () => context.pop<TBLKiraci>(result: list[index]),
+                onTap: () => context.pop<TBLTenant>(result: list[index]),
               ),
             );
           },

@@ -1,8 +1,8 @@
-enum UserType {
+enum PlansType {
   free,
-  normal,
-  premium,
-  proPlus,
+  pre,
+  pro,
+  max,
   express,
 }
 

@@ -17,8 +17,8 @@ mixin DaireFormMixin on State<DaireForm> {
   late TextEditingController owner;
   late TextEditingController tenant;
   late String? roomType;
-  late TBLEvSahibi? ownerValue;
-  late TBLKiraci? tenantValue;
+  late TBLOwner? ownerValue;
+  late TBLTenant? tenantValue;
   late BoolNotifier isOwner;
   late BoolNotifier isTenant;
 
@@ -62,16 +62,17 @@ mixin DaireFormMixin on State<DaireForm> {
     //
     if (!FormKeys.of.daireFormKey.currentState!.validate()) return;
     //
-    final TBLDaire daire = TBLDaire(
+    final TBLFlats daire = TBLFlats(
       uid: RandomKey.generate(),
+      userUid: context.metaDB.userUid,
+      contractUid: null,
+      subscriptionUid: null,
       apartmentUid: widget.apartment.uid,
       floor: int.parse(floor.text),
-      flats: int.parse(flats.text),
-      squareMeter: int.tryParse(squareM.text) ?? 0,
-      netSquareMeter: int.tryParse(netSquareM.text) ?? 0,
-      roomCount: int.tryParse(room.text) ?? 0,
-      owner: ownerValue,
-      tenant: tenantValue,
+      flat: int.parse(flats.text),
+      squareMeter: double.tryParse(squareM.text) ?? 0,
+      netMeter: double.tryParse(netSquareM.text) ?? 0,
+      roomType: roomType,
       isActive: true,
     );
     //
@@ -100,14 +101,13 @@ mixin DaireFormMixin on State<DaireForm> {
       return;
     }
     //
-    final response = await HiveBoxesObject.of.daireDB.addNewDaire(daire);
+    final response = await HiveBoxesObject.of.flatsDB.create(daire);
     //
-    if (!context.mounted) return;
-    if (!response) {
+    if (response.hasError) {
       context.customShowDialog(
         dialog: CustomDialog(
-          child: const CustomUserDialog.error(
-            text: 'Daire Eklenemedi',
+          child: CustomUserDialog.error(
+            text: response.message,
           ),
         ),
       );
