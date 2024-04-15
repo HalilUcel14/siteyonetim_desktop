@@ -3,6 +3,7 @@ import 'package:codeofland/codeofland.dart';
 import 'package:core/core.dart';
 import 'package:core/feauture/index.dart';
 import 'package:flutter/material.dart';
+import 'package:theme/theme.dart';
 
 import 'index.dart';
 
@@ -44,12 +45,12 @@ class _MyAppInheritedState extends State<MyAppInherited>
 
 mixin MyAppInheritedMixin on State<MyAppInherited> {
   late LangManager lang;
-  late ThemeModeType themeModeType;
+  late ThemeChange themeModeType;
 
   @override
   void initState() {
     super.initState();
-    themeModeType = ThemeModeType();
+    themeModeType = ThemeChange();
     lang = LangManager();
   }
 

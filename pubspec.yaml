@@ -41,6 +41,8 @@ dependencies:
     path: "module/core"
   app_hive:
     path: "module/app_hive"
+  theme:
+    path: "module/theme"
   
   equatable: ^2.0.5
   codeofland: ^1.4.2
