@@ -15,7 +15,7 @@ class _RegisterViewState extends State<RegisterView> with RegisterViewMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       key: ScaffoldKeys.of.registerKey,
-      body: const RegisterViewBody(),
+      body: const SingleChildScrollView(child: RegisterViewBody()),
     );
   }
 }

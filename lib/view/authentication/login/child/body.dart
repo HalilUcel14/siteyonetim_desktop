@@ -11,18 +11,15 @@ class LoginViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: FractionallySizedBox(
-        heightFactor: 0.9,
-        child: ColumnWithSpacing(
-          children: [
-            AuhtImage(
-              path: MyAsset.sign.iconPng,
-            ),
-            const LoginForm().expanded(),
-          ],
-        ).withSizedBox(
-          width: SizeType.zeta.size,
-        ),
+      child: ColumnWithSpacing(
+        children: [
+          AuhtImage(
+            path: MyAsset.sign.iconPng,
+          ),
+          const LoginForm(),
+        ],
+      ).withSizedBox(
+        width: SizeType.zeta.size,
       ),
     );
   }

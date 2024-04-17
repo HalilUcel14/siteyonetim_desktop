@@ -9,7 +9,7 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: key,
-      body: const LoginViewBody(),
+      body: const SingleChildScrollView(child: LoginViewBody()),
     );
   }
 }

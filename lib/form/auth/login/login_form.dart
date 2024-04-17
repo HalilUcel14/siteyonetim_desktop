@@ -52,6 +52,7 @@ class _LoginFormState extends State<LoginForm>
           child: WBoldText(text: FormText.signInButton.text),
         ),
         // ------------------------
+
         Container(
           width: SizeType.deca.size,
           height: 2,

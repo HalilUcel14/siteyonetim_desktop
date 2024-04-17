@@ -11,19 +11,15 @@ class RegisterViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: FractionallySizedBox(
-        heightFactor: 1,
-        alignment: Alignment.center,
-        child: ColumnWithSpacing(
-          children: [
-            AuhtImage(
-              path: MyAsset.signup.iconPng,
-            ),
-            const RegisterForm().expanded(),
-          ],
-        ).withSizedBox(
-          width: SizeType.zeta.size,
-        ),
+      child: ColumnWithSpacing(
+        children: [
+          AuhtImage(
+            path: MyAsset.signup.iconPng,
+          ),
+          const RegisterForm(),
+        ],
+      ).withSizedBox(
+        width: SizeType.zeta.size,
       ),
     );
   }
