@@ -18,9 +18,7 @@ final class AppRoute {
   Map<String, Widget Function(BuildContext context)> route = {
     MyRoute.home.name: (context) => const HomeView(),
     MyRoute.splash.name: (context) => const SplashView(),
-    MyRoute.authLogin.name: (context) => const LoginView(),
-    MyRoute.authRegister.name: (context) => const RegisterView(),
-    MyRoute.authForgot.name: (context) => const ForgotView(),
+    MyRoute.auth.name: (context) => const AuthView(),
     MyRoute.apartment.name: (context) => const ApartmentView(),
   };
 }

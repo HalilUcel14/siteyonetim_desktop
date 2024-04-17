@@ -1,7 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:app_hive/app_hive.dart';
-import 'package:codeofland/codeofland.dart';
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 
@@ -64,7 +63,8 @@ mixin RegisterFormMixin on State<RegisterForm> {
   }
 
   /// Kullanıcı Giriş Ekranına Geçiş yapar.
-  void goToLoginView() => context.pushNamed(MyRoute.authLogin.name);
+  void goToLoginView() =>
+      authNotifier.typeLogin(); //context.pushNamed(MyRoute.authLogin.name);
 
   bool get isConfirmPassword =>
       passwordController.text.trim() == confirmPasswordController.text.trim();

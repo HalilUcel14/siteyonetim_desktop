@@ -1,5 +1,6 @@
 enum MyRoute {
   splash,
+  auth,
   authLogin,
   authRegister,
   authForgot,

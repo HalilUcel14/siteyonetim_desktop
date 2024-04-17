@@ -10,4 +10,5 @@ final class ScaffoldKeys {
   late GlobalKey<ScaffoldState> splashKey;
   late GlobalKey<ScaffoldState> homeKey;
   late GlobalKey<ScaffoldState> apartmentKey;
+  late GlobalKey<ScaffoldState> forgotKey;
 }

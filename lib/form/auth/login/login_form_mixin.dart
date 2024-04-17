@@ -56,7 +56,8 @@ mixin LoginFormMixin on State<LoginForm> {
 
   void goToRegisterView() async {
     if (context.mounted) {
-      await context.pushNamed(MyRoute.authRegister.name);
+      //await context.pushNamed(MyRoute.authRegister.name);
+      authNotifier.typeRegister();
     }
   }
 
