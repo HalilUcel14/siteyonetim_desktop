@@ -1,6 +1,8 @@
 enum FormText {
   signInButton("Giriş Yap"),
   signUpButton('Kayıt Ol'),
+  dontHaveAccount('Hesabınız yok mu?'),
+  haveAccount('Hesabınız var mı?'),
   emailLabel('E-Posta Adresi'),
   emailHint('Lütfen E-Posta Adresinizi Girin'),
   usernameLabel('Kullanıcı Adı'),

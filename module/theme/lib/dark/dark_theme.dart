@@ -23,7 +23,7 @@ final class DarkTheme extends BaseTheme {
         color: Colors.transparent,
         titleTextStyle: TextStyle(
           fontWeight: FontWeight.bold,
-          color: colorScheme.onBackground,
+          color: colorScheme.onSurface,
           fontSize: 24,
         ),
       );
@@ -50,8 +50,8 @@ final class DarkTheme extends BaseTheme {
         tertiaryContainer: Color.fromARGB(255, 143, 177, 194),
 
         //---------------------------------
-        background: Colors.black87,
-        onBackground: Colors.white,
+        surface: Colors.black87,
+        onSurface: Colors.white,
 
         //---------------------------------
 

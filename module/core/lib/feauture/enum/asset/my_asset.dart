@@ -14,6 +14,7 @@ enum MyAsset {
   store,
   walter,
   sign,
+  signup
   ;
 
   String get iconPng => 'asset/icon/$name.png';

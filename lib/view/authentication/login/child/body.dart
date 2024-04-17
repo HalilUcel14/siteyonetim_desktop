@@ -1,5 +1,6 @@
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
+import 'package:core/feauture/enum/asset/my_asset.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../index.dart';
@@ -11,15 +12,15 @@ class LoginViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: FractionallySizedBox(
-        heightFactor: 0.8,
-        alignment: Alignment.center,
+        heightFactor: 0.9,
         child: ColumnWithSpacing(
           children: [
-            const AuhtImage().expanded(),
+            AuhtImage(
+              path: MyAsset.sign.iconPng,
+            ),
             const LoginForm().expanded(),
           ],
         ).withSizedBox(
-          height: double.infinity,
           width: SizeType.zeta.size,
         ),
       ),

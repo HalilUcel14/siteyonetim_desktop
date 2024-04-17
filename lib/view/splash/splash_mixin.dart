@@ -36,8 +36,8 @@ mixin SplashMixin on State<SplashView> {
   }
 
   Future<void> goToHome() async =>
-      await context.pushNamedAndRemoveUntil(MyRoute.home.name);
+     await context.pushNamedAndRemoveUntil(MyRoute.home.name);
 
   Future<void> goToAuth() async =>
-      await context.pushNamedAndRemoveUntil(MyRoute.authLogin.name);
+     await context.pushNamedAndRemoveUntil(MyRoute.authLogin.name);
 }

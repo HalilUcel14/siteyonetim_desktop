@@ -23,7 +23,7 @@ final class LightTheme extends BaseTheme {
         color: Colors.transparent,
         titleTextStyle: TextStyle(
           fontWeight: FontWeight.bold,
-          color: colorScheme.onBackground,
+          color: colorScheme.onSurface,
           fontSize: 24,
         ),
       );
@@ -36,8 +36,8 @@ final class LightTheme extends BaseTheme {
 
   @override
   ColorScheme get colorScheme => const ColorScheme.light(
-        primary: Color(0xFF81A739),
-        primaryContainer: Color(0xFFB9D585), //Color.fromARGB(255, 69, 233, 74),
+        primary: Colors.blue,
+        primaryContainer: Colors.deepPurple, //Color.fromARGB(255, 69, 233, 74),
         onPrimary: Colors.black,
         onPrimaryContainer: Colors.white,
         // --------------------------------
@@ -51,8 +51,8 @@ final class LightTheme extends BaseTheme {
         onTertiary: Colors.black87,
         onTertiaryContainer: Colors.white,
         // --------------------------------
-        background: Colors.white,
-        onBackground: Colors.black,
+        surface: Colors.white,
+        onSurface: Colors.black,
         // --------------------------------
         error: Color(0xFFCF0A0A),
         errorContainer: Color(0xFFDC5F00),
@@ -76,3 +76,19 @@ final class LightTheme extends BaseTheme {
         ),
       );
 }
+
+/**  @override
+  ColorScheme get colorScheme => const ColorScheme.light(
+  primary: Colors.cyan,
+  onPrimaryContainer: Colors.cyanAccent, // Varsayılan olarak primary ile birbirine yakın bir ton tercih edilebilir
+  onPrimary: Colors.black,
+  secondary: Color(0xFFCF0A0A),
+  onSecondaryContainer: Color(0xFFDC5F00),
+  onSecondary: Colors.white70,
+  background: Colors.white,
+  surface: Colors.white,
+  onBackground: Colors.black87,
+  onSurface: Colors.black87,
+  error: Color(0xFFCF0A0A),
+  onError: Colors.white,
+); */

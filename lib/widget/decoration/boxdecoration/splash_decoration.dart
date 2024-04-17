@@ -7,11 +7,11 @@ final class SplashBoxDecoration extends BoxDecoration {
       : super(
           gradient: LinearGradient(
             colors: [
-              context.colorScheme.secondary,
-              context.colorScheme.tertiary,
+              context.colorScheme.onPrimaryContainer,
+              context.colorScheme.onPrimaryContainer,
             ],
             begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
+            end: Alignment.bottomLeft,
           ),
         );
 }

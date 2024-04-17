@@ -62,14 +62,28 @@ class _RegisterFormState extends State<RegisterForm>
             );
           },
         ),
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            fixedSize: Size(SizeType.deca.size, SizeType.mega.size),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(5),
+            ),
+          ),
+          onPressed: formValidation,
+          child: WBoldText(text: FormText.signUpButton.text),
+        ),
         // --------------------------------
+        Container(
+          width: SizeType.deca.size,
+          height: 2,
+          color: Colors.black45,
+        ),
+        // ------------------------
         RowWithSpacing(
           spacing: SizeType.ennea.size,
           children: [
-            ElevatedButton(
-              onPressed: formValidation,
-              child: WBoldText(text: FormText.signUpButton.text),
-            ),
+            // --------------------------------------
+            WBoldText(text: FormText.haveAccount.text),
             // --------------------------------------
             ElevatedButton(
               onPressed: goToLoginView,

@@ -1,5 +1,6 @@
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
+import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../index.dart';
@@ -11,15 +12,16 @@ class RegisterViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: FractionallySizedBox(
-        heightFactor: 0.8,
+        heightFactor: 1,
         alignment: Alignment.center,
         child: ColumnWithSpacing(
           children: [
-            const AuhtImage().expanded(),
+            AuhtImage(
+              path: MyAsset.signup.iconPng,
+            ),
             const RegisterForm().expanded(),
           ],
         ).withSizedBox(
-          height: double.infinity,
           width: SizeType.zeta.size,
         ),
       ),
