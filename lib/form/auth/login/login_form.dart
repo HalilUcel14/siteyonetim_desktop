@@ -6,7 +6,9 @@ import 'package:flutter/material.dart';
 import '../../../index.dart';
 
 final class LoginForm extends StatefulWidget {
-  const LoginForm({super.key});
+  const LoginForm({super.key, required this.notifier});
+
+  final AuthTypeNotifier notifier;
 
   @override
   State<LoginForm> createState() => _LoginFormState();
@@ -31,6 +33,7 @@ class _LoginFormState extends State<LoginForm>
         ValueListenableBuilder(
           valueListenable: isObscure,
           builder: (context, obscure, child) {
+            // ------------------------
             return CustomTextFormField(
               controller: passwordController,
               obscureText: obscure,

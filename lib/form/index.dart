@@ -5,12 +5,12 @@ export './auth/index.dart';
 export './customer/customer_form.dart';
 export './customer/customer_form_mixin.dart';
 //
-export './daire/index.dart';
+export 'flats/index.dart';
 //
-export './evsahibi/ev_sahibi_list.dart';
-export './evsahibi/evsahibi_form.dart';
-export './evsahibi/evsahibi_form_mixin.dart';
+export 'owners/ev_sahibi_list.dart';
+export 'owners/evsahibi_form.dart';
+export 'owners/evsahibi_form_mixin.dart';
 //
-export './kiraci/kiraci_form.dart';
-export './kiraci/kiraci_form_mixin.dart';
-export './kiraci/kiraci_list.dart';
+export 'tenants/kiraci_form.dart';
+export 'tenants/kiraci_form_mixin.dart';
+export 'tenants/kiraci_list.dart';

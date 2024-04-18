@@ -63,8 +63,7 @@ mixin RegisterFormMixin on State<RegisterForm> {
   }
 
   /// Kullanıcı Giriş Ekranına Geçiş yapar.
-  void goToLoginView() =>
-      authNotifier.typeLogin(); //context.pushNamed(MyRoute.authLogin.name);
+  void goToLoginView() => widget.notifier.typeLogin();
 
   bool get isConfirmPassword =>
       passwordController.text.trim() == confirmPasswordController.text.trim();

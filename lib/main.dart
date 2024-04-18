@@ -22,43 +22,18 @@ void main() async {
   //
 }
 
-class MyAppInherited extends StatefulWidget {
+class MyAppInherited extends StatelessWidget {
   const MyAppInherited({super.key});
 
   @override
-  State<MyAppInherited> createState() => _MyAppInheritedState();
-}
-
-class _MyAppInheritedState extends State<MyAppInherited>
-    with MyAppInheritedMixin {
-  @override
   Widget build(BuildContext context) {
     return ThemeNotifier(
-      notifier: themeModeType,
+      notifier: ThemeChange(),
       child: LanguageNotifier(
-        notifier: lang,
+        notifier: LangManager(),
         child: const MyApp(),
       ),
     );
-  }
-}
-
-mixin MyAppInheritedMixin on State<MyAppInherited> {
-  late LangManager lang;
-  late ThemeChange themeModeType;
-
-  @override
-  void initState() {
-    super.initState();
-    themeModeType = ThemeChange();
-    lang = LangManager();
-  }
-
-  @override
-  void dispose() {
-    lang.dispose();
-    themeModeType.dispose();
-    super.dispose();
   }
 }
 

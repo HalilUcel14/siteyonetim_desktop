@@ -26,34 +26,18 @@ class _SplashChild extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Container(
+      constraints: const BoxConstraints.expand(),
+      decoration: SplashBoxDecoration(context),
+      //--------------------------------
       child: FractionallySizedBox(
-        widthFactor: 1,
-        heightFactor: 1,
-        //--------------------------------
-        child: DecoratedBox(
-          decoration: SplashBoxDecoration(context),
-          //--------------------------------
-          child: FractionallySizedBox(
-            widthFactor: 0.4,
-            heightFactor: 0.4,
-            //--------------------------------
-            child: DecoratedBox(
-              decoration: CircleIconDecoration(context),
-              child: child,
-            ),
-          ),
+        heightFactor: 0.5,
+        widthFactor: 0.5,
+        child: WIconAsset(
+          path: MyAsset.splash.iconPng,
+          size: double.infinity,
         ),
       ),
     );
   }
-
-  LayoutBuilder get child => LayoutBuilder(
-        builder: (context, constraints) {
-          return WIconAsset(
-            path: MyAsset.apartment.iconPng,
-            size: constraints.maxWidth * WPercent.pNinety.size,
-          );
-        },
-      );
 }

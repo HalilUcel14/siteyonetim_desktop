@@ -6,7 +6,9 @@ import 'package:flutter/material.dart';
 import '../../../index.dart';
 
 class RegisterForm extends StatefulWidget {
-  const RegisterForm({super.key});
+  const RegisterForm({super.key, required this.notifier});
+
+  final AuthTypeNotifier notifier;
 
   @override
   State<RegisterForm> createState() => _RegisterFormState();

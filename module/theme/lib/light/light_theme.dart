@@ -9,6 +9,19 @@ final class LightTheme extends BaseTheme {
         cardTheme: cardTheme,
         appBarTheme: appBar,
         drawerTheme: drawer,
+        floatingActionButtonTheme: floatingActionButton,
+        iconTheme: iconTheme,
+        primaryIconTheme: iconPrimaryTheme,
+      );
+
+  IconThemeData get iconPrimaryTheme => IconThemeData(
+        color: colorScheme.primary,
+        size: 50,
+      );
+
+  IconThemeData get iconTheme => IconThemeData(
+        color: colorScheme.onBackground,
+        size: 50,
       );
 
   DrawerThemeData get drawer => DrawerThemeData(
@@ -68,11 +81,24 @@ final class LightTheme extends BaseTheme {
   ElevatedButtonThemeData get elevatedButton => ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           animationDuration: const Duration(milliseconds: 300),
-          backgroundColor: colorScheme.primary,
+          backgroundColor: colorScheme.primaryContainer,
           foregroundColor: colorScheme.onPrimary,
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          side: BorderSide(
+            color: colorScheme.onBackground,
+            style: BorderStyle.solid,
+          ),
           textStyle: const TextStyle(
             fontWeight: FontWeight.bold,
           ),
         ),
+      );
+
+  FloatingActionButtonThemeData get floatingActionButton =>
+      FloatingActionButtonThemeData(
+        backgroundColor: colorScheme.primary,
+        foregroundColor: colorScheme.onPrimary,
+        splashColor: colorScheme.onPrimary,
+        elevation: 16,
       );
 }

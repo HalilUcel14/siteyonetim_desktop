@@ -21,10 +21,10 @@ class CustomFormDecoration extends InputDecoration {
           border: FormOutlineBorder(Colors.black),
           contentPadding: SizeType.ennea.size.withPaddingAll,
           suffixIcon: suffixIcon?.padding(
-            pad: SizeType.hexa.size.withPaddingAll,
+            pad: SizeType.ennea.size.withPaddingHorizontal,
           ),
           prefixIcon: prefixIcon?.padding(
-            pad: SizeType.hexa.size.withPaddingAll,
+            pad: SizeType.ennea.size.withPaddingHorizontal,
           ),
         );
 }

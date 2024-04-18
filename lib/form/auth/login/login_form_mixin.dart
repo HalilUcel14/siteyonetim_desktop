@@ -54,16 +54,7 @@ mixin LoginFormMixin on State<LoginForm> {
     }
   }
 
-  void goToRegisterView() async {
-    if (context.mounted) {
-      //await context.pushNamed(MyRoute.authRegister.name);
-      authNotifier.typeRegister();
-    }
-  }
+  void goToRegisterView() => widget.notifier.typeRegister();
 
-  void goToForgotPasswordView() async {
-    if (context.mounted) {
-      await context.pushNamed(MyRoute.authForgot.name);
-    }
-  }
+  void goToForgotPasswordView() => widget.notifier.typeForgot();
 }

@@ -1,4 +1,5 @@
 enum MyAsset {
+  splash,
   apartment,
   apartment2,
   apartment3,
