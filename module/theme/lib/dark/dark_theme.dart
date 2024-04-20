@@ -23,7 +23,7 @@ final class DarkTheme extends BaseTheme {
         color: Colors.transparent,
         titleTextStyle: TextStyle(
           fontWeight: FontWeight.bold,
-          color: colorScheme.onBackground,
+          color: colorScheme.onSurface,
           fontSize: 24,
         ),
       );
@@ -35,29 +35,35 @@ final class DarkTheme extends BaseTheme {
       );
 
   @override
-  ColorScheme get colorScheme => const ColorScheme.dark(
-        primary: Color(0xFF4CAF50),
-        primaryContainer: Color.fromARGB(255, 69, 233, 74),
-        onPrimary: Colors.black,
-        onPrimaryContainer: Colors.black87,
+  ColorScheme get colorScheme => ColorScheme.dark(
+        primary: Colors.blue,
+        primaryContainer: Colors.blue[400],
+        onPrimary: Colors.black87,
+        onPrimaryContainer: Colors.black54,
         //---------------------------------
-        secondary: Color(0xFF607D8B),
-        secondaryContainer: Color.fromARGB(255, 70, 135, 168),
+        secondary: Colors.blueGrey.shade300,
+        secondaryContainer: Colors.blueGrey.shade400,
         onSecondary: Colors.white70,
         onSecondaryContainer: Colors.white,
         //---------------------------------
-        tertiary: Color(0xFFB0BEC5),
-        tertiaryContainer: Color.fromARGB(255, 143, 177, 194),
-
+        tertiary: Colors.white70,
+        tertiaryContainer: Colors.blueGrey.shade900,
+        onTertiary: Colors.black87,
+        onTertiaryContainer: Colors.black54,
         //---------------------------------
-        background: Colors.black87,
-        onBackground: Colors.white,
+        error: Colors.red.shade900,
+        errorContainer: Colors.red,
+        onError: Colors.white,
+        onErrorContainer: Colors.white,
+        //---------------------------------
+        surface: Colors.black87,
+        onSurface: Colors.white,
 
         //---------------------------------
 
         surfaceTint: Colors.blueGrey,
         //
-        shadow: Color(0xFFC5C5C5),
+        shadow: Colors.white70,
       );
 
   @override

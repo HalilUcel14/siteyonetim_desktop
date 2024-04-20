@@ -20,7 +20,7 @@ final class LightTheme extends BaseTheme {
       );
 
   IconThemeData get iconTheme => IconThemeData(
-        color: colorScheme.onBackground,
+        color: colorScheme.onSurface,
         size: 50,
       );
 
@@ -36,7 +36,7 @@ final class LightTheme extends BaseTheme {
         color: Colors.transparent,
         titleTextStyle: TextStyle(
           fontWeight: FontWeight.bold,
-          color: colorScheme.onBackground,
+          color: colorScheme.onSurface,
           fontSize: 24,
         ),
       );
@@ -48,33 +48,33 @@ final class LightTheme extends BaseTheme {
       );
 
   @override
-  ColorScheme get colorScheme => const ColorScheme.light(
-        primary: Color(0xFF81A739),
-        primaryContainer: Color(0xFFB9D585), //Color.fromARGB(255, 69, 233, 74),
-        onPrimary: Colors.black,
-        onPrimaryContainer: Colors.white,
+  ColorScheme get colorScheme => ColorScheme.light(
+        primary: Colors.blue,
+        primaryContainer: Colors.blue[400],
+        onPrimary: Colors.black87,
+        onPrimaryContainer: Colors.black54,
         // --------------------------------
-        secondary: Color(0xFFCF0A0A),
-        secondaryContainer: Color(0xFFDC5F00),
+        secondary: Colors.blueGrey.shade300,
+        secondaryContainer: Colors.blueGrey.shade400,
         onSecondary: Colors.white70,
         onSecondaryContainer: Colors.white,
         // --------------------------------
-        tertiary: Color(0xFFFFF78A),
-        tertiaryContainer: Color(0xFFFFE382),
+        tertiary: Colors.white70,
+        tertiaryContainer: Colors.blueGrey.shade900,
         onTertiary: Colors.black87,
-        onTertiaryContainer: Colors.white,
+        onTertiaryContainer: Colors.black54,
         // --------------------------------
-        background: Colors.white,
-        onBackground: Colors.black,
+        surface: Colors.white,
+        onSurface: Colors.black87,
         // --------------------------------
-        error: Color(0xFFCF0A0A),
-        errorContainer: Color(0xFFDC5F00),
+        error: Colors.red.shade900,
+        errorContainer: Colors.red,
         onError: Colors.white,
-        onErrorContainer: Colors.white,
+        onErrorContainer: Colors.black,
         // --------------------------------
         surfaceTint: Colors.blueGrey,
         //
-        shadow: Color(0xFFC5C5C5),
+        shadow: Colors.black45,
       );
 
   @override
@@ -85,7 +85,7 @@ final class LightTheme extends BaseTheme {
           foregroundColor: colorScheme.onPrimary,
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
           side: BorderSide(
-            color: colorScheme.onBackground,
+            color: colorScheme.onSurface,
             style: BorderStyle.solid,
           ),
           textStyle: const TextStyle(

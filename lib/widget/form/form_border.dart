@@ -11,7 +11,7 @@ final class FormOutlineBorder extends OutlineInputBorder {
             color: color,
             strokeAlign: BorderSide.strokeAlignCenter,
             style: BorderStyle.solid,
-            width: 4,
+            width: 2,
           ),
         );
 }

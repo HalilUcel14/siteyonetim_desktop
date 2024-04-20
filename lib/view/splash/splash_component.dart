@@ -10,8 +10,8 @@ final class SplashBoxDecoration extends BoxDecoration {
               context.colorScheme.secondary,
               context.colorScheme.tertiary,
             ],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
+            begin: Alignment.center,
+            end: Alignment.bottomLeft,
           ),
         );
 }

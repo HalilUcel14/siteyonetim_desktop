@@ -15,7 +15,7 @@ class FormViewDialog extends StatelessWidget {
         children: [
           DecoratedBox(
             decoration: BoxDecoration(
-              color: context.colorScheme.background,
+              color: context.colorScheme.surface,
               borderRadius: SizeType.hexa.size.radiusCircle,
             ),
             child: child,

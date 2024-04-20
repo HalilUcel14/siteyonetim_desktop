@@ -2,6 +2,7 @@ import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
+import 'package:siteyonetim/widget/line_container/line_container.dart';
 
 import '../../../index.dart';
 
@@ -65,24 +66,32 @@ class _RegisterFormState extends State<RegisterForm>
           },
         ),
         // --------------------------------
+        ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              fixedSize: Size(SizeType.deca.size, SizeType.penta.size),
+            ),
+            onPressed: formValidation,
+            child: WBoldText(
+              text: FormText.signUpButton.text,
+            )),
+        // --------------------------------
+        LineContainer(context),
+        // --------------------------------
         RowWithSpacing(
-          spacing: SizeType.ennea.size,
           children: [
-            ElevatedButton(
-              onPressed: formValidation,
-              child: WBoldText(text: FormText.signUpButton.text),
-            ),
-            // --------------------------------------
-            ElevatedButton(
+            // --------------------------------
+            WBoldText(text: FormText.or.text),
+            // --------------------------------
+            TextButton(
               onPressed: goToLoginView,
-              child: WBoldText(text: FormText.signInButton.text),
-            ),
+              child: WBoldText(
+                wColor: WColor.primary,
+                text: FormText.signInButton.text,
+              ),
+            )
           ],
         ).scrollHorizontal(),
-        // --------------------------------
       ],
     );
-
-    //
   }
 }

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 enum ThemeType { light, dark }
 
 class ThemeChange extends ChangeNotifier {
-  ThemeType _type = ThemeType.light;
+  ThemeType _type = ThemeType.dark;
 
   ThemeType get type => _type;
 

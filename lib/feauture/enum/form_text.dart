@@ -9,6 +9,8 @@ enum FormText {
   passwordHint('Lütfen Şifrenizi Girin'),
   confirmPasswordLabel('Şifreyi Onayla'),
   confirmPasswordHint('Lütfen Şifrenizi Tekrar Girin'),
+  dontHaveAccount('Hesabınız yok mu?'),
+  forgotPassword('Sifrenizi mi unuttunuz?'),
   // --------------------------------
   listOwner('Ev Sahipleri Listesi'),
   listTenant('Kiracılar Listesi'),
@@ -42,6 +44,8 @@ enum FormText {
   customerAdres('Adres'),
   individualIndentityNo('T.C. Kimlik Numarası'),
   companyIdentityNo('Vergi Numarası'),
+  // -------------------------------------
+  or("veya"),
   // -------------------------------------
   ;
 

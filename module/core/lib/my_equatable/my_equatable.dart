@@ -2,7 +2,7 @@ abstract class MyEquatable {
   List<Object?> get props;
 
   @override
-  bool operator ==(Object other) =>
+  bool operator == (Object other) =>
       identical(this, other) ||
       other is MyEquatable &&
           runtimeType == other.runtimeType &&

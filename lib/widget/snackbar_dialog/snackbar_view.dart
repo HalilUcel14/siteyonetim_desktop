@@ -29,10 +29,10 @@ class SnackBarView extends StatelessWidget {
       content: Container(
         padding: SizeType.ennea.size.withPaddingAll,
         decoration: BoxDecoration(
-          color: context.colorScheme.background,
+          color: context.colorScheme.surface,
           borderRadius: BorderRadius.circular(SizeType.ennea.size),
           border: Border.all(
-            color: context.colorScheme.onBackground,
+            color: context.colorScheme.onSurface,
             width: 4,
           ),
         ),
